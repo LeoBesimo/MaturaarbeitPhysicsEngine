@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MaturaArbeitPhysicsEngine", "MaturaArbeitPhysicsEngine\MaturaArbeitPhysicsEngine.vcxproj", "{E9DD0A3A-BF0C-4D13-8461-DC1B3A99F672}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5231F578-FD5C-44E1-AF92-3385508F0120} = {5231F578-FD5C-44E1-AF92-3385508F0120}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BasicLibrary", "BasicLibrary\BasicLibrary.vcxproj", "{5231F578-FD5C-44E1-AF92-3385508F0120}"
 EndProject
