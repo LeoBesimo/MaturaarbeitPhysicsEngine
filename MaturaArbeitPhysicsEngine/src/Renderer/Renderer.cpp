@@ -42,7 +42,7 @@ std::vector<sf::Event> Renderer::getEvents()
 	return events;
 }
 
-void Renderer::clear(lge::vec4 color)
+void Renderer::clear(lge::vec4 color = lge::vec4())
 {
 	m_window->clear(sf::Color(color.w, color.x, color.y, color.z));
 }

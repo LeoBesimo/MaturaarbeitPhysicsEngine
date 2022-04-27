@@ -10,7 +10,7 @@ namespace lge
 		double y = 0;
 		double z = 0;
 
-		vec4(double w, double x, double y, double z) :
+		vec4(double w = 0, double x = 0, double y = 0, double z = 0) :
 			w(w), x(x), y(y), z(z)
 		{}
 

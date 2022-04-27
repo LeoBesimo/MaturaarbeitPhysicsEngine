@@ -16,6 +16,9 @@ private:
 
 	unsigned int m_windowWidth = 0, m_windowHeight = 0;
 
+	lge::vec4 fillColor;
+	lge::vec4 strokeColor;
+
 
 public:
 
@@ -32,5 +35,8 @@ public:
 	void update();
 
 	void renderVec2List(std::vector<lge::vec2> &vectors);
+
+	void circle(float x, float y, float r);
+	void line(float x1, float y1, float x2, float y2);
 };
 
