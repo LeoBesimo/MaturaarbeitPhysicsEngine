@@ -1,23 +1,36 @@
 #include <SFML/Graphics.hpp>
+#include "Renderer/Renderer.h"
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
+
+    Renderer mainRenderer(200,200,"Test");
+    //sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
 
-    while (window.isOpen())
+    sf::RenderTarget* target = mainRenderer.getRenderTarget();
+
+    while (mainRenderer.isRunning())
     {
-        sf::Event event;
-        while (window.pollEvent(event))
+        std::vector<sf::Event> events = mainRenderer.getEvents();
+
+        std::cout << events.size() << "\n";
+
+        for (sf::Event &event : events)
         {
             if (event.type == sf::Event::Closed)
-                window.close();
+            {
+                mainRenderer.~Renderer();
+                return 0;
+            }
         }
 
-        window.clear();
-        window.draw(shape);
-        window.display();
+        
+
+        mainRenderer.clear(lge::vec4(255, 0, 0, 255));
+        target->draw(shape);
+        mainRenderer.update();
     }
 
     return 0;
