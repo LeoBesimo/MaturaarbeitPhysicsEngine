@@ -12,6 +12,8 @@ int main()
     ellipse.setFillColor(sf::Color::Blue);
     ellipse.setPosition(0, 50);
 
+    mainRenderer.circleMode(CENTER);
+
     sf::RenderTarget* target = mainRenderer.getRenderTarget();
 
     while (mainRenderer.isRunning())
@@ -29,7 +31,9 @@ int main()
         }
 
         mainRenderer.clear(lge::vec4(255, 0, 0, 255));
-        target->draw(ellipse);
+        //target->draw(ellipse);
+        mainRenderer.fill(lge::vec4(128, 0, 128, 255));
+        mainRenderer.ellipse(100, 50, 100, 50);
         mainRenderer.update();
     }
     return 0;

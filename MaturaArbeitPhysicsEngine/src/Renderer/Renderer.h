@@ -3,11 +3,18 @@
 #include <SFML/Graphics.hpp>
 
 #include "components.h"
+#include "CustomShapes/EllipseShape.h"
 
 /*TODO:
-* Add Line and Circle Render Functions
+* Add Support for Normalized Coordinates
 * Modyify renderVec2List function to make Loop Closing Toggleable
 */
+
+enum Options
+{
+	CORNERS = 0,
+	CENTER = 1
+};
 
 class Renderer
 {
@@ -16,8 +23,13 @@ private:
 
 	unsigned int m_windowWidth = 0, m_windowHeight = 0;
 
-	lge::vec4 fillColor;
-	lge::vec4 strokeColor;
+	sf::Color m_fillColor = sf::Color::Transparent;
+	sf::Color m_strokeColor = sf::Color::Black;
+
+	Options m_circleMode = CORNERS;
+	Options m_rectMode = CORNERS;
+
+	//float m_strokeWeight = 1;
 
 
 public:
@@ -34,9 +46,17 @@ public:
 	void clear(lge::vec4 color);
 	void update();
 
+	void fill(lge::vec4 color);
+	void stroke(lge::vec4 color);
+
+	void rectMode(Options rectMode);
+	void circleMode(Options circleMode);
+
 	void renderVec2List(std::vector<lge::vec2> &vectors);
 
-	void circle(float x, float y, float r);
 	void line(float x1, float y1, float x2, float y2);
+	void ellipse(float x, float y, float r1, float r2);
+	void circle(float x, float y, float r);
+	void rect(float x, float y, float w, float h);
 };
 

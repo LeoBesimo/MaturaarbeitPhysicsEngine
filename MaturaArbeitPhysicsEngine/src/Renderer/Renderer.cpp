@@ -52,6 +52,26 @@ void Renderer::update()
 	m_window->display();
 }
 
+void Renderer::fill(lge::vec4 color)
+{
+	m_fillColor = sf::Color(color.w, color.x, color.y, color.z);
+}
+
+void Renderer::stroke(lge::vec4 color)
+{
+	m_strokeColor = sf::Color(color.w, color.x, color.y, color.z);
+}
+
+void Renderer::rectMode(Options rectMode)
+{
+	m_rectMode = rectMode;
+}
+
+void Renderer::circleMode(Options circleMode)
+{
+	m_circleMode = circleMode;
+}
+
 void Renderer::renderVec2List(std::vector<lge::vec2> &vectors)
 {
 	{
@@ -70,4 +90,45 @@ void Renderer::renderVec2List(std::vector<lge::vec2> &vectors)
 
 		m_window->draw(lines);
 	}
+}
+
+void Renderer::line(float x1, float y1, float x2, float y2)
+{
+	sf::Vertex line[] =
+	{
+		sf::Vertex(sf::Vector2f(x1,y1),m_strokeColor),
+		sf::Vertex(sf::Vector2f(x2,y2), m_strokeColor)
+	};
+	m_window->draw(line, 2, sf::Lines);
+}
+
+void Renderer::ellipse(float x, float y, float r1, float r2)
+{
+	EllipseShape ellipse(sf::Vector2f(r1, r2));
+	ellipse.setPosition(x - r1 * m_circleMode, y - r2 * m_circleMode);
+	ellipse.setFillColor(m_fillColor);
+	ellipse.setOutlineColor(m_strokeColor);
+
+	m_window->draw(ellipse);
+}
+
+void Renderer::circle(float x, float y, float r)
+{
+	sf::CircleShape circle(r);
+	circle.setPosition(x - r * m_circleMode, y - r * m_circleMode);
+	circle.setFillColor(m_fillColor);
+	circle.setOutlineColor(m_strokeColor);
+
+	m_window->draw(circle);
+}
+
+void Renderer::rect(float x, float y, float w, float h)
+{
+	sf::RectangleShape rect(sf::Vector2f(w, h));
+
+	rect.setPosition(x - w / 2 * m_rectMode, y - h / 2 * m_rectMode);
+	rect.setFillColor(m_fillColor);
+	rect.setOutlineColor(m_strokeColor);
+
+	m_window->draw(rect);
 }
