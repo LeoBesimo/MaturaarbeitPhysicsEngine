@@ -6,6 +6,7 @@ class EllipseShape : public sf::Shape
 private:
 
 	sf::Vector2f m_radius;
+    size_t m_pointCount = 30;
 
 public:
 

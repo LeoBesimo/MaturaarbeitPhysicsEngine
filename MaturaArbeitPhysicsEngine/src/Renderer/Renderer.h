@@ -16,6 +16,12 @@ enum Options
 	CENTER = 1
 };
 
+enum CoordinateSystem
+{
+	PIXELS,
+	NORMALIZED
+};
+
 class Renderer
 {
 private:
@@ -28,6 +34,8 @@ private:
 
 	Options m_circleMode = CORNERS;
 	Options m_rectMode = CORNERS;
+
+	CoordinateSystem m_coordinateSystem = PIXELS;
 
 	//float m_strokeWeight = 1;
 
@@ -51,6 +59,7 @@ public:
 
 	void rectMode(Options rectMode);
 	void circleMode(Options circleMode);
+	void coordinateSystem(CoordinateSystem cs);
 
 	void renderVec2List(std::vector<lge::vec2> &vectors);
 

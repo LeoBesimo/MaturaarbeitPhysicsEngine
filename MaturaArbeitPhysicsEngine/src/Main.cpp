@@ -4,7 +4,7 @@
 
 int main()
 {
-    Renderer mainRenderer(200,200,"Test");
+    Renderer mainRenderer(400,200,"Test");
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
     //EllipseShape ellipse(sf::Vector2f(100, 50));
@@ -13,6 +13,8 @@ int main()
     ellipse.setPosition(0, 50);
 
     mainRenderer.circleMode(CENTER);
+    mainRenderer.coordinateSystem(NORMALIZED);
+    mainRenderer.rectMode(CENTER);
 
     sf::RenderTarget* target = mainRenderer.getRenderTarget();
 
@@ -31,9 +33,14 @@ int main()
         }
 
         mainRenderer.clear(lge::vec4(255, 0, 0, 255));
+        mainRenderer.fill(lge::vec4(0, 128, 128, 255));
         //target->draw(ellipse);
-        mainRenderer.fill(lge::vec4(128, 0, 128, 255));
-        mainRenderer.ellipse(100, 50, 100, 50);
+        //mainRenderer.fill(lge::vec4(128, 0, 128, 255));
+        //mainRenderer.ellipse(200, 200, 100, 100);
+        //mainRenderer.rect(100, 100, 50, 50);
+        mainRenderer.rect(0, 0, 1, 1);
+        //mainRenderer.ellipse(0, 0, 0.5, 0.5);
+        
         mainRenderer.update();
     }
     return 0;

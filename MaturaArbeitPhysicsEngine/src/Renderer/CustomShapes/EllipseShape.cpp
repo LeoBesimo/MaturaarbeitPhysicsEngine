@@ -18,7 +18,7 @@ const sf::Vector2f EllipseShape::getRadius() const
 
 size_t EllipseShape::getPointCount() const
 {
-	return 30;
+	return m_pointCount;
 }
 
 sf::Vector2f EllipseShape::getPoint(size_t index) const
