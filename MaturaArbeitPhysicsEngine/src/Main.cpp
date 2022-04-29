@@ -4,7 +4,7 @@
 
 int main()
 {
-    Renderer mainRenderer(400,200,"Test");
+    Renderer mainRenderer(400,400,"Test");
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
     //EllipseShape ellipse(sf::Vector2f(100, 50));
@@ -32,7 +32,7 @@ int main()
             }
         }
 
-        mainRenderer.clear(lge::vec4(255, 0, 0, 255));
+        mainRenderer.clear(lge::vec4(255,255,255,255));
         mainRenderer.fill(lge::vec4(0, 128, 128, 255));
         //target->draw(ellipse);
         //mainRenderer.fill(lge::vec4(128, 0, 128, 255));

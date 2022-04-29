@@ -29,7 +29,7 @@ namespace lge
 
 		mat2 operator+(const mat2& a) const
 		{
-			return mat2(x + a.x, y - a.y);
+			return mat2(x + a.x, y + a.y);
 		}
 
 		mat2 operator*(const double& a) const
