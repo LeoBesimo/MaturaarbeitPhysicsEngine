@@ -1,0 +1,203 @@
+Parameters Passed into function: 200, 200, 200, 200
+Frame: 0 Time: 12.2592ms
+Frame: 1 Time: 81.8366ms
+Frame: 2 Time: 0.1611ms
+Frame: 3 Time: 0.3448ms
+Frame: 4 Time: 0.4108ms
+Frame: 5 Time: 0.4601ms
+Frame: 6 Time: 0.3852ms
+Frame: 7 Time: 0.3483ms
+Frame: 8 Time: 0.3404ms
+Frame: 9 Time: 0.3405ms
+Frame: 10 Time: 0.3531ms
+Frame: 11 Time: 0.3326ms
+Frame: 12 Time: 0.3464ms
+Frame: 13 Time: 0.8984ms
+Frame: 14 Time: 0.9677ms
+Frame: 15 Time: 0.515ms
+Frame: 16 Time: 1.2292ms
+Frame: 17 Time: 0.884ms
+Frame: 18 Time: 0.8883ms
+Frame: 19 Time: 0.819ms
+Frame: 20 Time: 0.8773ms
+Frame: 21 Time: 1.1292ms
+Frame: 22 Time: 0.6831ms
+Frame: 23 Time: 0.503ms
+Frame: 24 Time: 0.4549ms
+Frame: 25 Time: 0.8877ms
+Frame: 26 Time: 3.9147ms
+Frame: 27 Time: 3.2836ms
+Frame: 28 Time: 0.6845ms
+Frame: 29 Time: 0.4145ms
+Frame: 30 Time: 1.6902ms
+Frame: 31 Time: 0.3557ms
+Frame: 32 Time: 0.2699ms
+Frame: 33 Time: 0.2669ms
+Frame: 34 Time: 0.2806ms
+Frame: 35 Time: 0.4323ms
+Frame: 36 Time: 0.5105ms
+Frame: 37 Time: 0.5861ms
+Frame: 38 Time: 0.7935ms
+Frame: 39 Time: 0.5753ms
+Frame: 40 Time: 0.5077ms
+Frame: 41 Time: 0.4594ms
+Frame: 42 Time: 0.6152ms
+Frame: 43 Time: 0.3736ms
+Frame: 44 Time: 0.3492ms
+Frame: 45 Time: 0.444ms
+Frame: 46 Time: 1.2084ms
+Frame: 47 Time: 0.4225ms
+Frame: 48 Time: 0.8299ms
+Frame: 49 Time: 0.683ms
+Frame: 50 Time: 0.2425ms
+Frame: 51 Time: 0.2945ms
+Frame: 52 Time: 0.2745ms
+Frame: 53 Time: 0.2458ms
+Frame: 54 Time: 0.2334ms
+Frame: 55 Time: 0.2294ms
+Frame: 56 Time: 0.2644ms
+Frame: 57 Time: 0.2842ms
+Frame: 58 Time: 0.3018ms
+Frame: 59 Time: 0.3109ms
+Frame: 60 Time: 0.3236ms
+Frame: 61 Time: 0.2504ms
+Frame: 62 Time: 0.2365ms
+Frame: 63 Time: 0.2885ms
+Frame: 64 Time: 0.2321ms
+Frame: 65 Time: 0.2268ms
+Frame: 66 Time: 0.5089ms
+Frame: 67 Time: 0.2569ms
+Frame: 68 Time: 0.2317ms
+Frame: 69 Time: 0.2443ms
+Frame: 70 Time: 0.2897ms
+Frame: 71 Time: 0.3785ms
+Frame: 72 Time: 0.3193ms
+Frame: 73 Time: 0.284ms
+Frame: 74 Time: 0.3593ms
+Frame: 75 Time: 0.3161ms
+Frame: 76 Time: 0.4148ms
+Frame: 77 Time: 0.3596ms
+Frame: 78 Time: 0.397ms
+Frame: 79 Time: 0.3162ms
+Frame: 80 Time: 0.3895ms
+Frame: 81 Time: 0.4267ms
+Frame: 82 Time: 0.3998ms
+Frame: 83 Time: 0.471ms
+Frame: 84 Time: 0.3421ms
+Frame: 85 Time: 0.3293ms
+Frame: 86 Time: 0.5778ms
+Frame: 87 Time: 0.5738ms
+Frame: 88 Time: 2.3754ms
+Frame: 89 Time: 3.8862ms
+Frame: 90 Time: 1.04ms
+Frame: 91 Time: 0.8856ms
+Frame: 92 Time: 0.3018ms
+Frame: 93 Time: 0.2061ms
+Frame: 94 Time: 0.179ms
+Frame: 95 Time: 0.1716ms
+Frame: 96 Time: 0.1626ms
+Frame: 97 Time: 0.28ms
+Frame: 98 Time: 0.25ms
+Frame: 99 Time: 0.2177ms
+Avg: 1.50989ms Min: 0.1611ms Max: 81.8366ms
+
+12.2592
+81.8366
+0.1611
+0.3448
+0.4108
+0.4601
+0.3852
+0.3483
+0.3404
+0.3405
+0.3531
+0.3326
+0.3464
+0.8984
+0.9677
+0.515
+1.2292
+0.884
+0.8883
+0.819
+0.8773
+1.1292
+0.6831
+0.503
+0.4549
+0.8877
+3.9147
+3.2836
+0.6845
+0.4145
+1.6902
+0.3557
+0.2699
+0.2669
+0.2806
+0.4323
+0.5105
+0.5861
+0.7935
+0.5753
+0.5077
+0.4594
+0.6152
+0.3736
+0.3492
+0.444
+1.2084
+0.4225
+0.8299
+0.683
+0.2425
+0.2945
+0.2745
+0.2458
+0.2334
+0.2294
+0.2644
+0.2842
+0.3018
+0.3109
+0.3236
+0.2504
+0.2365
+0.2885
+0.2321
+0.2268
+0.5089
+0.2569
+0.2317
+0.2443
+0.2897
+0.3785
+0.3193
+0.284
+0.3593
+0.3161
+0.4148
+0.3596
+0.397
+0.3162
+0.3895
+0.4267
+0.3998
+0.471
+0.3421
+0.3293
+0.5778
+0.5738
+2.3754
+3.8862
+1.04
+0.8856
+0.3018
+0.2061
+0.179
+0.1716
+0.1626
+0.28
+0.25
+0.2177

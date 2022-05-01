@@ -6,7 +6,8 @@
 #include "CustomShapes/EllipseShape.h"
 
 /*TODO:
-* Add Support for Normalized Coordinates
+* Test Performance of renderer
+* Make shapes used by the renderer Member variables for less memory consumption and better performance
 * Modyify renderVec2List function to make Loop Closing Toggleable
 */
 
@@ -18,8 +19,8 @@ enum Options
 
 enum CoordinateSystem
 {
-	PIXELS,
-	NORMALIZED
+	PIXELS = 0,
+	NORMALIZED = 1
 };
 
 class Renderer
