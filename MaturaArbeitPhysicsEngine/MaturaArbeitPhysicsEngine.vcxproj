@@ -155,6 +155,9 @@
     <ClInclude Include="src\Renderer\CustomShapes\EllipseShape.h" />
     <ClInclude Include="src\Renderer\Renderer.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="src\Renderer\Renderer Optimized.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

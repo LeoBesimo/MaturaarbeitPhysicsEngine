@@ -38,6 +38,10 @@ private:
 
 	CoordinateSystem m_coordinateSystem = PIXELS;
 
+	EllipseShape m_ellipseShape;
+	sf::CircleShape m_circleShape;
+	sf::RectangleShape m_rectShape;
+
 	//float m_strokeWeight = 1;
 
 

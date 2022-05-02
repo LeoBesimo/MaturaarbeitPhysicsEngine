@@ -15,7 +15,7 @@ int main()
 	//EllipseShape ellipse(sf::Vector2f(100, 50));
 
 	mainRenderer.circleMode(CENTER);
-	//mainRenderer.coordinateSystem(NORMALIZED);
+	mainRenderer.coordinateSystem(NORMALIZED);
 	mainRenderer.rectMode(CENTER);
 
 	//sf::RenderTarget* target = mainRenderer.getRenderTarget();
@@ -42,7 +42,7 @@ int main()
 		mainRenderer.clear(lge::vec4(255, 255, 255, 255));
 		mainRenderer.fill(lge::vec4(0, 128, 128, 255));
 
-		mainRenderer.ellipse(200, 200, 100, 100);
+		mainRenderer.ellipse(0, 0, 0.5, 0.5);
 
 		mainRenderer.update();
 
@@ -57,18 +57,17 @@ int main()
 	}
 
 	std::ofstream outdata;
-	outdata.open("Rendertime Ellipse Pixels.txt");
+	outdata.open("Rendertime Ellipse Normalized.txt");
 
-	outdata << "Parameters Passed into function: 200, 200, 100, 100\n";
+	outdata << "Parameters Passed into function: 0, 0, 0.5, 0.5\n";
 
 	if (!outdata) {
 		std::cerr << "File could not be opened\n";
 		exit(1);
 	}
-
 	double avg = 0;
-	double min = 500;
-	double max = -500;
+	double min = INFINITY;
+	double max = -INFINITY;
 	for (int j = 0; j < timeMeasurement.size(); j++)
 	{
 		double val = timeMeasurement[j];
