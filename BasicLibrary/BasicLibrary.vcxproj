@@ -146,10 +146,12 @@
     <ClInclude Include="src\vec2.h" />
     <ClInclude Include="src\vec3.h" />
     <ClInclude Include="src\vec4.h" />
+    <ClInclude Include="src\FunctionTimer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\lgeMath.cpp" />
     <ClCompile Include="src\Utilities.cpp" />
+    <ClCompile Include="src\FunctionTimer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

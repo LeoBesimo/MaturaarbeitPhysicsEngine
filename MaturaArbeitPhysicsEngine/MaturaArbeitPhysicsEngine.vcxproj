@@ -157,6 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\Renderer\Renderer Optimized.txt" />
+    <Text Include="src\Renderer\Renderer Unoptimized.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

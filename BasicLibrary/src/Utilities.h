@@ -5,6 +5,7 @@
 #include <math.h>
 
 #include "Components.h"
+#include "FunctionTimer.h"
 
 namespace lge
 {

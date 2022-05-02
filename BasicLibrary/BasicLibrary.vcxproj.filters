@@ -36,12 +36,18 @@
     <ClInclude Include="src\lgeMath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\FunctionTimer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Utilities.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\lgeMath.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FunctionTimer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

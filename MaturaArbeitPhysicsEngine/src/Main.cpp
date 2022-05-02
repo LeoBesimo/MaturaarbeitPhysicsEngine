@@ -8,6 +8,8 @@
 #include "Renderer/Renderer.h"
 #include "Renderer/CustomShapes/EllipseShape.h"
 
+#include "Utilities.h"
+
 int main()
 {
 	Renderer mainRenderer(400, 400, "Test");
@@ -20,8 +22,12 @@ int main()
 
 	//sf::RenderTarget* target = mainRenderer.getRenderTarget();
 
-	std::vector<double> timeMeasurement;
+	//std::vector<double> timeMeasurement;
 	int i = 0;
+
+	lge::FunctionTimer timer;
+
+	//lge::vec2 testVec;
 
 	while (mainRenderer.isRunning() && i < 100)
 	{
@@ -37,27 +43,30 @@ int main()
 			}
 		}
 
-		auto start = std::chrono::high_resolution_clock::now();
+		//auto start = std::chrono::high_resolution_clock::now();
+
+		//timer.start();
 
 		mainRenderer.clear(lge::vec4(255, 255, 255, 255));
 		mainRenderer.fill(lge::vec4(0, 128, 128, 255));
 
-		mainRenderer.ellipse(0, 0, 0.5, 0.5);
+		mainRenderer.ellipse(0, 0, 0.75, 0.5);
 
 		mainRenderer.update();
+		//timer.end();
+		//timer.save("Rendertime Ellipse Normalized 3");
+		//auto end = std::chrono::high_resolution_clock::now();
 
-		auto end = std::chrono::high_resolution_clock::now();
-
-		std::chrono::duration<double, std::milli> duration = end - start;
+		//std::chrono::duration<double, std::milli> duration = end - start;
 		//std::cout << duration.count() << " ms\n";
 
-		timeMeasurement.push_back(duration.count());
+		//timeMeasurement.push_back(duration.count());
 		
 		i++;
 	}
-
+	/*
 	std::ofstream outdata;
-	outdata.open("Rendertime Ellipse Normalized.txt");
+	outdata.open("Rendertime Ellipse Normalized2.txt");
 
 	outdata << "Parameters Passed into function: 0, 0, 0.5, 0.5\n";
 
@@ -90,7 +99,7 @@ int main()
 	}
 
 	outdata.close();
-
+	*/
 	return 0;
 }
 
