@@ -1,4 +1,4 @@
-#include "Utilities.h"
+#include "utilities.h"
 
 namespace lge
 {
@@ -98,7 +98,7 @@ namespace lge
 	{
 		double x = map(a.x, oldMin.x, oldMax.x, newMin.x, newMax.x);
 		double y = map(a.y, oldMin.y, oldMax.y, newMin.y, newMax.y);
-		return vec2(x,y);
+		return vec2(x, y);
 	}
 
 	std::string generateUUIDv4()
@@ -128,7 +128,7 @@ namespace lge
 		};
 		return ss.str();
 	}
-	std::vector<vec2> applyMat2ToVec2List(std::vector<vec2> &vectors, mat2 matrix)
+	std::vector<vec2> applyMat2ToVec2List(std::vector<vec2>& vectors, mat2 matrix)
 	{
 		for (unsigned int i = 0; i < vectors.size(); i++)
 		{

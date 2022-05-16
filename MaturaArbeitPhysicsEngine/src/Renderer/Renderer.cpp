@@ -42,6 +42,20 @@ std::vector<sf::Event> Renderer::getEvents()
 	return events;
 }
 
+lge::vec2 Renderer::getMousePosition()
+{
+	sf::Vector2i mousePos = sf::Mouse::getPosition(*m_window);
+
+	if (m_coordinateSystem)
+	{
+		double x = double(mousePos.x) / m_windowWidth * 2 - 1;
+		double y = double(mousePos.y) / m_windowHeight * 2 - 1;
+		return lge::vec2(x, y);
+	}
+
+	return lge::vec2(mousePos.x,mousePos.y);
+}
+
 void Renderer::clear(lge::vec4 color = lge::vec4())
 {
 	m_window->clear(sf::Color(color.w, color.x, color.y, color.z));
@@ -81,15 +95,35 @@ void Renderer::renderVec2List(std::vector<lge::vec2> &vectors)
 {
 	{
 		sf::VertexArray lines(sf::Lines, vectors.size() * 2);
+		for (unsigned int i = 0; i < lines.getVertexCount(); i++) lines[i].color = m_strokeColor;
+
 		unsigned int j = 0;
-		for (unsigned int i = 0; i < vectors.size() * 2; i += 2)
+		if (m_coordinateSystem) 
 		{
-			lines[i].position = sf::Vector2f(vectors[j % vectors.size()].x, vectors[j % vectors.size()].y);
-			lines[i + 1] = sf::Vector2f(vectors[(j + 1) % vectors.size()].x, vectors[(j + 1) % vectors.size()].y);
-			j++;
+			for (unsigned int i = 0; i < vectors.size(); i++)
+			{
+				int index = (i + 1) % vectors.size();
+
+				float x = (vectors[i].x + 1) / 2 * m_windowWidth;
+				float y = (vectors[i].y + 1) / 2 * m_windowHeight;
+				float nextX = (vectors[index].x + 1) / 2 * m_windowWidth;
+				float nextY = (vectors[index].y + 1) / 2 * m_windowHeight;
+				lines[j].position = sf::Vector2f(x,y);
+				lines[j + 1].position = sf::Vector2f(nextX,nextY);
+				j += 2;
+			}
+
+			m_window->draw(lines);
+			return;
 		}
 
-		for (unsigned int i = 0; i < lines.getVertexCount(); i++) lines[i].color = sf::Color::Black;
+		for (unsigned int i = 0; i < vectors.size(); i++)
+		{
+			int index = (i + 1) % vectors.size();
+			lines[j].position = sf::Vector2f(vectors[i].x, vectors[i].y);
+			lines[j + 1].position = sf::Vector2f(vectors[index].x, vectors[index].y);
+			j += 2;
+		}
 
 		//std::cout << lines.getVertexCount() << "\n";
 

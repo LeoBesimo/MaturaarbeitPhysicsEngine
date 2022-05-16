@@ -78,9 +78,11 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <SourcePath>$(VC_SourcePath);;$(SolutionDir)BasicLibrary\src</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <SourcePath>$(SolutionDir)BasicLibrary\src;$(SourcePath);$(SolutionDir)BasicLibrary\src</SourcePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -139,19 +141,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\components.h" />
+    <ClInclude Include="src\FunctionTimer.h" />
     <ClInclude Include="src\lgeMath.h" />
+    <ClInclude Include="src\components.h" />
     <ClInclude Include="src\mat2.h" />
-    <ClInclude Include="src\Utilities.h" />
     <ClInclude Include="src\vec2.h" />
     <ClInclude Include="src\vec3.h" />
     <ClInclude Include="src\vec4.h" />
-    <ClInclude Include="src\FunctionTimer.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\lgeMath.cpp" />
-    <ClCompile Include="src\Utilities.cpp" />
-    <ClCompile Include="src\FunctionTimer.cpp" />
+    <ClInclude Include="src\utilities.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

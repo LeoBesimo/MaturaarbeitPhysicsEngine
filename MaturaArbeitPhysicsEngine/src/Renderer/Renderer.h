@@ -44,7 +44,6 @@ private:
 
 	//float m_strokeWeight = 1;
 
-
 public:
 
 	Renderer(unsigned int width, unsigned int height, std::string name);
@@ -55,6 +54,8 @@ public:
 	sf::RenderTarget* getRenderTarget();
 
 	std::vector<sf::Event> getEvents();
+
+	lge::vec2 getMousePosition();
 
 	void clear(lge::vec4 color);
 	void update();

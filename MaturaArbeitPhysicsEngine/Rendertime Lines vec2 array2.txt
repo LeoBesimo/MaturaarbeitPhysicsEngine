@@ -1,0 +1,2002 @@
+Measurement: 0 Time: 8.7596ms
+Measurement: 1 Time: 327.974ms
+Measurement: 2 Time: 2.349ms
+Measurement: 3 Time: 1.5281ms
+Measurement: 4 Time: 1.1562ms
+Measurement: 5 Time: 1.8429ms
+Measurement: 6 Time: 1.8657ms
+Measurement: 7 Time: 1.8771ms
+Measurement: 8 Time: 1.7995ms
+Measurement: 9 Time: 1.6983ms
+Measurement: 10 Time: 0.9436ms
+Measurement: 11 Time: 1.3968ms
+Measurement: 12 Time: 0.8194ms
+Measurement: 13 Time: 1.2404ms
+Measurement: 14 Time: 0.9856ms
+Measurement: 15 Time: 0.959ms
+Measurement: 16 Time: 0.9577ms
+Measurement: 17 Time: 1.3958ms
+Measurement: 18 Time: 2.0551ms
+Measurement: 19 Time: 1.0773ms
+Measurement: 20 Time: 1.3433ms
+Measurement: 21 Time: 0.9075ms
+Measurement: 22 Time: 0.8488ms
+Measurement: 23 Time: 1.1648ms
+Measurement: 24 Time: 1.5985ms
+Measurement: 25 Time: 1.6022ms
+Measurement: 26 Time: 1.5444ms
+Measurement: 27 Time: 1.7453ms
+Measurement: 28 Time: 1.5946ms
+Measurement: 29 Time: 2.0555ms
+Measurement: 30 Time: 2.1055ms
+Measurement: 31 Time: 2.1984ms
+Measurement: 32 Time: 1.6747ms
+Measurement: 33 Time: 2.2506ms
+Measurement: 34 Time: 1.827ms
+Measurement: 35 Time: 0.9659ms
+Measurement: 36 Time: 0.8409ms
+Measurement: 37 Time: 1.6264ms
+Measurement: 38 Time: 1.6777ms
+Measurement: 39 Time: 1.5058ms
+Measurement: 40 Time: 2.0199ms
+Measurement: 41 Time: 1.659ms
+Measurement: 42 Time: 1.1666ms
+Measurement: 43 Time: 1.6676ms
+Measurement: 44 Time: 1.4315ms
+Measurement: 45 Time: 1.5891ms
+Measurement: 46 Time: 1.8915ms
+Measurement: 47 Time: 1.8297ms
+Measurement: 48 Time: 1.9422ms
+Measurement: 49 Time: 1.7079ms
+Measurement: 50 Time: 1.237ms
+Measurement: 51 Time: 1.4875ms
+Measurement: 52 Time: 0.8654ms
+Measurement: 53 Time: 1.049ms
+Measurement: 54 Time: 1.109ms
+Measurement: 55 Time: 1.6872ms
+Measurement: 56 Time: 1.6089ms
+Measurement: 57 Time: 0.8483ms
+Measurement: 58 Time: 1.4766ms
+Measurement: 59 Time: 1.4952ms
+Measurement: 60 Time: 1.6406ms
+Measurement: 61 Time: 0.8252ms
+Measurement: 62 Time: 0.884ms
+Measurement: 63 Time: 1.2435ms
+Measurement: 64 Time: 0.8407ms
+Measurement: 65 Time: 1.7503ms
+Measurement: 66 Time: 1.0667ms
+Measurement: 67 Time: 1.0018ms
+Measurement: 68 Time: 1.222ms
+Measurement: 69 Time: 1.0205ms
+Measurement: 70 Time: 1.42ms
+Measurement: 71 Time: 1.416ms
+Measurement: 72 Time: 0.8831ms
+Measurement: 73 Time: 0.8472ms
+Measurement: 74 Time: 0.7961ms
+Measurement: 75 Time: 0.7357ms
+Measurement: 76 Time: 1.0074ms
+Measurement: 77 Time: 1.7711ms
+Measurement: 78 Time: 2.1322ms
+Measurement: 79 Time: 1.2679ms
+Measurement: 80 Time: 1.0265ms
+Measurement: 81 Time: 1.2895ms
+Measurement: 82 Time: 2.5323ms
+Measurement: 83 Time: 0.9677ms
+Measurement: 84 Time: 0.9359ms
+Measurement: 85 Time: 1.1241ms
+Measurement: 86 Time: 0.9148ms
+Measurement: 87 Time: 1.4938ms
+Measurement: 88 Time: 1.0159ms
+Measurement: 89 Time: 1.3413ms
+Measurement: 90 Time: 0.7787ms
+Measurement: 91 Time: 0.7434ms
+Measurement: 92 Time: 0.7035ms
+Measurement: 93 Time: 1.2294ms
+Measurement: 94 Time: 1.9757ms
+Measurement: 95 Time: 2.2225ms
+Measurement: 96 Time: 1.3812ms
+Measurement: 97 Time: 2.5689ms
+Measurement: 98 Time: 1.8108ms
+Measurement: 99 Time: 0.8525ms
+Measurement: 100 Time: 1.3059ms
+Measurement: 101 Time: 0.8121ms
+Measurement: 102 Time: 1.2757ms
+Measurement: 103 Time: 2.1796ms
+Measurement: 104 Time: 2.5139ms
+Measurement: 105 Time: 1.9021ms
+Measurement: 106 Time: 2.2894ms
+Measurement: 107 Time: 1.4079ms
+Measurement: 108 Time: 0.8869ms
+Measurement: 109 Time: 1.0482ms
+Measurement: 110 Time: 1.6059ms
+Measurement: 111 Time: 1.4364ms
+Measurement: 112 Time: 0.8831ms
+Measurement: 113 Time: 1.0915ms
+Measurement: 114 Time: 1.3816ms
+Measurement: 115 Time: 1.6087ms
+Measurement: 116 Time: 1.5011ms
+Measurement: 117 Time: 1.6422ms
+Measurement: 118 Time: 0.9746ms
+Measurement: 119 Time: 0.9394ms
+Measurement: 120 Time: 1.3093ms
+Measurement: 121 Time: 1.0624ms
+Measurement: 122 Time: 0.9624ms
+Measurement: 123 Time: 0.8612ms
+Measurement: 124 Time: 0.8772ms
+Measurement: 125 Time: 0.9923ms
+Measurement: 126 Time: 1.6694ms
+Measurement: 127 Time: 1.1174ms
+Measurement: 128 Time: 1.0047ms
+Measurement: 129 Time: 1.1139ms
+Measurement: 130 Time: 0.7397ms
+Measurement: 131 Time: 0.8451ms
+Measurement: 132 Time: 1.2141ms
+Measurement: 133 Time: 0.991ms
+Measurement: 134 Time: 1.1454ms
+Measurement: 135 Time: 1.2311ms
+Measurement: 136 Time: 1.1756ms
+Measurement: 137 Time: 0.9001ms
+Measurement: 138 Time: 1.0773ms
+Measurement: 139 Time: 0.8399ms
+Measurement: 140 Time: 0.9632ms
+Measurement: 141 Time: 0.8748ms
+Measurement: 142 Time: 0.6843ms
+Measurement: 143 Time: 0.6307ms
+Measurement: 144 Time: 0.8963ms
+Measurement: 145 Time: 1.1064ms
+Measurement: 146 Time: 1.1753ms
+Measurement: 147 Time: 0.8998ms
+Measurement: 148 Time: 1.1473ms
+Measurement: 149 Time: 1.0896ms
+Measurement: 150 Time: 1.1026ms
+Measurement: 151 Time: 0.7817ms
+Measurement: 152 Time: 0.9579ms
+Measurement: 153 Time: 0.8318ms
+Measurement: 154 Time: 0.7227ms
+Measurement: 155 Time: 0.6744ms
+Measurement: 156 Time: 0.7456ms
+Measurement: 157 Time: 0.7073ms
+Measurement: 158 Time: 0.9177ms
+Measurement: 159 Time: 1.1367ms
+Measurement: 160 Time: 1.6223ms
+Measurement: 161 Time: 1.4067ms
+Measurement: 162 Time: 1.5106ms
+Measurement: 163 Time: 1.1877ms
+Measurement: 164 Time: 0.9164ms
+Measurement: 165 Time: 1.2112ms
+Measurement: 166 Time: 0.7926ms
+Measurement: 167 Time: 0.6785ms
+Measurement: 168 Time: 0.6401ms
+Measurement: 169 Time: 0.6142ms
+Measurement: 170 Time: 0.867ms
+Measurement: 171 Time: 0.8554ms
+Measurement: 172 Time: 1.0484ms
+Measurement: 173 Time: 0.8675ms
+Measurement: 174 Time: 0.9269ms
+Measurement: 175 Time: 1.0187ms
+Measurement: 176 Time: 0.8535ms
+Measurement: 177 Time: 0.6409ms
+Measurement: 178 Time: 0.6716ms
+Measurement: 179 Time: 0.7135ms
+Measurement: 180 Time: 0.6938ms
+Measurement: 181 Time: 0.7867ms
+Measurement: 182 Time: 0.8075ms
+Measurement: 183 Time: 0.8739ms
+Measurement: 184 Time: 0.7594ms
+Measurement: 185 Time: 0.9922ms
+Measurement: 186 Time: 1.2118ms
+Measurement: 187 Time: 1.2712ms
+Measurement: 188 Time: 1.368ms
+Measurement: 189 Time: 1.0135ms
+Measurement: 190 Time: 1.142ms
+Measurement: 191 Time: 0.8017ms
+Measurement: 192 Time: 0.7772ms
+Measurement: 193 Time: 0.7286ms
+Measurement: 194 Time: 1.0683ms
+Measurement: 195 Time: 0.869ms
+Measurement: 196 Time: 0.6771ms
+Measurement: 197 Time: 0.7002ms
+Measurement: 198 Time: 0.6815ms
+Measurement: 199 Time: 0.6541ms
+Measurement: 200 Time: 0.6544ms
+Measurement: 201 Time: 0.6104ms
+Measurement: 202 Time: 0.5811ms
+Measurement: 203 Time: 0.606ms
+Measurement: 204 Time: 0.604ms
+Measurement: 205 Time: 0.6574ms
+Measurement: 206 Time: 0.6901ms
+Measurement: 207 Time: 0.856ms
+Measurement: 208 Time: 0.6688ms
+Measurement: 209 Time: 0.6477ms
+Measurement: 210 Time: 0.6474ms
+Measurement: 211 Time: 0.7391ms
+Measurement: 212 Time: 0.7537ms
+Measurement: 213 Time: 0.6271ms
+Measurement: 214 Time: 0.74ms
+Measurement: 215 Time: 0.6463ms
+Measurement: 216 Time: 0.6547ms
+Measurement: 217 Time: 0.6613ms
+Measurement: 218 Time: 0.5681ms
+Measurement: 219 Time: 0.5913ms
+Measurement: 220 Time: 0.5954ms
+Measurement: 221 Time: 0.5752ms
+Measurement: 222 Time: 0.5666ms
+Measurement: 223 Time: 0.6237ms
+Measurement: 224 Time: 0.6631ms
+Measurement: 225 Time: 0.6973ms
+Measurement: 226 Time: 0.7146ms
+Measurement: 227 Time: 0.6808ms
+Measurement: 228 Time: 0.6721ms
+Measurement: 229 Time: 0.9427ms
+Measurement: 230 Time: 0.8731ms
+Measurement: 231 Time: 1.8061ms
+Measurement: 232 Time: 1.466ms
+Measurement: 233 Time: 0.8278ms
+Measurement: 234 Time: 1.2055ms
+Measurement: 235 Time: 0.9589ms
+Measurement: 236 Time: 0.9399ms
+Measurement: 237 Time: 0.723ms
+Measurement: 238 Time: 0.7897ms
+Measurement: 239 Time: 0.8623ms
+Measurement: 240 Time: 1.0361ms
+Measurement: 241 Time: 0.8194ms
+Measurement: 242 Time: 0.9673ms
+Measurement: 243 Time: 1.0506ms
+Measurement: 244 Time: 0.9127ms
+Measurement: 245 Time: 0.9446ms
+Measurement: 246 Time: 1.5811ms
+Measurement: 247 Time: 0.8289ms
+Measurement: 248 Time: 0.7753ms
+Measurement: 249 Time: 0.7374ms
+Measurement: 250 Time: 0.6887ms
+Measurement: 251 Time: 0.7124ms
+Measurement: 252 Time: 0.6809ms
+Measurement: 253 Time: 0.7003ms
+Measurement: 254 Time: 1.6122ms
+Measurement: 255 Time: 1.4301ms
+Measurement: 256 Time: 0.882ms
+Measurement: 257 Time: 0.8134ms
+Measurement: 258 Time: 0.6627ms
+Measurement: 259 Time: 1.0463ms
+Measurement: 260 Time: 2.2813ms
+Measurement: 261 Time: 1.3205ms
+Measurement: 262 Time: 0.7852ms
+Measurement: 263 Time: 0.7989ms
+Measurement: 264 Time: 0.7912ms
+Measurement: 265 Time: 0.8593ms
+Measurement: 266 Time: 0.9702ms
+Measurement: 267 Time: 1.1928ms
+Measurement: 268 Time: 0.7253ms
+Measurement: 269 Time: 0.7068ms
+Measurement: 270 Time: 1.0962ms
+Measurement: 271 Time: 1.2244ms
+Measurement: 272 Time: 1.1003ms
+Measurement: 273 Time: 0.8057ms
+Measurement: 274 Time: 1.0386ms
+Measurement: 275 Time: 1.3864ms
+Measurement: 276 Time: 1.9808ms
+Measurement: 277 Time: 1.0698ms
+Measurement: 278 Time: 1.1031ms
+Measurement: 279 Time: 1.5457ms
+Measurement: 280 Time: 2.0556ms
+Measurement: 281 Time: 1.4229ms
+Measurement: 282 Time: 1.9121ms
+Measurement: 283 Time: 1.7055ms
+Measurement: 284 Time: 1.1483ms
+Measurement: 285 Time: 0.8032ms
+Measurement: 286 Time: 1.2634ms
+Measurement: 287 Time: 1.7038ms
+Measurement: 288 Time: 1.6063ms
+Measurement: 289 Time: 0.8241ms
+Measurement: 290 Time: 0.7584ms
+Measurement: 291 Time: 0.7781ms
+Measurement: 292 Time: 0.822ms
+Measurement: 293 Time: 0.8733ms
+Measurement: 294 Time: 1.5657ms
+Measurement: 295 Time: 0.8012ms
+Measurement: 296 Time: 0.7007ms
+Measurement: 297 Time: 0.5899ms
+Measurement: 298 Time: 0.6565ms
+Measurement: 299 Time: 0.7026ms
+Measurement: 300 Time: 0.6354ms
+Measurement: 301 Time: 0.6102ms
+Measurement: 302 Time: 1.1496ms
+Measurement: 303 Time: 1.0191ms
+Measurement: 304 Time: 0.6802ms
+Measurement: 305 Time: 0.6786ms
+Measurement: 306 Time: 1.4234ms
+Measurement: 307 Time: 1.0425ms
+Measurement: 308 Time: 0.8463ms
+Measurement: 309 Time: 0.8589ms
+Measurement: 310 Time: 0.813ms
+Measurement: 311 Time: 1.1195ms
+Measurement: 312 Time: 0.7979ms
+Measurement: 313 Time: 0.7929ms
+Measurement: 314 Time: 0.7589ms
+Measurement: 315 Time: 0.9296ms
+Measurement: 316 Time: 0.9594ms
+Measurement: 317 Time: 1.1977ms
+Measurement: 318 Time: 0.8786ms
+Measurement: 319 Time: 0.9006ms
+Measurement: 320 Time: 0.8415ms
+Measurement: 321 Time: 0.9618ms
+Measurement: 322 Time: 0.8747ms
+Measurement: 323 Time: 0.8039ms
+Measurement: 324 Time: 1.3931ms
+Measurement: 325 Time: 1.0309ms
+Measurement: 326 Time: 0.7918ms
+Measurement: 327 Time: 0.6433ms
+Measurement: 328 Time: 0.6168ms
+Measurement: 329 Time: 0.6762ms
+Measurement: 330 Time: 0.6075ms
+Measurement: 331 Time: 0.5799ms
+Measurement: 332 Time: 0.6258ms
+Measurement: 333 Time: 1.0012ms
+Measurement: 334 Time: 1.3401ms
+Measurement: 335 Time: 0.7261ms
+Measurement: 336 Time: 0.7656ms
+Measurement: 337 Time: 0.7424ms
+Measurement: 338 Time: 0.5894ms
+Measurement: 339 Time: 0.7913ms
+Measurement: 340 Time: 1.1063ms
+Measurement: 341 Time: 0.9354ms
+Measurement: 342 Time: 0.8567ms
+Measurement: 343 Time: 0.7446ms
+Measurement: 344 Time: 0.6757ms
+Measurement: 345 Time: 0.9083ms
+Measurement: 346 Time: 0.9725ms
+Measurement: 347 Time: 0.7333ms
+Measurement: 348 Time: 0.9527ms
+Measurement: 349 Time: 1.2242ms
+Measurement: 350 Time: 1.255ms
+Measurement: 351 Time: 1.0079ms
+Measurement: 352 Time: 0.9468ms
+Measurement: 353 Time: 0.9015ms
+Measurement: 354 Time: 1.053ms
+Measurement: 355 Time: 1.7852ms
+Measurement: 356 Time: 0.9148ms
+Measurement: 357 Time: 0.9205ms
+Measurement: 358 Time: 0.8046ms
+Measurement: 359 Time: 0.8869ms
+Measurement: 360 Time: 0.8787ms
+Measurement: 361 Time: 1.467ms
+Measurement: 362 Time: 1.4328ms
+Measurement: 363 Time: 0.7905ms
+Measurement: 364 Time: 1.8564ms
+Measurement: 365 Time: 1.3914ms
+Measurement: 366 Time: 1.3664ms
+Measurement: 367 Time: 1.012ms
+Measurement: 368 Time: 1.1163ms
+Measurement: 369 Time: 1.0334ms
+Measurement: 370 Time: 0.6834ms
+Measurement: 371 Time: 1.3662ms
+Measurement: 372 Time: 0.8069ms
+Measurement: 373 Time: 0.8209ms
+Measurement: 374 Time: 0.6667ms
+Measurement: 375 Time: 0.6275ms
+Measurement: 376 Time: 0.649ms
+Measurement: 377 Time: 0.6739ms
+Measurement: 378 Time: 0.8203ms
+Measurement: 379 Time: 0.9012ms
+Measurement: 380 Time: 0.9832ms
+Measurement: 381 Time: 0.8804ms
+Measurement: 382 Time: 0.9434ms
+Measurement: 383 Time: 0.7946ms
+Measurement: 384 Time: 0.7683ms
+Measurement: 385 Time: 0.6514ms
+Measurement: 386 Time: 0.6329ms
+Measurement: 387 Time: 0.6036ms
+Measurement: 388 Time: 0.6256ms
+Measurement: 389 Time: 0.7839ms
+Measurement: 390 Time: 0.6686ms
+Measurement: 391 Time: 0.6059ms
+Measurement: 392 Time: 0.6117ms
+Measurement: 393 Time: 0.5777ms
+Measurement: 394 Time: 0.5819ms
+Measurement: 395 Time: 0.5944ms
+Measurement: 396 Time: 0.5886ms
+Measurement: 397 Time: 0.6012ms
+Measurement: 398 Time: 0.6122ms
+Measurement: 399 Time: 0.7ms
+Measurement: 400 Time: 0.8853ms
+Measurement: 401 Time: 0.6491ms
+Measurement: 402 Time: 0.6095ms
+Measurement: 403 Time: 0.7559ms
+Measurement: 404 Time: 0.8134ms
+Measurement: 405 Time: 0.6656ms
+Measurement: 406 Time: 0.6362ms
+Measurement: 407 Time: 0.6372ms
+Measurement: 408 Time: 0.6308ms
+Measurement: 409 Time: 0.6218ms
+Measurement: 410 Time: 0.9757ms
+Measurement: 411 Time: 0.6218ms
+Measurement: 412 Time: 0.6233ms
+Measurement: 413 Time: 0.583ms
+Measurement: 414 Time: 0.5913ms
+Measurement: 415 Time: 0.5963ms
+Measurement: 416 Time: 0.5916ms
+Measurement: 417 Time: 0.6106ms
+Measurement: 418 Time: 0.6106ms
+Measurement: 419 Time: 0.6442ms
+Measurement: 420 Time: 0.7303ms
+Measurement: 421 Time: 0.7174ms
+Measurement: 422 Time: 0.619ms
+Measurement: 423 Time: 0.6199ms
+Measurement: 424 Time: 0.6139ms
+Measurement: 425 Time: 0.5873ms
+Measurement: 426 Time: 0.6773ms
+Measurement: 427 Time: 0.6633ms
+Measurement: 428 Time: 0.7277ms
+Measurement: 429 Time: 0.6168ms
+Measurement: 430 Time: 0.6722ms
+Measurement: 431 Time: 0.6685ms
+Measurement: 432 Time: 0.7212ms
+Measurement: 433 Time: 0.7465ms
+Measurement: 434 Time: 1.1843ms
+Measurement: 435 Time: 1.4355ms
+Measurement: 436 Time: 1.5977ms
+Measurement: 437 Time: 1.6025ms
+Measurement: 438 Time: 1.0012ms
+Measurement: 439 Time: 1.3882ms
+Measurement: 440 Time: 1.1845ms
+Measurement: 441 Time: 0.7568ms
+Measurement: 442 Time: 1.7315ms
+Measurement: 443 Time: 1.3791ms
+Measurement: 444 Time: 0.7506ms
+Measurement: 445 Time: 0.6685ms
+Measurement: 446 Time: 0.6072ms
+Measurement: 447 Time: 0.5812ms
+Measurement: 448 Time: 0.5748ms
+Measurement: 449 Time: 0.5932ms
+Measurement: 450 Time: 1.0843ms
+Measurement: 451 Time: 0.8666ms
+Measurement: 452 Time: 1.0281ms
+Measurement: 453 Time: 0.6964ms
+Measurement: 454 Time: 0.7049ms
+Measurement: 455 Time: 0.6772ms
+Measurement: 456 Time: 0.6664ms
+Measurement: 457 Time: 0.6026ms
+Measurement: 458 Time: 0.5842ms
+Measurement: 459 Time: 0.6445ms
+Measurement: 460 Time: 0.6543ms
+Measurement: 461 Time: 0.6012ms
+Measurement: 462 Time: 1.1587ms
+Measurement: 463 Time: 0.753ms
+Measurement: 464 Time: 0.7653ms
+Measurement: 465 Time: 0.6525ms
+Measurement: 466 Time: 0.6392ms
+Measurement: 467 Time: 0.5987ms
+Measurement: 468 Time: 0.7579ms
+Measurement: 469 Time: 0.7214ms
+Measurement: 470 Time: 0.6364ms
+Measurement: 471 Time: 0.5943ms
+Measurement: 472 Time: 0.9622ms
+Measurement: 473 Time: 0.6637ms
+Measurement: 474 Time: 0.6369ms
+Measurement: 475 Time: 0.6327ms
+Measurement: 476 Time: 0.6021ms
+Measurement: 477 Time: 0.607ms
+Measurement: 478 Time: 0.7542ms
+Measurement: 479 Time: 0.8345ms
+Measurement: 480 Time: 0.7819ms
+Measurement: 481 Time: 0.8676ms
+Measurement: 482 Time: 1.1207ms
+Measurement: 483 Time: 1.001ms
+Measurement: 484 Time: 0.7543ms
+Measurement: 485 Time: 0.953ms
+Measurement: 486 Time: 0.784ms
+Measurement: 487 Time: 0.8357ms
+Measurement: 488 Time: 0.7595ms
+Measurement: 489 Time: 0.7323ms
+Measurement: 490 Time: 0.8732ms
+Measurement: 491 Time: 0.7225ms
+Measurement: 492 Time: 0.635ms
+Measurement: 493 Time: 0.6828ms
+Measurement: 494 Time: 0.6723ms
+Measurement: 495 Time: 0.6565ms
+Measurement: 496 Time: 0.8331ms
+Measurement: 497 Time: 0.8149ms
+Measurement: 498 Time: 0.8247ms
+Measurement: 499 Time: 1.2269ms
+Measurement: 500 Time: 1.5548ms
+Measurement: 501 Time: 1.4664ms
+Measurement: 502 Time: 1.3158ms
+Measurement: 503 Time: 1.0047ms
+Measurement: 504 Time: 1.3414ms
+Measurement: 505 Time: 1.2536ms
+Measurement: 506 Time: 1.0546ms
+Measurement: 507 Time: 1.1268ms
+Measurement: 508 Time: 0.9082ms
+Measurement: 509 Time: 1.019ms
+Measurement: 510 Time: 1.1503ms
+Measurement: 511 Time: 0.8931ms
+Measurement: 512 Time: 0.8714ms
+Measurement: 513 Time: 1.0341ms
+Measurement: 514 Time: 1.036ms
+Measurement: 515 Time: 0.8568ms
+Measurement: 516 Time: 0.7804ms
+Measurement: 517 Time: 0.6838ms
+Measurement: 518 Time: 1.1208ms
+Measurement: 519 Time: 0.6859ms
+Measurement: 520 Time: 0.7204ms
+Measurement: 521 Time: 0.7523ms
+Measurement: 522 Time: 0.9032ms
+Measurement: 523 Time: 1.1759ms
+Measurement: 524 Time: 0.9107ms
+Measurement: 525 Time: 1.2131ms
+Measurement: 526 Time: 1.1045ms
+Measurement: 527 Time: 0.6844ms
+Measurement: 528 Time: 0.7598ms
+Measurement: 529 Time: 1.0098ms
+Measurement: 530 Time: 1.1867ms
+Measurement: 531 Time: 0.7882ms
+Measurement: 532 Time: 0.6812ms
+Measurement: 533 Time: 0.9186ms
+Measurement: 534 Time: 0.6664ms
+Measurement: 535 Time: 0.6152ms
+Measurement: 536 Time: 0.7497ms
+Measurement: 537 Time: 0.8425ms
+Measurement: 538 Time: 0.6767ms
+Measurement: 539 Time: 0.5861ms
+Measurement: 540 Time: 0.5946ms
+Measurement: 541 Time: 0.5991ms
+Measurement: 542 Time: 0.6481ms
+Measurement: 543 Time: 0.6595ms
+Measurement: 544 Time: 0.9767ms
+Measurement: 545 Time: 0.7392ms
+Measurement: 546 Time: 0.7684ms
+Measurement: 547 Time: 0.7134ms
+Measurement: 548 Time: 0.6983ms
+Measurement: 549 Time: 0.6877ms
+Measurement: 550 Time: 1.453ms
+Measurement: 551 Time: 0.9065ms
+Measurement: 552 Time: 1.334ms
+Measurement: 553 Time: 0.9771ms
+Measurement: 554 Time: 0.7593ms
+Measurement: 555 Time: 0.9938ms
+Measurement: 556 Time: 0.8146ms
+Measurement: 557 Time: 0.9383ms
+Measurement: 558 Time: 1.1548ms
+Measurement: 559 Time: 1.3047ms
+Measurement: 560 Time: 1.1103ms
+Measurement: 561 Time: 1.1481ms
+Measurement: 562 Time: 0.765ms
+Measurement: 563 Time: 0.9891ms
+Measurement: 564 Time: 1.4003ms
+Measurement: 565 Time: 1.376ms
+Measurement: 566 Time: 1.1488ms
+Measurement: 567 Time: 0.6518ms
+Measurement: 568 Time: 0.6637ms
+Measurement: 569 Time: 0.6486ms
+Measurement: 570 Time: 0.7144ms
+Measurement: 571 Time: 0.6545ms
+Measurement: 572 Time: 0.6269ms
+Measurement: 573 Time: 0.7601ms
+Measurement: 574 Time: 1.0495ms
+Measurement: 575 Time: 0.6971ms
+Measurement: 576 Time: 0.614ms
+Measurement: 577 Time: 0.5897ms
+Measurement: 578 Time: 0.5952ms
+Measurement: 579 Time: 0.5804ms
+Measurement: 580 Time: 0.571ms
+Measurement: 581 Time: 0.5786ms
+Measurement: 582 Time: 0.5963ms
+Measurement: 583 Time: 0.5749ms
+Measurement: 584 Time: 2.0091ms
+Measurement: 585 Time: 1.0007ms
+Measurement: 586 Time: 0.7907ms
+Measurement: 587 Time: 0.693ms
+Measurement: 588 Time: 0.6508ms
+Measurement: 589 Time: 0.6289ms
+Measurement: 590 Time: 0.6159ms
+Measurement: 591 Time: 0.6566ms
+Measurement: 592 Time: 1.0946ms
+Measurement: 593 Time: 0.8516ms
+Measurement: 594 Time: 0.831ms
+Measurement: 595 Time: 0.8413ms
+Measurement: 596 Time: 1.1114ms
+Measurement: 597 Time: 0.6692ms
+Measurement: 598 Time: 0.9025ms
+Measurement: 599 Time: 0.9403ms
+Measurement: 600 Time: 1.4101ms
+Measurement: 601 Time: 3.6801ms
+Measurement: 602 Time: 1.1693ms
+Measurement: 603 Time: 0.8343ms
+Measurement: 604 Time: 1.247ms
+Measurement: 605 Time: 0.8361ms
+Measurement: 606 Time: 0.7322ms
+Measurement: 607 Time: 0.6936ms
+Measurement: 608 Time: 0.7121ms
+Measurement: 609 Time: 0.7037ms
+Measurement: 610 Time: 0.7769ms
+Measurement: 611 Time: 1.0724ms
+Measurement: 612 Time: 1.1731ms
+Measurement: 613 Time: 1.2088ms
+Measurement: 614 Time: 1.1092ms
+Measurement: 615 Time: 1.3172ms
+Measurement: 616 Time: 0.7935ms
+Measurement: 617 Time: 1.2882ms
+Measurement: 618 Time: 2.5814ms
+Measurement: 619 Time: 1.7915ms
+Measurement: 620 Time: 1.197ms
+Measurement: 621 Time: 1.657ms
+Measurement: 622 Time: 1.5705ms
+Measurement: 623 Time: 1.04ms
+Measurement: 624 Time: 0.9578ms
+Measurement: 625 Time: 1.4418ms
+Measurement: 626 Time: 1.0746ms
+Measurement: 627 Time: 1.5637ms
+Measurement: 628 Time: 1.2323ms
+Measurement: 629 Time: 0.7566ms
+Measurement: 630 Time: 0.7324ms
+Measurement: 631 Time: 0.7369ms
+Measurement: 632 Time: 0.8301ms
+Measurement: 633 Time: 0.9615ms
+Measurement: 634 Time: 1.2512ms
+Measurement: 635 Time: 1.2213ms
+Measurement: 636 Time: 0.8042ms
+Measurement: 637 Time: 0.8602ms
+Measurement: 638 Time: 0.739ms
+Measurement: 639 Time: 0.8011ms
+Measurement: 640 Time: 0.931ms
+Measurement: 641 Time: 1.3806ms
+Measurement: 642 Time: 1.0628ms
+Measurement: 643 Time: 0.7683ms
+Measurement: 644 Time: 0.743ms
+Measurement: 645 Time: 0.6518ms
+Measurement: 646 Time: 0.6163ms
+Measurement: 647 Time: 0.5903ms
+Measurement: 648 Time: 0.675ms
+Measurement: 649 Time: 0.8437ms
+Measurement: 650 Time: 0.7779ms
+Measurement: 651 Time: 0.7444ms
+Measurement: 652 Time: 1.3384ms
+Measurement: 653 Time: 0.9023ms
+Measurement: 654 Time: 1.034ms
+Measurement: 655 Time: 1.7545ms
+Measurement: 656 Time: 1.2647ms
+Measurement: 657 Time: 1.4158ms
+Measurement: 658 Time: 1.399ms
+Measurement: 659 Time: 0.7871ms
+Measurement: 660 Time: 0.8208ms
+Measurement: 661 Time: 1.0399ms
+Measurement: 662 Time: 0.8578ms
+Measurement: 663 Time: 0.7613ms
+Measurement: 664 Time: 0.9345ms
+Measurement: 665 Time: 0.7534ms
+Measurement: 666 Time: 0.6639ms
+Measurement: 667 Time: 0.6758ms
+Measurement: 668 Time: 0.6743ms
+Measurement: 669 Time: 0.7802ms
+Measurement: 670 Time: 1.3257ms
+Measurement: 671 Time: 0.7328ms
+Measurement: 672 Time: 0.6816ms
+Measurement: 673 Time: 0.8969ms
+Measurement: 674 Time: 0.7562ms
+Measurement: 675 Time: 0.7092ms
+Measurement: 676 Time: 1.1193ms
+Measurement: 677 Time: 1.2257ms
+Measurement: 678 Time: 0.8805ms
+Measurement: 679 Time: 0.7285ms
+Measurement: 680 Time: 0.7636ms
+Measurement: 681 Time: 1.16ms
+Measurement: 682 Time: 0.8625ms
+Measurement: 683 Time: 0.8212ms
+Measurement: 684 Time: 0.8455ms
+Measurement: 685 Time: 0.8202ms
+Measurement: 686 Time: 0.7688ms
+Measurement: 687 Time: 0.7329ms
+Measurement: 688 Time: 0.7979ms
+Measurement: 689 Time: 0.9367ms
+Measurement: 690 Time: 0.9791ms
+Measurement: 691 Time: 0.7957ms
+Measurement: 692 Time: 0.7855ms
+Measurement: 693 Time: 1.0553ms
+Measurement: 694 Time: 0.7926ms
+Measurement: 695 Time: 0.73ms
+Measurement: 696 Time: 0.6264ms
+Measurement: 697 Time: 0.7244ms
+Measurement: 698 Time: 1.1798ms
+Measurement: 699 Time: 0.798ms
+Measurement: 700 Time: 1.0738ms
+Measurement: 701 Time: 0.9494ms
+Measurement: 702 Time: 0.8721ms
+Measurement: 703 Time: 0.8643ms
+Measurement: 704 Time: 0.8345ms
+Measurement: 705 Time: 1.3017ms
+Measurement: 706 Time: 0.8135ms
+Measurement: 707 Time: 0.9616ms
+Measurement: 708 Time: 0.7242ms
+Measurement: 709 Time: 0.6409ms
+Measurement: 710 Time: 0.8248ms
+Measurement: 711 Time: 0.7738ms
+Measurement: 712 Time: 0.6822ms
+Measurement: 713 Time: 0.7125ms
+Measurement: 714 Time: 1.1026ms
+Measurement: 715 Time: 0.6906ms
+Measurement: 716 Time: 0.8028ms
+Measurement: 717 Time: 0.734ms
+Measurement: 718 Time: 0.6676ms
+Measurement: 719 Time: 0.6454ms
+Measurement: 720 Time: 0.6459ms
+Measurement: 721 Time: 0.639ms
+Measurement: 722 Time: 0.8983ms
+Measurement: 723 Time: 1.1761ms
+Measurement: 724 Time: 0.8142ms
+Measurement: 725 Time: 0.8201ms
+Measurement: 726 Time: 0.888ms
+Measurement: 727 Time: 0.7376ms
+Measurement: 728 Time: 0.6152ms
+Measurement: 729 Time: 0.8652ms
+Measurement: 730 Time: 0.7932ms
+Measurement: 731 Time: 0.98ms
+Measurement: 732 Time: 0.8576ms
+Measurement: 733 Time: 0.8585ms
+Measurement: 734 Time: 0.7587ms
+Measurement: 735 Time: 0.7546ms
+Measurement: 736 Time: 0.7333ms
+Measurement: 737 Time: 0.7653ms
+Measurement: 738 Time: 0.683ms
+Measurement: 739 Time: 0.6308ms
+Measurement: 740 Time: 0.8674ms
+Measurement: 741 Time: 1.1968ms
+Measurement: 742 Time: 0.6918ms
+Measurement: 743 Time: 0.6084ms
+Measurement: 744 Time: 0.578ms
+Measurement: 745 Time: 0.5821ms
+Measurement: 746 Time: 0.5755ms
+Measurement: 747 Time: 0.7485ms
+Measurement: 748 Time: 0.6124ms
+Measurement: 749 Time: 0.5872ms
+Measurement: 750 Time: 0.7898ms
+Measurement: 751 Time: 1.1354ms
+Measurement: 752 Time: 0.6438ms
+Measurement: 753 Time: 0.6389ms
+Measurement: 754 Time: 0.6059ms
+Measurement: 755 Time: 0.5649ms
+Measurement: 756 Time: 0.5631ms
+Measurement: 757 Time: 0.5776ms
+Measurement: 758 Time: 0.5968ms
+Measurement: 759 Time: 0.6651ms
+Measurement: 760 Time: 0.9164ms
+Measurement: 761 Time: 1.2254ms
+Measurement: 762 Time: 0.6348ms
+Measurement: 763 Time: 0.5898ms
+Measurement: 764 Time: 0.5876ms
+Measurement: 765 Time: 0.5887ms
+Measurement: 766 Time: 0.58ms
+Measurement: 767 Time: 0.5747ms
+Measurement: 768 Time: 0.7364ms
+Measurement: 769 Time: 1.3536ms
+Measurement: 770 Time: 1.8637ms
+Measurement: 771 Time: 1.1591ms
+Measurement: 772 Time: 0.7977ms
+Measurement: 773 Time: 1.2207ms
+Measurement: 774 Time: 1.1119ms
+Measurement: 775 Time: 1.0043ms
+Measurement: 776 Time: 0.9366ms
+Measurement: 777 Time: 0.9367ms
+Measurement: 778 Time: 0.9567ms
+Measurement: 779 Time: 1.0745ms
+Measurement: 780 Time: 1.3914ms
+Measurement: 781 Time: 1.1596ms
+Measurement: 782 Time: 0.8584ms
+Measurement: 783 Time: 1.0127ms
+Measurement: 784 Time: 1.257ms
+Measurement: 785 Time: 0.83ms
+Measurement: 786 Time: 0.8208ms
+Measurement: 787 Time: 0.963ms
+Measurement: 788 Time: 1.3312ms
+Measurement: 789 Time: 1.7877ms
+Measurement: 790 Time: 0.8354ms
+Measurement: 791 Time: 0.9779ms
+Measurement: 792 Time: 0.7783ms
+Measurement: 793 Time: 1.0178ms
+Measurement: 794 Time: 0.8733ms
+Measurement: 795 Time: 1.7374ms
+Measurement: 796 Time: 0.9441ms
+Measurement: 797 Time: 0.8213ms
+Measurement: 798 Time: 0.8156ms
+Measurement: 799 Time: 0.9706ms
+Measurement: 800 Time: 1.0347ms
+Measurement: 801 Time: 1.4375ms
+Measurement: 802 Time: 1.1321ms
+Measurement: 803 Time: 0.9606ms
+Measurement: 804 Time: 1.0824ms
+Measurement: 805 Time: 1.1636ms
+Measurement: 806 Time: 1.4123ms
+Measurement: 807 Time: 1.5019ms
+Measurement: 808 Time: 0.9314ms
+Measurement: 809 Time: 1.1099ms
+Measurement: 810 Time: 0.6251ms
+Measurement: 811 Time: 1.0138ms
+Measurement: 812 Time: 1.1642ms
+Measurement: 813 Time: 1.8034ms
+Measurement: 814 Time: 1.0316ms
+Measurement: 815 Time: 1.3261ms
+Measurement: 816 Time: 0.8514ms
+Measurement: 817 Time: 0.6966ms
+Measurement: 818 Time: 0.7277ms
+Measurement: 819 Time: 1.2534ms
+Measurement: 820 Time: 0.9423ms
+Measurement: 821 Time: 1.2572ms
+Measurement: 822 Time: 0.7713ms
+Measurement: 823 Time: 0.6925ms
+Measurement: 824 Time: 0.7763ms
+Measurement: 825 Time: 0.6607ms
+Measurement: 826 Time: 0.6673ms
+Measurement: 827 Time: 1.0676ms
+Measurement: 828 Time: 1.026ms
+Measurement: 829 Time: 0.8148ms
+Measurement: 830 Time: 0.6783ms
+Measurement: 831 Time: 0.6668ms
+Measurement: 832 Time: 0.7997ms
+Measurement: 833 Time: 1.4012ms
+Measurement: 834 Time: 0.8075ms
+Measurement: 835 Time: 0.9568ms
+Measurement: 836 Time: 1.027ms
+Measurement: 837 Time: 0.75ms
+Measurement: 838 Time: 0.8131ms
+Measurement: 839 Time: 0.9019ms
+Measurement: 840 Time: 1.479ms
+Measurement: 841 Time: 2.1022ms
+Measurement: 842 Time: 1.3426ms
+Measurement: 843 Time: 1.1502ms
+Measurement: 844 Time: 0.8148ms
+Measurement: 845 Time: 0.7922ms
+Measurement: 846 Time: 0.9438ms
+Measurement: 847 Time: 1.8606ms
+Measurement: 848 Time: 1.4739ms
+Measurement: 849 Time: 1.0894ms
+Measurement: 850 Time: 1.1685ms
+Measurement: 851 Time: 0.8082ms
+Measurement: 852 Time: 0.8969ms
+Measurement: 853 Time: 1.2201ms
+Measurement: 854 Time: 0.9562ms
+Measurement: 855 Time: 1.2378ms
+Measurement: 856 Time: 0.9402ms
+Measurement: 857 Time: 0.9696ms
+Measurement: 858 Time: 0.8743ms
+Measurement: 859 Time: 0.9264ms
+Measurement: 860 Time: 0.7811ms
+Measurement: 861 Time: 0.6591ms
+Measurement: 862 Time: 0.6428ms
+Measurement: 863 Time: 0.735ms
+Measurement: 864 Time: 1.3016ms
+Measurement: 865 Time: 1.0496ms
+Measurement: 866 Time: 1.5026ms
+Measurement: 867 Time: 1.4623ms
+Measurement: 868 Time: 1.5244ms
+Measurement: 869 Time: 0.8573ms
+Measurement: 870 Time: 1.1991ms
+Measurement: 871 Time: 1.5263ms
+Measurement: 872 Time: 1.2225ms
+Measurement: 873 Time: 1.2593ms
+Measurement: 874 Time: 0.8079ms
+Measurement: 875 Time: 0.7289ms
+Measurement: 876 Time: 0.9624ms
+Measurement: 877 Time: 1.8321ms
+Measurement: 878 Time: 1.182ms
+Measurement: 879 Time: 1.9069ms
+Measurement: 880 Time: 0.6886ms
+Measurement: 881 Time: 0.5954ms
+Measurement: 882 Time: 0.5777ms
+Measurement: 883 Time: 0.9296ms
+Measurement: 884 Time: 1.1142ms
+Measurement: 885 Time: 0.9118ms
+Measurement: 886 Time: 0.8532ms
+Measurement: 887 Time: 1.1665ms
+Measurement: 888 Time: 0.8718ms
+Measurement: 889 Time: 0.6883ms
+Measurement: 890 Time: 1.1769ms
+Measurement: 891 Time: 1.6286ms
+Measurement: 892 Time: 1.3279ms
+Measurement: 893 Time: 0.9283ms
+Measurement: 894 Time: 0.7277ms
+Measurement: 895 Time: 0.7021ms
+Measurement: 896 Time: 0.6615ms
+Measurement: 897 Time: 1.1638ms
+Measurement: 898 Time: 0.8331ms
+Measurement: 899 Time: 0.7758ms
+Measurement: 900 Time: 0.7345ms
+Measurement: 901 Time: 1.0039ms
+Measurement: 902 Time: 0.5569ms
+Measurement: 903 Time: 0.7365ms
+Measurement: 904 Time: 0.6864ms
+Measurement: 905 Time: 0.8106ms
+Measurement: 906 Time: 0.8566ms
+Measurement: 907 Time: 0.7623ms
+Measurement: 908 Time: 0.6551ms
+Measurement: 909 Time: 1.1402ms
+Measurement: 910 Time: 0.9236ms
+Measurement: 911 Time: 1.2543ms
+Measurement: 912 Time: 1.2331ms
+Measurement: 913 Time: 1.5305ms
+Measurement: 914 Time: 1.1813ms
+Measurement: 915 Time: 1.3578ms
+Measurement: 916 Time: 1.0842ms
+Measurement: 917 Time: 1.1372ms
+Measurement: 918 Time: 0.8124ms
+Measurement: 919 Time: 1.1512ms
+Measurement: 920 Time: 1.2793ms
+Measurement: 921 Time: 0.9455ms
+Measurement: 922 Time: 1.237ms
+Measurement: 923 Time: 1.1084ms
+Measurement: 924 Time: 1.2829ms
+Measurement: 925 Time: 1.2422ms
+Measurement: 926 Time: 1.4703ms
+Measurement: 927 Time: 0.7455ms
+Measurement: 928 Time: 0.6208ms
+Measurement: 929 Time: 0.5453ms
+Measurement: 930 Time: 0.7496ms
+Measurement: 931 Time: 0.9242ms
+Measurement: 932 Time: 0.6903ms
+Measurement: 933 Time: 0.6733ms
+Measurement: 934 Time: 1.1313ms
+Measurement: 935 Time: 0.7914ms
+Measurement: 936 Time: 0.8611ms
+Measurement: 937 Time: 0.8447ms
+Measurement: 938 Time: 1.2329ms
+Measurement: 939 Time: 1.3888ms
+Measurement: 940 Time: 1.6056ms
+Measurement: 941 Time: 1.297ms
+Measurement: 942 Time: 1.0337ms
+Measurement: 943 Time: 1.6942ms
+Measurement: 944 Time: 1.1048ms
+Measurement: 945 Time: 1.0857ms
+Measurement: 946 Time: 1.5801ms
+Measurement: 947 Time: 1.7647ms
+Measurement: 948 Time: 2.4899ms
+Measurement: 949 Time: 1.071ms
+Measurement: 950 Time: 1.4109ms
+Measurement: 951 Time: 1.5902ms
+Measurement: 952 Time: 2.063ms
+Measurement: 953 Time: 1.2129ms
+Measurement: 954 Time: 0.7807ms
+Measurement: 955 Time: 0.9424ms
+Measurement: 956 Time: 0.8334ms
+Measurement: 957 Time: 0.941ms
+Measurement: 958 Time: 1.1701ms
+Measurement: 959 Time: 1.1302ms
+Measurement: 960 Time: 0.6683ms
+Measurement: 961 Time: 0.6759ms
+Measurement: 962 Time: 0.6575ms
+Measurement: 963 Time: 0.6168ms
+Measurement: 964 Time: 0.5955ms
+Measurement: 965 Time: 0.7174ms
+Measurement: 966 Time: 1.1225ms
+Measurement: 967 Time: 1.2241ms
+Measurement: 968 Time: 1.1784ms
+Measurement: 969 Time: 1.2727ms
+Measurement: 970 Time: 1.1722ms
+Measurement: 971 Time: 1.097ms
+Measurement: 972 Time: 1.3947ms
+Measurement: 973 Time: 1.0904ms
+Measurement: 974 Time: 0.9031ms
+Measurement: 975 Time: 1.2652ms
+Measurement: 976 Time: 1.2058ms
+Measurement: 977 Time: 1.1843ms
+Measurement: 978 Time: 0.8814ms
+Measurement: 979 Time: 0.8332ms
+Measurement: 980 Time: 1.0907ms
+Measurement: 981 Time: 0.7464ms
+Measurement: 982 Time: 0.8365ms
+Measurement: 983 Time: 0.7881ms
+Measurement: 984 Time: 1.0133ms
+Measurement: 985 Time: 0.7156ms
+Measurement: 986 Time: 0.5947ms
+Measurement: 987 Time: 0.8988ms
+Measurement: 988 Time: 0.7992ms
+Measurement: 989 Time: 0.8272ms
+Measurement: 990 Time: 0.6605ms
+Measurement: 991 Time: 0.5647ms
+Measurement: 992 Time: 0.6713ms
+Measurement: 993 Time: 0.9472ms
+Measurement: 994 Time: 0.9544ms
+Measurement: 995 Time: 1.0911ms
+Measurement: 996 Time: 1.0394ms
+Measurement: 997 Time: 0.8494ms
+Measurement: 998 Time: 0.695ms
+Measurement: 999 Time: 0.6891ms
+Measurements: 1000 Avg: 1.32263ms Min: 0.5453ms Max: 327.974ms
+Raw Measurements in ms:
+8.7596
+327.974
+2.349
+1.5281
+1.1562
+1.8429
+1.8657
+1.8771
+1.7995
+1.6983
+0.9436
+1.3968
+0.8194
+1.2404
+0.9856
+0.959
+0.9577
+1.3958
+2.0551
+1.0773
+1.3433
+0.9075
+0.8488
+1.1648
+1.5985
+1.6022
+1.5444
+1.7453
+1.5946
+2.0555
+2.1055
+2.1984
+1.6747
+2.2506
+1.827
+0.9659
+0.8409
+1.6264
+1.6777
+1.5058
+2.0199
+1.659
+1.1666
+1.6676
+1.4315
+1.5891
+1.8915
+1.8297
+1.9422
+1.7079
+1.237
+1.4875
+0.8654
+1.049
+1.109
+1.6872
+1.6089
+0.8483
+1.4766
+1.4952
+1.6406
+0.8252
+0.884
+1.2435
+0.8407
+1.7503
+1.0667
+1.0018
+1.222
+1.0205
+1.42
+1.416
+0.8831
+0.8472
+0.7961
+0.7357
+1.0074
+1.7711
+2.1322
+1.2679
+1.0265
+1.2895
+2.5323
+0.9677
+0.9359
+1.1241
+0.9148
+1.4938
+1.0159
+1.3413
+0.7787
+0.7434
+0.7035
+1.2294
+1.9757
+2.2225
+1.3812
+2.5689
+1.8108
+0.8525
+1.3059
+0.8121
+1.2757
+2.1796
+2.5139
+1.9021
+2.2894
+1.4079
+0.8869
+1.0482
+1.6059
+1.4364
+0.8831
+1.0915
+1.3816
+1.6087
+1.5011
+1.6422
+0.9746
+0.9394
+1.3093
+1.0624
+0.9624
+0.8612
+0.8772
+0.9923
+1.6694
+1.1174
+1.0047
+1.1139
+0.7397
+0.8451
+1.2141
+0.991
+1.1454
+1.2311
+1.1756
+0.9001
+1.0773
+0.8399
+0.9632
+0.8748
+0.6843
+0.6307
+0.8963
+1.1064
+1.1753
+0.8998
+1.1473
+1.0896
+1.1026
+0.7817
+0.9579
+0.8318
+0.7227
+0.6744
+0.7456
+0.7073
+0.9177
+1.1367
+1.6223
+1.4067
+1.5106
+1.1877
+0.9164
+1.2112
+0.7926
+0.6785
+0.6401
+0.6142
+0.867
+0.8554
+1.0484
+0.8675
+0.9269
+1.0187
+0.8535
+0.6409
+0.6716
+0.7135
+0.6938
+0.7867
+0.8075
+0.8739
+0.7594
+0.9922
+1.2118
+1.2712
+1.368
+1.0135
+1.142
+0.8017
+0.7772
+0.7286
+1.0683
+0.869
+0.6771
+0.7002
+0.6815
+0.6541
+0.6544
+0.6104
+0.5811
+0.606
+0.604
+0.6574
+0.6901
+0.856
+0.6688
+0.6477
+0.6474
+0.7391
+0.7537
+0.6271
+0.74
+0.6463
+0.6547
+0.6613
+0.5681
+0.5913
+0.5954
+0.5752
+0.5666
+0.6237
+0.6631
+0.6973
+0.7146
+0.6808
+0.6721
+0.9427
+0.8731
+1.8061
+1.466
+0.8278
+1.2055
+0.9589
+0.9399
+0.723
+0.7897
+0.8623
+1.0361
+0.8194
+0.9673
+1.0506
+0.9127
+0.9446
+1.5811
+0.8289
+0.7753
+0.7374
+0.6887
+0.7124
+0.6809
+0.7003
+1.6122
+1.4301
+0.882
+0.8134
+0.6627
+1.0463
+2.2813
+1.3205
+0.7852
+0.7989
+0.7912
+0.8593
+0.9702
+1.1928
+0.7253
+0.7068
+1.0962
+1.2244
+1.1003
+0.8057
+1.0386
+1.3864
+1.9808
+1.0698
+1.1031
+1.5457
+2.0556
+1.4229
+1.9121
+1.7055
+1.1483
+0.8032
+1.2634
+1.7038
+1.6063
+0.8241
+0.7584
+0.7781
+0.822
+0.8733
+1.5657
+0.8012
+0.7007
+0.5899
+0.6565
+0.7026
+0.6354
+0.6102
+1.1496
+1.0191
+0.6802
+0.6786
+1.4234
+1.0425
+0.8463
+0.8589
+0.813
+1.1195
+0.7979
+0.7929
+0.7589
+0.9296
+0.9594
+1.1977
+0.8786
+0.9006
+0.8415
+0.9618
+0.8747
+0.8039
+1.3931
+1.0309
+0.7918
+0.6433
+0.6168
+0.6762
+0.6075
+0.5799
+0.6258
+1.0012
+1.3401
+0.7261
+0.7656
+0.7424
+0.5894
+0.7913
+1.1063
+0.9354
+0.8567
+0.7446
+0.6757
+0.9083
+0.9725
+0.7333
+0.9527
+1.2242
+1.255
+1.0079
+0.9468
+0.9015
+1.053
+1.7852
+0.9148
+0.9205
+0.8046
+0.8869
+0.8787
+1.467
+1.4328
+0.7905
+1.8564
+1.3914
+1.3664
+1.012
+1.1163
+1.0334
+0.6834
+1.3662
+0.8069
+0.8209
+0.6667
+0.6275
+0.649
+0.6739
+0.8203
+0.9012
+0.9832
+0.8804
+0.9434
+0.7946
+0.7683
+0.6514
+0.6329
+0.6036
+0.6256
+0.7839
+0.6686
+0.6059
+0.6117
+0.5777
+0.5819
+0.5944
+0.5886
+0.6012
+0.6122
+0.7
+0.8853
+0.6491
+0.6095
+0.7559
+0.8134
+0.6656
+0.6362
+0.6372
+0.6308
+0.6218
+0.9757
+0.6218
+0.6233
+0.583
+0.5913
+0.5963
+0.5916
+0.6106
+0.6106
+0.6442
+0.7303
+0.7174
+0.619
+0.6199
+0.6139
+0.5873
+0.6773
+0.6633
+0.7277
+0.6168
+0.6722
+0.6685
+0.7212
+0.7465
+1.1843
+1.4355
+1.5977
+1.6025
+1.0012
+1.3882
+1.1845
+0.7568
+1.7315
+1.3791
+0.7506
+0.6685
+0.6072
+0.5812
+0.5748
+0.5932
+1.0843
+0.8666
+1.0281
+0.6964
+0.7049
+0.6772
+0.6664
+0.6026
+0.5842
+0.6445
+0.6543
+0.6012
+1.1587
+0.753
+0.7653
+0.6525
+0.6392
+0.5987
+0.7579
+0.7214
+0.6364
+0.5943
+0.9622
+0.6637
+0.6369
+0.6327
+0.6021
+0.607
+0.7542
+0.8345
+0.7819
+0.8676
+1.1207
+1.001
+0.7543
+0.953
+0.784
+0.8357
+0.7595
+0.7323
+0.8732
+0.7225
+0.635
+0.6828
+0.6723
+0.6565
+0.8331
+0.8149
+0.8247
+1.2269
+1.5548
+1.4664
+1.3158
+1.0047
+1.3414
+1.2536
+1.0546
+1.1268
+0.9082
+1.019
+1.1503
+0.8931
+0.8714
+1.0341
+1.036
+0.8568
+0.7804
+0.6838
+1.1208
+0.6859
+0.7204
+0.7523
+0.9032
+1.1759
+0.9107
+1.2131
+1.1045
+0.6844
+0.7598
+1.0098
+1.1867
+0.7882
+0.6812
+0.9186
+0.6664
+0.6152
+0.7497
+0.8425
+0.6767
+0.5861
+0.5946
+0.5991
+0.6481
+0.6595
+0.9767
+0.7392
+0.7684
+0.7134
+0.6983
+0.6877
+1.453
+0.9065
+1.334
+0.9771
+0.7593
+0.9938
+0.8146
+0.9383
+1.1548
+1.3047
+1.1103
+1.1481
+0.765
+0.9891
+1.4003
+1.376
+1.1488
+0.6518
+0.6637
+0.6486
+0.7144
+0.6545
+0.6269
+0.7601
+1.0495
+0.6971
+0.614
+0.5897
+0.5952
+0.5804
+0.571
+0.5786
+0.5963
+0.5749
+2.0091
+1.0007
+0.7907
+0.693
+0.6508
+0.6289
+0.6159
+0.6566
+1.0946
+0.8516
+0.831
+0.8413
+1.1114
+0.6692
+0.9025
+0.9403
+1.4101
+3.6801
+1.1693
+0.8343
+1.247
+0.8361
+0.7322
+0.6936
+0.7121
+0.7037
+0.7769
+1.0724
+1.1731
+1.2088
+1.1092
+1.3172
+0.7935
+1.2882
+2.5814
+1.7915
+1.197
+1.657
+1.5705
+1.04
+0.9578
+1.4418
+1.0746
+1.5637
+1.2323
+0.7566
+0.7324
+0.7369
+0.8301
+0.9615
+1.2512
+1.2213
+0.8042
+0.8602
+0.739
+0.8011
+0.931
+1.3806
+1.0628
+0.7683
+0.743
+0.6518
+0.6163
+0.5903
+0.675
+0.8437
+0.7779
+0.7444
+1.3384
+0.9023
+1.034
+1.7545
+1.2647
+1.4158
+1.399
+0.7871
+0.8208
+1.0399
+0.8578
+0.7613
+0.9345
+0.7534
+0.6639
+0.6758
+0.6743
+0.7802
+1.3257
+0.7328
+0.6816
+0.8969
+0.7562
+0.7092
+1.1193
+1.2257
+0.8805
+0.7285
+0.7636
+1.16
+0.8625
+0.8212
+0.8455
+0.8202
+0.7688
+0.7329
+0.7979
+0.9367
+0.9791
+0.7957
+0.7855
+1.0553
+0.7926
+0.73
+0.6264
+0.7244
+1.1798
+0.798
+1.0738
+0.9494
+0.8721
+0.8643
+0.8345
+1.3017
+0.8135
+0.9616
+0.7242
+0.6409
+0.8248
+0.7738
+0.6822
+0.7125
+1.1026
+0.6906
+0.8028
+0.734
+0.6676
+0.6454
+0.6459
+0.639
+0.8983
+1.1761
+0.8142
+0.8201
+0.888
+0.7376
+0.6152
+0.8652
+0.7932
+0.98
+0.8576
+0.8585
+0.7587
+0.7546
+0.7333
+0.7653
+0.683
+0.6308
+0.8674
+1.1968
+0.6918
+0.6084
+0.578
+0.5821
+0.5755
+0.7485
+0.6124
+0.5872
+0.7898
+1.1354
+0.6438
+0.6389
+0.6059
+0.5649
+0.5631
+0.5776
+0.5968
+0.6651
+0.9164
+1.2254
+0.6348
+0.5898
+0.5876
+0.5887
+0.58
+0.5747
+0.7364
+1.3536
+1.8637
+1.1591
+0.7977
+1.2207
+1.1119
+1.0043
+0.9366
+0.9367
+0.9567
+1.0745
+1.3914
+1.1596
+0.8584
+1.0127
+1.257
+0.83
+0.8208
+0.963
+1.3312
+1.7877
+0.8354
+0.9779
+0.7783
+1.0178
+0.8733
+1.7374
+0.9441
+0.8213
+0.8156
+0.9706
+1.0347
+1.4375
+1.1321
+0.9606
+1.0824
+1.1636
+1.4123
+1.5019
+0.9314
+1.1099
+0.6251
+1.0138
+1.1642
+1.8034
+1.0316
+1.3261
+0.8514
+0.6966
+0.7277
+1.2534
+0.9423
+1.2572
+0.7713
+0.6925
+0.7763
+0.6607
+0.6673
+1.0676
+1.026
+0.8148
+0.6783
+0.6668
+0.7997
+1.4012
+0.8075
+0.9568
+1.027
+0.75
+0.8131
+0.9019
+1.479
+2.1022
+1.3426
+1.1502
+0.8148
+0.7922
+0.9438
+1.8606
+1.4739
+1.0894
+1.1685
+0.8082
+0.8969
+1.2201
+0.9562
+1.2378
+0.9402
+0.9696
+0.8743
+0.9264
+0.7811
+0.6591
+0.6428
+0.735
+1.3016
+1.0496
+1.5026
+1.4623
+1.5244
+0.8573
+1.1991
+1.5263
+1.2225
+1.2593
+0.8079
+0.7289
+0.9624
+1.8321
+1.182
+1.9069
+0.6886
+0.5954
+0.5777
+0.9296
+1.1142
+0.9118
+0.8532
+1.1665
+0.8718
+0.6883
+1.1769
+1.6286
+1.3279
+0.9283
+0.7277
+0.7021
+0.6615
+1.1638
+0.8331
+0.7758
+0.7345
+1.0039
+0.5569
+0.7365
+0.6864
+0.8106
+0.8566
+0.7623
+0.6551
+1.1402
+0.9236
+1.2543
+1.2331
+1.5305
+1.1813
+1.3578
+1.0842
+1.1372
+0.8124
+1.1512
+1.2793
+0.9455
+1.237
+1.1084
+1.2829
+1.2422
+1.4703
+0.7455
+0.6208
+0.5453
+0.7496
+0.9242
+0.6903
+0.6733
+1.1313
+0.7914
+0.8611
+0.8447
+1.2329
+1.3888
+1.6056
+1.297
+1.0337
+1.6942
+1.1048
+1.0857
+1.5801
+1.7647
+2.4899
+1.071
+1.4109
+1.5902
+2.063
+1.2129
+0.7807
+0.9424
+0.8334
+0.941
+1.1701
+1.1302
+0.6683
+0.6759
+0.6575
+0.6168
+0.5955
+0.7174
+1.1225
+1.2241
+1.1784
+1.2727
+1.1722
+1.097
+1.3947
+1.0904
+0.9031
+1.2652
+1.2058
+1.1843
+0.8814
+0.8332
+1.0907
+0.7464
+0.8365
+0.7881
+1.0133
+0.7156
+0.5947
+0.8988
+0.7992
+0.8272
+0.6605
+0.5647
+0.6713
+0.9472
+0.9544
+1.0911
+1.0394
+0.8494
+0.695
+0.6891

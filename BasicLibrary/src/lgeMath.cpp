@@ -7,7 +7,6 @@ namespace lge
 		return sqrt(a * a + b * b);
 	}
 
-
 	float fastInvSqrt(float n)
 	{
 

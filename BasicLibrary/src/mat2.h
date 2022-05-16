@@ -17,6 +17,16 @@ namespace lge
 			x(x), y(y)
 		{}
 
+		mat2(double angle)
+		{
+			double s = sin(angle);
+			double c = cos(angle);
+			x.x = c;
+			x.y = s;
+			y.x = -s;
+			y.y = c;
+		}
+
 		friend std::ostream& operator<<(std::ostream& os, const mat2& a)
 		{
 			return os << "First: " << a.x << " Second: " << a.y;

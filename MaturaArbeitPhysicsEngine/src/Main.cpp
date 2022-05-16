@@ -8,7 +8,10 @@
 #include "Renderer/Renderer.h"
 #include "Renderer/CustomShapes/EllipseShape.h"
 
-#include "Utilities.h"
+//#include "Utilities.h"
+#include "components.h"
+#include "utilities.h"
+#include "FunctionTimer.h"
 
 int main()
 {
@@ -27,9 +30,9 @@ int main()
 
 	lge::FunctionTimer timer;
 
-	//lge::vec2 testVec;
+	lge::vec2 testVec;
 
-	while (mainRenderer.isRunning() && i < 100)
+	while (mainRenderer.isRunning() && i < 1000)
 	{
 		std::vector<sf::Event> events = mainRenderer.getEvents();
 
@@ -47,14 +50,37 @@ int main()
 
 		//timer.start();
 
-		mainRenderer.clear(lge::vec4(255, 255, 255, 255));
-		mainRenderer.fill(lge::vec4(0, 128, 128, 255));
+		lge::vec2 mouse = mainRenderer.getMousePosition();
 
-		mainRenderer.ellipse(0, 0, 0.75, 0.5);
+		//std::cout << mouse << "\n";
+
+		std::vector<lge::vec2> vectors;
+		vectors.push_back(lge::vec2(-0.5, -0.5));
+		vectors.push_back(lge::vec2(0.5, -0.5));
+		vectors.push_back(lge::vec2(0.5, 0.5));
+		vectors.push_back(lge::vec2(-0.5, 0.5));
+
+		//lge::dotVec2(lge::vec2(1,1), lge::vec2(-1,1));
+
+		mainRenderer.stroke(lge::vec4(0, 255, 255, 255));
+		mainRenderer.fill(lge::vec4(255, 0, 255, 255));
+
+		lge::mat2 rotation(lge::map(mouse.x, -1, 1, -lge::PI, lge::PI));
+
+		lge::applyMat2ToVec2List(vectors, rotation);
+
+		//timer.start();
+		mainRenderer.clear(lge::vec4(255, 255, 255, 255));
+		//mainRenderer.fill(lge::vec4(0, 128, 128, 255));
+
+		//mainRenderer.ellipse(0, 0, 0.75, 0.5);
+
+		mainRenderer.renderVec2List(vectors);
+
+		//mainRenderer.line(0, 0, mouse.x, mouse.y);
 
 		mainRenderer.update();
 		//timer.end();
-		//timer.save("Rendertime Ellipse Normalized 3");
 		//auto end = std::chrono::high_resolution_clock::now();
 
 		//std::chrono::duration<double, std::milli> duration = end - start;
@@ -62,8 +88,11 @@ int main()
 
 		//timeMeasurement.push_back(duration.count());
 		
-		i++;
+		//i++;
 	}
+
+	//timer.save("Rendertime Lines vec2 array2.txt");
+
 	/*
 	std::ofstream outdata;
 	outdata.open("Rendertime Ellipse Normalized2.txt");
