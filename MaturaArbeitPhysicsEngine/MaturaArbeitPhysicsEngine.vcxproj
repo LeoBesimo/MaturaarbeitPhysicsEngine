@@ -147,11 +147,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Physics\CollisionDetection.cpp" />
     <ClCompile Include="src\Renderer\CustomShapes\EllipseShape.cpp" />
     <ClCompile Include="src\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Physics\CollisionDetection.h" />
+    <ClInclude Include="src\Physics\Shapes\Polygon.h" />
     <ClInclude Include="src\Renderer\CustomShapes\EllipseShape.h" />
     <ClInclude Include="src\Renderer\Renderer.h" />
   </ItemGroup>

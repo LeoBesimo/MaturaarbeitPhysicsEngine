@@ -4,11 +4,11 @@
 
 namespace lge
 {
-	extern double PythagoreanSolve(double a, double b);
-	extern float fastInvSqrt(float n);
-	extern double dotVec2(vec2 a, vec2 b);
-	extern double detMat2(mat2 matrix);
-	extern mat2 invMat2(mat2 matrix);
+	inline extern double PythagoreanSolve(double a, double b);
+	inline extern float fastInvSqrt(float n);
+	inline extern double dotVec2(vec2 a, vec2 b);
+	inline extern double detMat2(mat2 matrix);
+	inline extern mat2 invMat2(mat2 matrix);
 }
 
 namespace lge

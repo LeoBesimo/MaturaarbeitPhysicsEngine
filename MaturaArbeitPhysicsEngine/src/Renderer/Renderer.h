@@ -56,6 +56,7 @@ public:
 	std::vector<sf::Event> getEvents();
 
 	lge::vec2 getMousePosition();
+	lge::vec2 getWindowSize();
 
 	void clear(lge::vec4 color);
 	void update();

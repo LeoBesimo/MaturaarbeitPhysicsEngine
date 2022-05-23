@@ -56,6 +56,11 @@ lge::vec2 Renderer::getMousePosition()
 	return lge::vec2(mousePos.x,mousePos.y);
 }
 
+lge::vec2 Renderer::getWindowSize()
+{
+	return lge::vec2(m_windowWidth,m_windowHeight);
+}
+
 void Renderer::clear(lge::vec4 color = lge::vec4())
 {
 	m_window->clear(sf::Color(color.w, color.x, color.y, color.z));

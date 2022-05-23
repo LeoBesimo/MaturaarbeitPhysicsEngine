@@ -17,33 +17,33 @@ namespace lge
 	static std::uniform_int_distribution<> dis2(8, 11);
 
 
-	int hash(int state);
-	double randomDouble(double min, double man);
-	vec2 random2D();
-	vec2 signRandom2D();
-	vec3 random3D();
-	vec4 random4D();
-	double min(double a, double b);
-	double max(double a, double b);
-	double clamp(double a, double low, double hi);
-	vec2 minVec2(vec2 a, vec2 b);
-	vec2 maxVec2(vec2 a, vec2 b);
-	vec2 clampVec2(vec2 a, vec2 min, vec2 max);
-	vec2 absVec2(vec2 a);
-	double map(double val, double oldMin, double oldMax, double newMin, double newMax);
-	double constrain(double val, double min, double max);
-	vec2 constrainVec2(vec2 a, vec2 min, vec2 max);
-	vec2 mapVec2(vec2 a, vec2 oldMin, vec2 oldMax, vec2 newMin, vec2 newMax);
+	inline int hash(int state);
+	inline double randomDouble(double min, double man);
+	inline vec2 random2D();
+	inline vec2 signRandom2D();
+	inline vec3 random3D();
+	inline vec4 random4D();
+	inline double min(double a, double b);
+	inline double max(double a, double b);
+	inline double clamp(double a, double low, double hi);
+	inline vec2 minVec2(vec2 a, vec2 b);
+	inline vec2 maxVec2(vec2 a, vec2 b);
+	inline vec2 clampVec2(vec2 a, vec2 min, vec2 max);
+	inline vec2 absVec2(vec2 a);
+	inline double map(double val, double oldMin, double oldMax, double newMin, double newMax);
+	inline double constrain(double val, double min, double max);
+	inline vec2 constrainVec2(vec2 a, vec2 min, vec2 max);
+	inline vec2 mapVec2(vec2 a, vec2 oldMin, vec2 oldMax, vec2 newMin, vec2 newMax);
 
-	uuid generateUUIDv4();
+	inline uuid generateUUIDv4();
 
-	std::vector<vec2> applyMat2ToVec2List(std::vector<vec2>& vectors, mat2 matrix);
-	std::vector<vec2> addVec2ToVec2List(std::vector<vec2>& vectors, vec2 toAdd);
-	std::vector<vec2> multVec2ToVec2List(std::vector<vec2>& vectors, vec2 toMult);
-	std::vector<vec2> subVec2ToVec2List(std::vector<vec2>& vectors, vec2 toSub);
-	std::vector<vec2> divVec2ToVec2List(std::vector<vec2>& vectors, vec2 toDiv);
-	std::vector<vec2> mapVec2List(std::vector<vec2>& vectors, vec2 oldMin, vec2 oldMax, vec2 newMin, vec2 newMax);
-	vec2 avgVec2List(std::vector<vec2>& vectors);
+	inline std::vector<vec2> applyMat2ToVec2List(std::vector<vec2>& vectors, mat2 matrix);
+	inline std::vector<vec2> addVec2ToVec2List(std::vector<vec2>& vectors, vec2 toAdd);
+	inline std::vector<vec2> multVec2ToVec2List(std::vector<vec2>& vectors, vec2 toMult);
+	inline std::vector<vec2> subVec2ToVec2List(std::vector<vec2>& vectors, vec2 toSub);
+	inline std::vector<vec2> divVec2ToVec2List(std::vector<vec2>& vectors, vec2 toDiv);
+	inline std::vector<vec2> mapVec2List(std::vector<vec2>& vectors, vec2 oldMin, vec2 oldMax, vec2 newMin, vec2 newMax);
+	inline vec2 avgVec2List(std::vector<vec2>& vectors);
 }
 
 
