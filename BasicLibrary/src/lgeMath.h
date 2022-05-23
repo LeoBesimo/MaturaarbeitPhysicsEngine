@@ -9,6 +9,9 @@ namespace lge
 	inline extern double dotVec2(vec2 a, vec2 b);
 	inline extern double detMat2(mat2 matrix);
 	inline extern mat2 invMat2(mat2 matrix);
+	inline extern double crossVec2(vec2 a, vec2 b);
+	inline extern vec2 crossVec2Scalar(double s, vec2 a);
+	inline extern vec2 crossVec2Scalar(vec2 a, double s);
 }
 
 namespace lge
@@ -53,6 +56,18 @@ namespace lge
 		double invDet = 1 / det;
 		mat2 inv = mat2(matrix.y.y, -matrix.y.x, -matrix.x.y, matrix.x.x) * invDet;
 		return inv;
+	}
+	double crossVec2(vec2 a, vec2 b)
+	{
+		return a.x * b.y - a.x * b.x;
+	}
+	vec2 crossVec2Scalar(double s, vec2 a)
+	{
+		return vec2(-s * a.y , s * a.x);
+	}
+	vec2 crossVec2Scalar(vec2 a, double s)
+	{
+		return vec2(s * a.y, -s * a.x);
 	}
 }
 

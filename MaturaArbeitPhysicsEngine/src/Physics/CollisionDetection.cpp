@@ -230,3 +230,79 @@ bool lge::PolygonCollisonSat(Polygon* poly1, Polygon* poly2)
 	else std::cout << "not colliding\n";
 	return separated;
 }
+
+lge::Manifold lge::PolygonCollisionSatManifold(Polygon* poly1, Polygon* poly2)
+{
+
+	Manifold m;
+
+	std::vector<vec2> normalsPoly1 = getNormals(poly1);
+	std::vector<vec2> normalsPoly2 = getNormals(poly2);
+
+	bool separated = false;
+
+	vec2 minNormal1;
+	double minPenetration1 = FLT_MAX;
+	double minPenetration2 = FLT_MAX;
+	vec2 minNormal2;
+
+	for (unsigned int i = 0; i < normalsPoly1.size(); i++)
+	{
+		vec4 projectionPoly1 = getMinMax(poly1->m_transformedPoints, normalsPoly1[i]);
+		vec4 projectionPoly2 = getMinMax(poly2->m_transformedPoints, normalsPoly1[i]);
+
+		separated = projectionPoly1.x < projectionPoly2.w || projectionPoly2.x < projectionPoly1.w;
+		if (separated) break;
+
+		double penetration = projectionPoly2.w - projectionPoly1.x;
+		if (penetration < minPenetration1)
+		{
+			minPenetration1 = penetration;
+			minNormal1 = normalsPoly1[i];
+			m.indexP1[0] = projectionPoly1.y;
+			m.indexP1[1] = projectionPoly1.z;
+			m.normalIndex[0] = i + floor(poly1->m_transformedPoints.size() / 2);
+		}
+	}
+
+	if (!separated)
+	{
+		for (unsigned int i = 0; i < normalsPoly2.size(); i++)
+		{
+			vec4 projectionPoly1 = getMinMax(poly1->m_transformedPoints, normalsPoly2[i]);
+			vec4 projectionPoly2 = getMinMax(poly2->m_transformedPoints, normalsPoly2[i]);
+
+
+			separated = projectionPoly1.x < projectionPoly2.w || projectionPoly2.x < projectionPoly1.w;
+			if (separated) break;
+
+			double penetration = projectionPoly2.w - projectionPoly1.x;
+			if (penetration < minPenetration2)
+			{
+				minPenetration2 = penetration;
+				minNormal2 = normalsPoly2[i];
+				m.indexP2[0] = projectionPoly2.y;
+				m.indexP2[1] = projectionPoly2.z;
+				m.normalIndex[1] = i + floor(poly2->m_transformedPoints.size()/2);
+			}
+
+		}
+	}
+
+
+	if (!separated)
+	{
+		//std::cout << "colliding\n";
+		double minPenetration = minPenetration1 < minPenetration2 ? minPenetration1 : minPenetration2;
+		m.penetration = minPenetration;
+		m.normal[0] = (minNormal1).normalize() * -1;// - poly1->m_position).normalize();
+		m.normal[1] = (minNormal2).normalize() * -1;// - poly2->m_position).normalize();
+		m.collided = true;
+	}
+	//else std::cout << "not colliding\n";
+
+	//m.collided != separated;
+	
+
+	return m;
+}

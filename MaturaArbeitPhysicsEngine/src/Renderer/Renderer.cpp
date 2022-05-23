@@ -3,6 +3,7 @@
 Renderer::Renderer(unsigned int width, unsigned int height, std::string name)
 {
 	m_window = new sf::RenderWindow(sf::VideoMode(width, height), name);
+	m_window->setFramerateLimit(60);
 	m_windowWidth = width;
 	m_windowHeight = height;
 }
