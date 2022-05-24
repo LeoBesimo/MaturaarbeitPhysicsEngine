@@ -33,6 +33,8 @@ namespace lge
 		double m_restitution = 1;
 		double m_mass = 100;
 
+		bool m_isStatic = false;
+
 		Polygon() {}
 
 		Polygon(vec2 position, double angle, vec2 scale, std::vector<vec2> originalPoints)
@@ -62,10 +64,12 @@ namespace lge
 		{
 
 			m_velocity += m_acceleration;
+			m_acceleration *= !m_isStatic;
 			m_position += m_velocity;
 			m_acceleration *= 0;
 
 			m_angularVelocity += torque;
+			m_angularVelocity *= !m_isStatic;
 			m_angle += m_angularVelocity;
 			torque *= 0;
 

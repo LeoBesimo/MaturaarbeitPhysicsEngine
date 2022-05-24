@@ -34,6 +34,7 @@ namespace lge
 	inline double constrain(double val, double min, double max);
 	inline vec2 constrainVec2(vec2 a, vec2 min, vec2 max);
 	inline vec2 mapVec2(vec2 a, vec2 oldMin, vec2 oldMax, vec2 newMin, vec2 newMax);
+	inline double dist(double x, double y, double x2, double y2);
 
 	inline uuid generateUUIDv4();
 
@@ -146,6 +147,11 @@ namespace lge
 		double x = map(a.x, oldMin.x, oldMax.x, newMin.x, newMax.x);
 		double y = map(a.y, oldMin.y, oldMax.y, newMin.y, newMax.y);
 		return vec2(x, y);
+	}
+
+	double dist(double x, double y, double x2, double y2)
+	{
+		return sqrt((x2 - x) * (x2-x) + (y2 -y) * (y2-y));
 	}
 
 	std::string generateUUIDv4()
