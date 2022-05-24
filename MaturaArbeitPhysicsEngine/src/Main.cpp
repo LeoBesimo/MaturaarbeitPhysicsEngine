@@ -16,6 +16,10 @@
 
 #include "FunctionTimer.h"
 
+/*
+	fix normal generation for uneven side count
+*/
+
 int main()
 {
 	Renderer mainRenderer(800, 800, "Test");
@@ -24,80 +28,45 @@ int main()
 
 	std::vector<lge::vec2> squareEdges;
 	std::vector<lge::Polygon> walls;
-/*
-	squareEdges.push_back(lge::vec2(0, 0));
-	squareEdges.push_back(lge::vec2(800, 0));
-	squareEdges.push_back(lge::vec2(800, 20));
-	squareEdges.push_back(lge::vec2(0, 20));
 
-	walls.push_back(lge::Polygon(lge::vec2(0, 0), 0, lge::vec2(1, 1), squareEdges));
-	squareEdges.clear();
-	squareEdges.push_back(lge::vec2(0, 780));
-	squareEdges.push_back(lge::vec2(800, 780));
-	squareEdges.push_back(lge::vec2(800, 800));
-	squareEdges.push_back(lge::vec2(0, 800));
-
-	walls.push_back(lge::Polygon(lge::vec2(0, 0), 0, lge::vec2(1, 1), squareEdges));
-	squareEdges.clear();
-	squareEdges.push_back(lge::vec2(20, 0));
-	squareEdges.push_back(lge::vec2(20, 800));
-	squareEdges.push_back(lge::vec2(0, 800));
-	squareEdges.push_back(lge::vec2(0, 0));
-
-	walls.push_back(lge::Polygon(lge::vec2(0, 0), 0, lge::vec2(1, 1), squareEdges));
-	squareEdges.clear();
-	squareEdges.push_back(lge::vec2(780, 0));
-	squareEdges.push_back(lge::vec2(800, 0));
-	squareEdges.push_back(lge::vec2(800, 800));
-	squareEdges.push_back(lge::vec2(780, 800));
-
-	walls.push_back(lge::Polygon(lge::vec2(0, 0), 0, lge::vec2(1, 1), squareEdges));
-	*/
 	for (double i = 0; i < lge::TWO_PI; i += lge::TWO_PI / 4)
 	{
 		squareEdges.push_back(lge::vec2(cos(i), sin(i)));
 	}
 
-	walls.push_back(lge::Polygon(lge::vec2(400,400), lge::QUARTER_PI, lge::vec2(400, 400), squareEdges));
-	squareEdges.clear();
-	squareEdges.push_back(lge::vec2(0, 0));
-	squareEdges.push_back(lge::vec2(800, 0));
-	squareEdges.push_back(lge::vec2(800, 20));
-	squareEdges.push_back(lge::vec2(0, 20));
-	walls[0].m_transformedPoints = squareEdges;
+	walls.push_back(lge::Polygon(lge::vec2(0,400), lge::QUARTER_PI, lge::mat2(400,380,380,400), squareEdges));
+	walls.push_back(lge::Polygon(lge::vec2(800,400), lge::QUARTER_PI, lge::mat2(400,380,380,400), squareEdges));
+	walls.push_back(lge::Polygon(lge::vec2(400,0), lge::QUARTER_PI, lge::mat2(380,-400,-400,380), squareEdges));
+	walls.push_back(lge::Polygon(lge::vec2(400,800), lge::QUARTER_PI, lge::mat2(380,-400,-400,380), squareEdges));
+	
 
 	for (unsigned int i = 0; i < walls.size(); i++)
 	{
-		
 		walls[i].m_isStatic = true;
+		walls[i].m_mass = FLT_MAX;
+		walls[i].update();
+
 	}
 
 	std::vector<lge::vec2> vectors;
 
-	for (double i = 0; i < lge::TWO_PI; i += lge::TWO_PI / 6)
+	for (double i = 0; i < lge::TWO_PI; i += lge::TWO_PI / 4)
 	{
 		vectors.push_back(lge::vec2(cos(i), sin(i)));
 	}
-	/*
-	vectors.push_back(lge::vec2(1, -1));
-	vectors.push_back(lge::vec2(1, 1));
-	vectors.push_back(lge::vec2(-1, 1));
-	vectors.push_back(lge::vec2(-1, -1));
-	vectors.push_back(lge::vec2(0, -1.5));
-	*/
 
-	lge::Polygon poly(lge::vec2(200,400), lge::QUARTER_PI/6, lge::vec2(50, 50), vectors);
-	poly.m_velocity = lge::vec2(0, -5);
+	lge::Polygon poly(lge::vec2(200,400), lge::QUARTER_PI, lge::mat2(50,0,0,50), vectors);
+	poly.m_velocity = lge::vec2(5, 0);
 	poly.m_mass = 100;
 
 	vectors.clear();
 
-	for (double i = 0; i < lge::TWO_PI; i += lge::TWO_PI / 9)
+	for (double i = 0; i < lge::TWO_PI; i += lge::TWO_PI / 5)
 	{
 		vectors.push_back(lge::vec2(cos(i), sin(i)));
 	}
 
-	lge::Polygon poly2(lge::vec2(400,400), lge::QUARTER_PI, lge::vec2(100, 100), vectors);
+	lge::Polygon poly2(lge::vec2(400,400), lge::QUARTER_PI / 2, lge::mat2(50,0,0,50), vectors);
 	//poly2.m_velocity = lge::vec2(-5, 0);
 	//poly2.m_isStatic = true;
 
@@ -129,9 +98,10 @@ int main()
 		mainRenderer.stroke(lge::vec4(0, 255, 255, 255));
 		mainRenderer.fill(lge::vec4(255, 0, 255, 255));
 
-		//poly.m_acceleration = (mouse - poly.m_position).normalize() * lge::map(lge::dist(mouse.x,mouse.y,poly.m_position.x, poly.m_position.y), 0, 100, 0.01,0.1);
+		//poly2.m_acceleration = (mouse - poly2.m_position).normalize() * lge::map(lge::dist(mouse.x,mouse.y,poly2.m_position.x, poly2.m_position.y), 0, 100, 0.01,0.1);
 
-		poly.m_position = mouse;
+		//poly.m_position = mouse;
+		//poly2.m_position = mouse;
 		//poly.m_angle = lge::map(mouse.x, -1, 1, 0, lge::TWO_PI);
 
 		poly.update();
@@ -151,6 +121,9 @@ int main()
 			m = lge::PolygonCollisionSatManifold(&poly, &walls[i]);
 			if (m.collided) lge::ResolveCollision(m,&poly, &walls[i]);
 
+			lge::Manifold m2 = lge::PolygonCollisionSatManifold(&poly2, &walls[i]);
+			if (m2.collided) lge::ResolveCollision(m2, &poly2, &walls[i]);
+
 		}
 
 		//lge::PolygonCollisonSat(&poly, &poly2);
@@ -168,6 +141,17 @@ int main()
 		for (unsigned int i = 0; i < walls.size(); i++)
 		{
 			mainRenderer.renderVec2List(walls[i].m_transformedPoints);
+		}
+
+		std::vector<lge::vec2> normals = lge::getNormals(&poly2);
+
+		
+		for (auto i = 0; i < normals.size(); i++)
+		{
+			lge::vec2 normal = normals[i];
+			//normal *= 60;
+			normal += poly2.m_position;
+			mainRenderer.line(poly2.m_position.x, poly2.m_position.y, normal.x, normal.y);
 		}
 
 		if (m.collided)
@@ -198,6 +182,14 @@ int main()
 			mainRenderer.stroke(lge::vec4(255, 0, 0, 255));
 			mainRenderer.line(p1.x, p1.y, p2.x, p2.y);
 			mainRenderer.line(p3.x, p3.y, p4.x, p4.y);
+
+			lge::vec2 normal = (m.normal[0] + m.normal[1]) * 5;
+			normal += poly.m_position;
+
+			std::cout << m.normal[0].normalize() << " " << m.normal[1].normalize() << " " << lge::dotVec2(m.normal[0].normalize(), m.normal[1].normalize()) << "\n";
+			
+
+			mainRenderer.line(poly.m_position.x, poly.m_position.y, normal.x, normal.y);
 
 		}
 

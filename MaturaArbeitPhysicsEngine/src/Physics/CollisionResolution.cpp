@@ -4,8 +4,25 @@ void lge::ResolveCollision(Manifold m, Polygon* poly1, Polygon* poly2)
 {
 	vec2 rv = poly2->m_velocity - poly1->m_velocity;
 
+	std::cout << m.normal[0] << " " << m.normal[1] << "\n";
+
 	vec2 normal = m.normal[0] + m.normal[1];
+	std::cout << "Normal avg: " << normal << "\n";
 	normal /= 2;
+	normal = normal.normalize();
+	double dotNormal = lge::dotVec2(m.normal[0].normalize(), m.normal[1].normalize());
+	if (dotNormal < 0.1 && dotNormal > -0.1)
+	{
+		std::cout << "using Normal 1 "<< m.normal[1] << " " << m.normal[0] <<"\n";
+		normal = m.normal[1].normalize();
+		if (normal.lenSqr() == 0)
+		{
+			std::cout << "using normal 0\n";
+			normal = m.normal[0];
+		}
+	}
+
+	//std::cout << rv << " " << normal << "\n";
 
 	double velAlongNormal = lge::dotVec2(rv, normal);
 	//std::cout << velAlongNormal << "\n";

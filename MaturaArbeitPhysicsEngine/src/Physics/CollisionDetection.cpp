@@ -146,7 +146,7 @@ void lge::PolygonCollisionDiagonalsApply(Polygon* poly1, Polygon* poly2)
 				}
 			}
 
-			poly1->m_position += displacement * poly1->m_scale * (shape == 1 ? -1 : 1);
+			poly1->m_position += displacement * vec2(poly1->m_scale.x.x, poly1->m_scale.y.y) * (shape == 1 ? -1 : 1);
 			poly1->update();
 		}
 	}
@@ -165,6 +165,23 @@ std::vector<lge::vec2> lge::getNormals(Polygon* poly)
 		vec2 edge = points[j] - points[i];
 		normals.push_back(vec2(-edge.y, edge.x));
 	}
+
+	return normals;
+}
+
+std::vector<lge::vec2> lge::getNormalsTrigonometry(Polygon* poly)
+{
+	std::vector<vec2> normals;
+
+	double increment = lge::TWO_PI / poly->m_transformedPoints.size();
+	for (double i = 0; i < lge::TWO_PI; i += increment)
+	{
+		vec2 normal(cos(i + (increment / 2) + poly->m_angle), sin(i + (increment / 2) + poly->m_angle));
+		normal += poly->m_position;
+		normals.push_back(normal);
+	}
+
+	//normals = multVec2ToVec2List(normals, vec2(poly->m_scale.x.x, poly->m_scale.y.y));
 
 	return normals;
 }
@@ -293,6 +310,8 @@ lge::Manifold lge::PolygonCollisionSatManifold(Polygon* poly1, Polygon* poly2)
 	if (!separated)
 	{
 		//std::cout << "colliding\n";
+
+		std::cout << minNormal1.normalize() << " " << minNormal2.normalize() << "\n";
 		double minPenetration = minPenetration1 < minPenetration2 ? minPenetration1 : minPenetration2;
 		m.penetration = minPenetration;
 		m.normal[0] = (minNormal1).normalize() * -1;// - poly1->m_position).normalize();

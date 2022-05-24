@@ -11,6 +11,7 @@ namespace lge
 
 
 	std::vector<vec2> getNormals(Polygon* poly);
+	std::vector<vec2> getNormalsTrigonometry(Polygon* poly);
 	vec4 getMinMax(std::vector<vec2> points, vec2 normal);
 	bool PolygonCollisonSat(Polygon* poly1, Polygon* poly2);
 

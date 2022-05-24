@@ -20,7 +20,7 @@ namespace lge
 		std::vector<vec2> m_transformedEdge;*/
 
 		vec2 m_position;
-		vec2 m_scale;
+		lge::mat2 m_scale;
 
 		double m_angle;
 
@@ -28,7 +28,7 @@ namespace lge
 		double torque = 0;
 
 		vec2 m_acceleration;
-		vec2 m_velocity;
+		vec2 m_velocity = vec2();
 
 		double m_restitution = 1;
 		double m_mass = 100;
@@ -37,7 +37,7 @@ namespace lge
 
 		Polygon() {}
 
-		Polygon(vec2 position, double angle, vec2 scale, std::vector<vec2> originalPoints)
+		Polygon(vec2 position, double angle, lge::mat2 scale, std::vector<vec2> originalPoints)
 		{
 			m_position = position;
 			m_angle = angle;
@@ -74,7 +74,7 @@ namespace lge
 			torque *= 0;
 
 			mat2 rotation(m_angle);
-			mat2 scaling(m_scale.x, 0, 0, m_scale.y);
+			mat2 scaling = m_scale;
 			mat2 transform = rotation * scaling;
 			m_transformedPoints = m_originalPoints;
 			m_transformedPoints = applyMat2ToVec2List(m_transformedPoints,transform);
