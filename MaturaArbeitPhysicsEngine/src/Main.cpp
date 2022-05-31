@@ -34,11 +34,11 @@ int main()
 		squareEdges.push_back(lge::vec2(cos(i), sin(i)));
 	}
 
-	walls.push_back(lge::Polygon(lge::vec2(0,400), lge::QUARTER_PI, lge::mat2(400,380,380,400), squareEdges));
-	walls.push_back(lge::Polygon(lge::vec2(800,400), lge::QUARTER_PI, lge::mat2(400,380,380,400), squareEdges));
-	walls.push_back(lge::Polygon(lge::vec2(400,0), lge::QUARTER_PI, lge::mat2(380,-400,-400,380), squareEdges));
-	walls.push_back(lge::Polygon(lge::vec2(400,800), lge::QUARTER_PI, lge::mat2(380,-400,-400,380), squareEdges));
-	
+	walls.push_back(lge::Polygon(lge::vec2(0, 400), lge::QUARTER_PI, lge::mat2(400, 380, 380, 400), squareEdges));
+	walls.push_back(lge::Polygon(lge::vec2(800, 400), lge::QUARTER_PI, lge::mat2(400, 380, 380, 400), squareEdges));
+	walls.push_back(lge::Polygon(lge::vec2(400, 0), lge::QUARTER_PI, lge::mat2(380, -400, -400, 380), squareEdges));
+	walls.push_back(lge::Polygon(lge::vec2(400, 800), lge::QUARTER_PI, lge::mat2(380, -400, -400, 380), squareEdges));
+
 
 	for (unsigned int i = 0; i < walls.size(); i++)
 	{
@@ -55,19 +55,19 @@ int main()
 		vectors.push_back(lge::vec2(cos(i), sin(i)));
 	}
 
-	lge::Polygon poly(lge::vec2(200,400), lge::QUARTER_PI, lge::mat2(50,0,0,50), vectors);
+	lge::Polygon poly(lge::vec2(200, 400), lge::QUARTER_PI, lge::mat2(50, 0, 0, 50), vectors);
 	poly.m_velocity = lge::vec2(5, 0);
 	poly.m_mass = 100;
 
 	vectors.clear();
 
-	for (double i = 0; i < lge::TWO_PI; i += lge::TWO_PI / 5)
+	for (double i = 0; i < lge::TWO_PI; i += lge::TWO_PI / 4)
 	{
 		vectors.push_back(lge::vec2(cos(i), sin(i)));
 	}
 
-	lge::Polygon poly2(lge::vec2(400,400), lge::QUARTER_PI / 2, lge::mat2(50,0,0,50), vectors);
-	//poly2.m_velocity = lge::vec2(-5, 0);
+	lge::Polygon poly2(lge::vec2(400, 400), lge::QUARTER_PI/2, lge::mat2(50, 0, 0, 50), vectors);
+	poly2.m_velocity = lge::vec2(-5, 0);
 	//poly2.m_isStatic = true;
 
 	mainRenderer.circleMode(CENTER);
@@ -79,9 +79,13 @@ int main()
 
 	lge::vec2 testVec;
 
+	bool keyPressed = false;
+
 	while (mainRenderer.isRunning() && i < 1000)
 	{
 		std::vector<sf::Event> events = mainRenderer.getEvents();
+
+		keyPressed = false;
 
 		for (auto& event : events)
 		{
@@ -90,6 +94,11 @@ int main()
 				mainRenderer.~Renderer();
 
 				return 0;
+			}
+
+			if (event.type == sf::Event::KeyPressed)
+			{
+				keyPressed = true;
 			}
 		}
 
@@ -103,15 +112,21 @@ int main()
 		//poly.m_position = mouse;
 		//poly2.m_position = mouse;
 		//poly.m_angle = lge::map(mouse.x, -1, 1, 0, lge::TWO_PI);
+		if (keyPressed)
+		{
+			poly.update();
+			//poly.updateNormals();
+			poly2.update();
+			//poly2.updateNormals();
+		}
+		mainRenderer.clear(lge::vec4(0, 0, 0, 255));
 
-		poly.update();
-		//poly.updateNormals();
-		poly2.update();
-		//poly2.updateNormals();
 
 		lge::Manifold manifold = lge::PolygonCollisionSatManifold(&poly, &poly2);
 		//std::cout << manifold.collided << "\n";
 		if (manifold.collided) lge::ResolveCollision(manifold, &poly, &poly2);
+
+		//std::cout << poly2.m_angularVelocity << "\n";
 
 		lge::Manifold m;
 
@@ -119,20 +134,25 @@ int main()
 		{
 			//walls[i].update();
 			m = lge::PolygonCollisionSatManifold(&poly, &walls[i]);
-			if (m.collided) lge::ResolveCollision(m,&poly, &walls[i]);
+			if (m.collided) lge::ResolveCollision(m, &poly, &walls[i]);
 
 			lge::Manifold m2 = lge::PolygonCollisionSatManifold(&poly2, &walls[i]);
 			if (m2.collided) lge::ResolveCollision(m2, &poly2, &walls[i]);
 
+			lge::vec2 n = (m2.normal[0] + m2.normal[1]) / 2;
+			n *= 20;
+			n += poly2.m_position;
+			mainRenderer.stroke(lge::vec4(255, 0, 255, 255));
+			mainRenderer.line(poly2.m_position.x, poly2.m_position.y, n.x, n.y);
+
 		}
 
 		//lge::PolygonCollisonSat(&poly, &poly2);
-		
+
 		//if (manifold.collided) lge::ResolveCollision(manifold ,&poly2, &poly);
 
 		//std::cout << poly2.m_velocity << "\n";
 
-		mainRenderer.clear(lge::vec4(0, 0, 0, 255));
 
 		mainRenderer.renderVec2List(poly.m_transformedPoints);
 		mainRenderer.renderVec2List(poly2.m_transformedPoints);
@@ -145,23 +165,25 @@ int main()
 
 		std::vector<lge::vec2> normals = lge::getNormals(&poly2);
 
-		
+
 		for (auto i = 0; i < normals.size(); i++)
 		{
 			lge::vec2 normal = normals[i];
 			//normal *= 60;
 			normal += poly2.m_position;
-			mainRenderer.line(poly2.m_position.x, poly2.m_position.y, normal.x, normal.y);
+			//mainRenderer.line(poly2.m_position.x, poly2.m_position.y, normal.x, normal.y);
 		}
 
-		if (m.collided)
+		
+
+		if (manifold.collided)
 		{
 			mainRenderer.stroke(lge::vec4(255, 0, 0, 255));
-
+			/*
 			lge::vec2 point1 = poly.m_transformedPoints[m.indexP1[0]];
 			lge::vec2 point2 = poly.m_transformedPoints[m.indexP1[1]];
-			lge::vec2 point3 = walls[0].m_transformedPoints[m.indexP2[0]];
-			lge::vec2 point4 = walls[0].m_transformedPoints[m.indexP2[1]];
+			lge::vec2 point3 = poly2.m_transformedPoints[m.indexP2[0]];
+			lge::vec2 point4 = poly2.m_transformedPoints[m.indexP2[1]];
 
 			mainRenderer.circle(point1.x, point1.y, 4);
 			mainRenderer.circle(point3.x, point3.y, 4);
@@ -176,24 +198,28 @@ int main()
 
 			lge::vec2 p1 = poly.m_transformedPoints[(index1) % poly.m_transformedPoints.size()];
 			lge::vec2 p2 = poly.m_transformedPoints[(index1 + 1) % poly.m_transformedPoints.size()];
-			lge::vec2 p3 = walls[0].m_transformedPoints[(index2) % walls[0].m_transformedPoints.size()];
-			lge::vec2 p4 = walls[0].m_transformedPoints[(index2 + 1) % walls[0].m_transformedPoints.size()];
+			lge::vec2 p3 = poly2.m_transformedPoints[(index2) % poly2.m_transformedPoints.size()];
+			lge::vec2 p4 = poly2.m_transformedPoints[(index2 + 1) % poly2.m_transformedPoints.size()];
 
 			mainRenderer.stroke(lge::vec4(255, 0, 0, 255));
 			mainRenderer.line(p1.x, p1.y, p2.x, p2.y);
 			mainRenderer.line(p3.x, p3.y, p4.x, p4.y);
-
-			lge::vec2 normal = (m.normal[0] + m.normal[1]) * 5;
+			*/
+			lge::vec2 normal = (manifold.normal[0].normalize()) * 50;
 			normal += poly.m_position;
 
-			std::cout << m.normal[0].normalize() << " " << m.normal[1].normalize() << " " << lge::dotVec2(m.normal[0].normalize(), m.normal[1].normalize()) << "\n";
-			
+			std::cout << manifold.normal[0].normalize() << " " << manifold.normal[1].normalize() << " " << lge::dotVec2(manifold.normal[0].normalize(), manifold.normal[1].normalize()) << "\n";
 
 			mainRenderer.line(poly.m_position.x, poly.m_position.y, normal.x, normal.y);
+			
+			lge::vec2 normal2 = manifold.normal[1].normalize() * 50;
+			normal2 += poly2.m_position;
+			mainRenderer.stroke(lge::vec4(255, 255, 0, 255));
+			mainRenderer.line(poly2.m_position.x, poly2.m_position.y, normal.x, normal.y);
 
 		}
 
-		
+
 
 		//if (manifold.collided) mainRenderer.line(poly.m_position.x, poly.m_position.y, manifold.normal[0].x,manifold.normal[0].y);
 		//if (manifold.collided) mainRenderer.line(poly2.m_position.x, poly2.m_position.y, manifold.normal[1].x, manifold.normal[1].y);

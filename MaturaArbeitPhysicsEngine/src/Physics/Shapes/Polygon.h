@@ -32,6 +32,7 @@ namespace lge
 
 		double m_restitution = 1;
 		double m_mass = 100;
+		double m_inertia = 10000;
 
 		bool m_isStatic = false;
 
@@ -53,6 +54,7 @@ namespace lge
 				m_originalNormals.push_back(vec2(-edge.y, edge.x));
 			}
 			*/
+			update();
 		}
 		/*
 		void updateNormals()

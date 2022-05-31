@@ -152,6 +152,36 @@ void lge::PolygonCollisionDiagonalsApply(Polygon* poly1, Polygon* poly2)
 	}
 }
 
+lge::vec2 lge::LineLineIntersection(vec2 p1, vec2 p2, vec2 p3, vec2 p4)
+{
+	float x1 = p1.x;
+	float y1 = p1.y;
+	float x2 = p2.x;
+	float y2 = p2.y;
+
+	float x3 = p3.x;
+	float y3 = p3.y;
+	float x4 = p4.x;
+	float y4 = p4.y;
+
+	float den = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4);
+	if (den == 0) {
+		return vec2();
+	}
+
+	float t = ((x1 - x3) * (y3 - y4) - (y1 - y3) * (x3 - x4)) / den;
+	float u = -((x1 - x2) * (y1 - y3) - (y1 - y2) * (x1 - x3)) / den;
+	if (t > 0 && t < 1 && u > 0) {
+		vec2 pt;
+		pt.x = x1 + t * (x2 - x1);
+		pt.y = y1 + t * (y2 - y1);
+		return pt;
+	}
+	else {
+		return vec2();
+	}
+}
+
 
 
 std::vector<lge::vec2> lge::getNormals(Polygon* poly)
@@ -184,6 +214,25 @@ std::vector<lge::vec2> lge::getNormalsTrigonometry(Polygon* poly)
 	//normals = multVec2ToVec2List(normals, vec2(poly->m_scale.x.x, poly->m_scale.y.y));
 
 	return normals;
+}
+
+std::vector<lge::vec2> lge::getContactPoints(Polygon* poly1, Polygon* poly2)
+{
+	std::vector<vec2> contactPoints;
+
+	int size1 = poly1->m_transformedPoints.size();
+	int size2 = poly2->m_transformedPoints.size();
+
+	for (unsigned int i = 0; i < size1; i++)
+	{
+		for (unsigned int j = 0; j < size2; j++)
+		{
+			vec2 contact = LineLineIntersection(poly1->m_transformedPoints[i], poly1->m_transformedPoints[(i + 1) % size1], poly2->m_transformedPoints[j], poly2->m_transformedPoints[(j + 1) % size2]);
+			if (contact.lenSqr() != 0) contactPoints.push_back(contact);
+		}
+	}
+
+	return contactPoints;
 }
 
 lge::vec4 lge::getMinMax(std::vector<vec2> points, vec2 normal)
@@ -311,7 +360,7 @@ lge::Manifold lge::PolygonCollisionSatManifold(Polygon* poly1, Polygon* poly2)
 	{
 		//std::cout << "colliding\n";
 
-		std::cout << minNormal1.normalize() << " " << minNormal2.normalize() << "\n";
+		//std::cout << minNormal1.normalize() << " " << minNormal2.normalize() << "\n";
 		double minPenetration = minPenetration1 < minPenetration2 ? minPenetration1 : minPenetration2;
 		m.penetration = minPenetration;
 		m.normal[0] = (minNormal1).normalize() * -1;// - poly1->m_position).normalize();
