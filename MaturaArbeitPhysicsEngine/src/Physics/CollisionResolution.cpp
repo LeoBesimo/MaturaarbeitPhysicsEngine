@@ -11,7 +11,7 @@ void lge::ResolveCollision(Manifold m, Polygon* poly1, Polygon* poly2)
 	//std::cout << "Normal avg: " << normal << "\n";
 	normal = normal.normalize();
 	double dotNormal = lge::dotVec2(m.normal[0].normalize(), m.normal[1].normalize());
-	//std::cout << dotNormal << "\n";
+	std::cout << dotNormal << "\n";
 	if ((dotNormal < 0.01 && dotNormal > -0.01) || dotNormal == 1)
 	{
 		dotNormal = 0;
@@ -52,11 +52,10 @@ void lge::ResolveCollision(Manifold m, Polygon* poly1, Polygon* poly2)
 
 	vec2 impulse = (normal * j);
 
-	//std::cout << impulse;
+	std::cout << impulse << "\n";
 
-
-	poly1->m_velocity -= (impulse * (1 / poly1->m_mass) * !poly1->m_isStatic);// + (impulse * (1 / poly2->m_mass) * poly2->m_isStatic);
-	poly2->m_velocity += (impulse * (1 / poly2->m_mass) * !poly2->m_isStatic);// - (impulse * (1 / poly1->m_mass) * poly1->m_isStatic);
+	poly1->m_velocity -= (impulse * (1 / poly1->m_mass) * !poly1->m_isStatic);// - (impulse * (1 / poly2->m_mass) * poly2->m_isStatic);
+	poly2->m_velocity += (impulse * (1 / poly2->m_mass) * !poly2->m_isStatic);// + (impulse * (1 / poly1->m_mass) * poly1->m_isStatic);
 
 	for (unsigned int j = 0; j < contactPoints.size(); j++)
 	{
