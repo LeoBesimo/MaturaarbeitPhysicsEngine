@@ -147,7 +147,7 @@ int main()
 
 			for (auto i = 0; i < polys.size(); i++)
 			{
-				polys[i].m_velocity += lge::vec2(0, 0.8);
+				//polys[i].m_velocity += lge::vec2(0, 0.8);
 				polys[i].update();
 
 				lge::Manifold m;
