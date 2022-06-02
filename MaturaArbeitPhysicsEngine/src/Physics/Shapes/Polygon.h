@@ -32,7 +32,7 @@ namespace lge
 
 		double m_restitution = 1;
 		double m_mass = 100;
-		double m_inertia = 10000;
+		double m_inertia = 100;
 
 		bool m_isStatic = false;
 
@@ -54,7 +54,7 @@ namespace lge
 				m_originalNormals.push_back(vec2(-edge.y, edge.x));
 			}
 			*/
-			update();
+			updateSides();
 		}
 		/*
 		void updateNormals()
@@ -62,9 +62,18 @@ namespace lge
 			for (unsigned int i = 0; i < m_transformedEdge.size(); i++);
 		}*/
 
+		void updateSides()
+		{
+			mat2 rotation(m_angle);
+			mat2 scaling = m_scale;
+			mat2 transform = rotation * scaling;
+			m_transformedPoints = m_originalPoints;
+			m_transformedPoints = applyMat2ToVec2List(m_transformedPoints, transform);
+			addVec2ToVec2List(m_transformedPoints, m_position);
+		}
+
 		void update()
 		{
-
 			m_velocity += m_acceleration;
 			m_acceleration *= !m_isStatic;
 			m_position += m_velocity;
@@ -75,12 +84,7 @@ namespace lge
 			m_angle += m_angularVelocity;
 			torque *= 0;
 
-			mat2 rotation(m_angle);
-			mat2 scaling = m_scale;
-			mat2 transform = rotation * scaling;
-			m_transformedPoints = m_originalPoints;
-			m_transformedPoints = applyMat2ToVec2List(m_transformedPoints,transform);
-			addVec2ToVec2List(m_transformedPoints,m_position);
+			updateSides();
 			/*
 			m_transformedEdge = m_edge;
 			m_transformedEdge = applyMat2ToVec2List(m_transformedEdge, transform);

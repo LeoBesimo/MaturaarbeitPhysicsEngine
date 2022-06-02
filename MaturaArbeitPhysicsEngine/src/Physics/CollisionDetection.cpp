@@ -362,6 +362,10 @@ lge::Manifold lge::PolygonCollisionSatManifold(Polygon* poly1, Polygon* poly2)
 
 		//std::cout << minNormal1.normalize() << " " << minNormal2.normalize() << "\n";
 		double minPenetration = minPenetration1 < minPenetration2 ? minPenetration1 : minPenetration2;
+
+		vec2 normalAvg = (minNormal1 + minNormal2) / 2;
+		minPenetration = minPenetration / minNormal1.len() / minNormal2.len();//(normalAvg.normalize() * minPenetration).len();
+		std::cout << minPenetration << "\n";
 		m.penetration = minPenetration;
 		m.normal[0] = (minNormal1).normalize() * -1;// - poly1->m_position).normalize();
 		m.normal[1] = (minNormal2).normalize() * -1;// - poly2->m_position).normalize();
