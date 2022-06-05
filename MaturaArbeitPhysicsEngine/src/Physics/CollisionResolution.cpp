@@ -59,7 +59,7 @@ void lge::ResolveCollision(Manifold m, Polygon* poly1, Polygon* poly2)
 
 	poly1->m_velocity -= (impulse * (1 / poly1->m_mass) * !poly1->m_isStatic);// - (impulse * (1 / poly2->m_mass) * poly2->m_isStatic);
 	poly2->m_velocity += (impulse * (1 / poly2->m_mass) * !poly2->m_isStatic);// + (impulse * (1 / poly1->m_mass) * poly1->m_isStatic);
-	PositionalCorrection(m, poly1, poly2);
+	//PositionalCorrection(m, poly1, poly2);
 	//std::cout << m.penetration << "\n";
 	for (unsigned int j = 0; j < contactPoints.size(); j++)
 	{
@@ -75,7 +75,42 @@ void lge::ResolveCollision(Manifold m, Polygon* poly1, Polygon* poly2)
 void lge::ResolveCollisionImproved(Manifold m, Polygon* poly1, Polygon* poly2)
 {
 	std::vector<vec2> contactPoints = getContactPoints(poly1, poly2);
-	for (auto i = 0; i < contactPoints.size(); i++)
+	for (unsigned int i = 0; i < 2; i++)
+	{
+		vec2 normal = m.normal[i].normalize();
+		if (poly1->m_isStatic) normal = m.normal[0].normalize();
+		if (poly2->m_isStatic) normal = m.normal[1].normalize();
+
+		for (unsigned int k = 0; k < contactPoints.size(); k++)
+		{
+			vec2 ra = (contactPoints[k] - poly1->m_position).normalize();
+			vec2 rb = (contactPoints[k] - poly2->m_position).normalize();
+
+			vec2 rv = (poly2->m_velocity + crossVec2Scalar(poly2->m_angularVelocity, rb) - poly1->m_velocity - crossVec2Scalar(poly1->m_angularVelocity, ra));
+			double contactVel = dotVec2(rv, normal);
+			if (contactVel > 0) return;
+			double raCrossN = crossVec2(ra, normal);
+			double rbCrossN = crossVec2(rb, normal);
+			double invMassSum = (1 / poly1->m_mass) + (1 / poly2->m_mass) + (raCrossN * (1 / poly1->m_inertia)) + (rbCrossN * (1 / poly2->m_inertia));
+
+			double e = min(poly1->m_restitution, poly2->m_restitution);
+
+			double j = -(1.0f + e) * contactVel;
+			j /= invMassSum;
+			j /= contactPoints.size();
+
+			vec2 impulse = normal * j;
+			impulse = i == 0 ? impulse : -impulse;
+
+			poly1->m_velocity -= (impulse * (1 / poly1->m_mass) * !poly1->m_isStatic) + (impulse * (1 / poly2->m_mass) * poly2->m_isStatic);
+			poly2->m_velocity += (impulse * (1 / poly2->m_mass) * !poly2->m_isStatic) - (impulse * (1 / poly1->m_mass) * poly1->m_isStatic);
+
+			poly1->m_angularVelocity -= 1.0 / poly1->m_inertia * crossVec2(contactPoints[k], impulse) * !poly1->m_isStatic;
+			poly2->m_angularVelocity += 1.0 / poly2->m_inertia * crossVec2(contactPoints[k], impulse) * !poly2->m_isStatic;
+
+		}
+	}
+	/*for (auto i = 0; i < contactPoints.size(); i++)
 	{
 		vec2 ra = contactPoints[i] - poly1->m_position;
 		vec2 rb = contactPoints[i] - poly2->m_position;
@@ -117,6 +152,7 @@ void lge::ResolveCollisionImproved(Manifold m, Polygon* poly1, Polygon* poly2)
 		ApplyImpulseImproved(poly2, impulse, rb);
 		//PositionalCorrection(m, poly1, poly2);
 	}
+	*/
 }
 
 

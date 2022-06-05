@@ -50,7 +50,7 @@ int main()
 
 	std::vector<lge::vec2> vectors;
 
-	for (double i = 0; i < lge::TWO_PI; i += lge::TWO_PI / 32)
+	for (double i = 0; i < lge::TWO_PI; i += lge::TWO_PI / 3)
 	{
 		vectors.push_back(lge::vec2(cos(i), sin(i)));
 	}
@@ -80,8 +80,10 @@ int main()
 			vectors.push_back(lge::vec2(cos(j), sin(j)));
 		}
 		double scaleX = lge::randomDouble(10, 50);
+		double scaleX2 = lge::randomDouble(10, 50);
 		double scaleY = lge::randomDouble(10, 50);
-		poly = lge::Polygon(lge::vec2(lge::randomDouble(100, 700), lge::randomDouble(100, 700)), lge::randomDouble(0, lge::TWO_PI), lge::mat2(scaleX, 0, 0, scaleY), vectors);
+		double scaleY2 = lge::randomDouble(10, 50);
+		poly = lge::Polygon(lge::vec2(lge::randomDouble(100, 700), lge::randomDouble(100, 700)), lge::randomDouble(0, lge::TWO_PI), lge::mat2(scaleX, scaleY, scaleX2, scaleY2), vectors);
 		polys.push_back(poly);
 	}
 
@@ -128,7 +130,9 @@ int main()
 						vectors.push_back(lge::vec2(cos(j), sin(j)));
 					}
 					double scaleX = lge::randomDouble(10, 50);
+					double scaleX2 = lge::randomDouble(20, 50);
 					double scaleY = lge::randomDouble(10, 50);
+					double scaleY2 = lge::randomDouble(20, 50);
 					poly = lge::Polygon(mouse, lge::randomDouble(0, lge::TWO_PI), lge::mat2(scaleX, 0, 0, scaleY), vectors);
 					polys.push_back(poly);
 					//mousePressed = true;
@@ -158,7 +162,7 @@ int main()
 					m = lge::PolygonCollisionSatManifold(&polys[i], &polys[j]);
 					if (m.collided)
 					{
-						lge::ResolveCollision(m, &polys[i], &polys[j]);
+						lge::ResolveCollisionImproved(m, &polys[i], &polys[j]);
 
 						for (auto k = 0; k < 2; k++) {
 							lge::vec2 n = m.normal[k];
@@ -176,7 +180,7 @@ int main()
 					m = lge::PolygonCollisionSatManifold(&polys[i], &walls[j]);
 					if (m.collided)
 					{
-						lge::ResolveCollision(m, &polys[i], &walls[j]);
+						lge::ResolveCollisionImproved(m, &polys[i], &walls[j]);
 
 						for (auto k = 0; k < 2; k++) {
 							lge::vec2 n = m.normal[k];
