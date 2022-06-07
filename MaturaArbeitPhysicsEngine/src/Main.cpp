@@ -82,8 +82,10 @@ int main()
 			vectors.push_back(lge::vec2(cos(j), sin(j)));
 		}
 		double scaleX = lge::randomDouble(10, 50);
+		double scaleX2 = lge::randomDouble(10, 50);
 		double scaleY = lge::randomDouble(10, 50);
-		poly = lge::Polygon(lge::vec2(lge::randomDouble(100, 700), lge::randomDouble(100, 700)), lge::randomDouble(0, lge::TWO_PI), lge::mat2(scaleX, 0, 0, scaleY), vectors);
+		double scaleY2 = lge::randomDouble(10, 50);
+		poly = lge::Polygon(lge::vec2(lge::randomDouble(100, 700), lge::randomDouble(100, 700)), lge::randomDouble(0, lge::TWO_PI), lge::mat2(scaleX, scaleY, scaleX2, scaleY2), vectors);
 		polys.push_back(poly);
 	}
 
@@ -130,7 +132,9 @@ int main()
 						vectors.push_back(lge::vec2(cos(j), sin(j)));
 					}
 					double scaleX = lge::randomDouble(10, 50);
+					double scaleX2 = lge::randomDouble(20, 50);
 					double scaleY = lge::randomDouble(10, 50);
+					double scaleY2 = lge::randomDouble(20, 50);
 					poly = lge::Polygon(mouse, lge::randomDouble(0, lge::TWO_PI), lge::mat2(scaleX, 0, 0, scaleY), vectors);
 					polys.push_back(poly);
 					//mousePressed = true;

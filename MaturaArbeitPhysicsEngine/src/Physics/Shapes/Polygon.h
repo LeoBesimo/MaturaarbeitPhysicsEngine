@@ -30,9 +30,9 @@ namespace lge
 		vec2 m_acceleration;
 		vec2 m_velocity = vec2();
 
-		double m_restitution = 1.0;
+		double m_restitution = 1;
 		double m_mass = 100;
-		double m_inertia = 10000;
+		double m_inertia = 100;
 
 		bool m_isStatic = false;
 
