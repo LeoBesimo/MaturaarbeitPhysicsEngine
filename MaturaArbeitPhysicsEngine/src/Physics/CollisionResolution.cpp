@@ -53,7 +53,7 @@ void lge::ResolveCollision(Manifold m, Polygon* poly1, Polygon* poly2)
 	//std::cout << j << "\n";
 	j /= ((1 / poly1->m_mass) + (1 / poly2->m_mass));// + (1 / poly1->m_inertia) + (1 / poly2->m_inertia));
 
-	vec2 impulse = (normal * j);
+	vec2 impulse = normal * j;
 
 	//std::cout << impulse << "\n";
 
@@ -77,8 +77,8 @@ void lge::ResolveCollisionImproved(Manifold m, Polygon* poly1, Polygon* poly2)
 	std::vector<vec2> contactPoints = getContactPoints(poly1, poly2);
 	for (auto i = 0; i < contactPoints.size(); i++)
 	{
-		vec2 ra = contactPoints[i] - poly1->m_position;
-		vec2 rb = contactPoints[i] - poly2->m_position;
+		vec2 ra = (contactPoints[i] - poly1->m_position).normalize();
+		vec2 rb = (contactPoints[i] - poly2->m_position).normalize();
 
 		vec2 rv = poly2->m_velocity + crossVec2Scalar(poly2->m_angularVelocity, rb) - poly1->m_velocity - crossVec2Scalar(poly1->m_angularVelocity, ra);
 
@@ -112,9 +112,15 @@ void lge::ResolveCollisionImproved(Manifold m, Polygon* poly1, Polygon* poly2)
 		j /= contactPoints.size();
 
 		vec2 impulse = normal * j;
-		std::cout << "Normal: " << normal << " J: " << j << "\n";
-		ApplyImpulseImproved(poly1, -impulse, ra);
-		ApplyImpulseImproved(poly2, impulse, rb);
+		std::cout << "ra: " << ra << " rb: " << rb << " impulse: " << impulse << " crossVec2(ra,impulse): " << crossVec2(ra,impulse)  << "\n";
+		
+		poly1->m_velocity -= impulse * 1 / poly1->m_mass * !poly1->m_isStatic;
+		poly2->m_velocity += impulse * 1 / poly2->m_mass * !poly2->m_isStatic;
+		
+		poly1->m_angularVelocity -= crossVec2(ra, impulse) * (1.0 / poly1->m_inertia) * !poly1->m_isStatic;
+		poly2->m_angularVelocity += crossVec2(rb, impulse) * (1.0 / poly2->m_inertia) * !poly2->m_isStatic;
+		//ApplyImpulseImproved(poly1, -impulse, contactPoints[i].normalize());
+		//ApplyImpulseImproved(poly2, impulse, contactPoints[i].normalize());
 		//PositionalCorrection(m, poly1, poly2);
 	}
 }
@@ -165,6 +171,6 @@ void lge::ApplyImpulse(Polygon* poly, vec2 impulse, std::vector<vec2> contactPoi
 
 void lge::ApplyImpulseImproved(Polygon* poly, vec2 impulse, vec2 contactPoint)
 {
-	poly->m_velocity += impulse * (1 / poly->m_mass);
-	poly->m_velocity += (1 / poly->m_inertia) * crossVec2(contactPoint, impulse);
+	poly->m_velocity += impulse * (1 / poly->m_mass) * !poly->m_isStatic;
+	poly->m_velocity += (1 / poly->m_inertia) * crossVec2(contactPoint, impulse) * !poly->m_isStatic;
 }

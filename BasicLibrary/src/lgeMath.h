@@ -59,7 +59,7 @@ namespace lge
 	}
 	double crossVec2(vec2 a, vec2 b)
 	{
-		return a.x * b.y - a.y * b.x;
+		return (a.x * b.y) - (a.y * b.x);
 	}
 	vec2 crossVec2Scalar(double s, vec2 a)
 	{

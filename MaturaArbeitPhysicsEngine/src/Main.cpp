@@ -44,20 +44,22 @@ int main()
 	for (unsigned int i = 0; i < walls.size(); i++)
 	{
 		walls[i].m_isStatic = true;
-		walls[i].m_mass = FLT_MAX;
+		walls[i].m_restitution = 1.0f;
+		//walls[i].m_mass = FLT_MAX;
 		//walls[i].update();
 	}
 
 	std::vector<lge::vec2> vectors;
 
-	for (double i = 0; i < lge::TWO_PI; i += lge::TWO_PI / 32)
+	for (double i = 0; i < lge::TWO_PI; i += lge::TWO_PI / 3)
 	{
 		vectors.push_back(lge::vec2(cos(i), sin(i)));
 	}
 
 	lge::Polygon poly(lge::vec2(200, 400), -lge::QUARTER_PI / 2, lge::mat2(50, 0, 0, 50), vectors);
-	poly.m_velocity = lge::vec2(13, 0);
+	poly.m_velocity = lge::vec2(5, 0);
 	poly.m_mass = 100;
+	poly.m_angularVelocity = 0.01;
 
 	vectors.clear();
 	for (double i = 0; i < lge::TWO_PI; i += lge::TWO_PI / 6)
@@ -66,7 +68,7 @@ int main()
 	}
 
 	lge::Polygon poly2(lge::vec2(400, 400), 0, lge::mat2(50, 0, 0, 50), vectors);
-	poly2.m_velocity = lge::vec2(-13, 0);
+	poly2.m_velocity = lge::vec2(-5, 0);
 
 	polys.push_back(poly);
 	polys.push_back(poly2);
@@ -158,7 +160,7 @@ int main()
 					m = lge::PolygonCollisionSatManifold(&polys[i], &polys[j]);
 					if (m.collided)
 					{
-						lge::ResolveCollision(m, &polys[i], &polys[j]);
+						lge::ResolveCollisionImproved(m, &polys[i], &polys[j]);
 
 						for (auto k = 0; k < 2; k++) {
 							lge::vec2 n = m.normal[k];
@@ -176,7 +178,7 @@ int main()
 					m = lge::PolygonCollisionSatManifold(&polys[i], &walls[j]);
 					if (m.collided)
 					{
-						lge::ResolveCollision(m, &polys[i], &walls[j]);
+						lge::ResolveCollisionImproved(m, &polys[i], &walls[j]);
 
 						for (auto k = 0; k < 2; k++) {
 							lge::vec2 n = m.normal[k];
