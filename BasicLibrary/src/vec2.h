@@ -7,10 +7,10 @@ namespace lge
 
 	struct vec2
 	{
-		double x = 0;
-		double y = 0;
+		double x = 0.0;
+		double y = 0.0;
 
-		vec2(double x = 0, double y = 0) :
+		vec2(double x = 0.0, double y = 0.0) :
 			x(x), y(y)
 		{}
 

@@ -44,7 +44,7 @@ int main()
 	for (unsigned int i = 0; i < walls.size(); i++)
 	{
 		walls[i].m_isStatic = true;
-		walls[i].m_restitution = 1.0f;
+		//walls[i].m_restitution = 1.0f;
 		//walls[i].m_mass = FLT_MAX;
 		//walls[i].update();
 	}
@@ -68,7 +68,7 @@ int main()
 	}
 
 	lge::Polygon poly2(lge::vec2(400, 400), 0, lge::mat2(50, 0, 0, 50), vectors);
-	poly2.m_velocity = lge::vec2(-5, 0);
+	poly2.m_velocity = lge::vec2(-4, 0);
 
 	polys.push_back(poly);
 	polys.push_back(poly2);
