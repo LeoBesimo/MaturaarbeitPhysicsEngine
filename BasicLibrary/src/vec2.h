@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+//definition of a 2d vector object
+
 namespace lge
 {
 
@@ -111,17 +113,17 @@ namespace lge
 			y = y_;
 		}
 
-		double lenSqr(void) const
+		double lenSqr(void) const  //returns length squared of the vector
 		{
 			return x * x + y * y;
 		}
 
-		double len(void) const
+		double len(void) const  //returns lenght of vector
 		{
 			return std::sqrt(x * x + y * y);
 		}
 
-		vec2 normalize(void)
+		vec2 normalize(void)  // normalizes the vector
 		{
 			double l = len();
 
@@ -135,7 +137,7 @@ namespace lge
 			return *this;
 		}
 
-		void limit(double limit)
+		void limit(double limit)  //limits the vector to a certain length
 		{
 			if (limit > len()) {
 				normalize();

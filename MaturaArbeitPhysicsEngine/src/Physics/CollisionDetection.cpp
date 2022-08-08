@@ -171,7 +171,7 @@ lge::vec2 lge::LineLineIntersection(vec2 p1, vec2 p2, vec2 p3, vec2 p4)
 
 	float t = ((x1 - x3) * (y3 - y4) - (y1 - y3) * (x3 - x4)) / den;
 	float u = -((x1 - x2) * (y1 - y3) - (y1 - y2) * (x1 - x3)) / den;
-	if (t > 0 && t < 1 && u > 0) {
+	if (0 < t && t < 1 && 0 < u && u < 1) {
 		vec2 pt;
 		pt.x = x1 + t * (x2 - x1);
 		pt.y = y1 + t * (y2 - y1);

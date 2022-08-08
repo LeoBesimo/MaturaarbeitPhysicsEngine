@@ -1,5 +1,32 @@
 #include "CollisionResolution.h"
 
+void lge::ResolveCollisionWithoutRotation(Manifold m, Polygon* poly1, Polygon* poly2)
+{
+	if (poly1->m_isStatic + poly2->m_isStatic > 1) return;
+
+	vec2 rv = poly2->m_velocity - poly1->m_velocity;
+	vec2 normal = m.normal[0].normalize();
+
+	float velAlongNormal = dotVec2(rv, normal);
+
+	if (velAlongNormal > 0)
+	{
+		return; // objects are separating so no need for collision resolution;
+	}
+
+	double e = min(poly1->m_restitution, poly2->m_restitution);
+
+	double j = -(1 + e) * velAlongNormal;
+	j /= ((!poly1->m_isStatic / poly1->m_mass) + (!poly2->m_isStatic / poly2->m_mass));
+
+	
+
+	vec2 impulse = normal * j;
+
+	poly1->m_velocity -= (impulse * (1 / poly1->m_mass) * !poly1->m_isStatic);
+	poly2->m_velocity += (impulse * (1 / poly2->m_mass) * !poly2->m_isStatic);
+}
+
 void lge::ResolveCollision(Manifold m, Polygon* poly1, Polygon* poly2)
 {
 	vec2 rv = poly2->m_velocity - poly1->m_velocity;
@@ -143,135 +170,38 @@ void lge::ResolveCollisionImproved(Manifold m, Polygon* poly1, Polygon* poly2)
 void lge::ResolveCollisionImprovedNormalized(Manifold m, Polygon* poly1, Polygon* poly2)
 {
 	std::vector<vec2> contactPoints = getContactPoints(poly1, poly2);
-	//for (unsigned int i = 0; i < 2; i++)
-	//{
-		//vec2 normal = m.normal[i].normalize();
-		//if (poly1->m_isStatic) normal = m.normal[0].normalize();
-		//if (poly2->m_isStatic) normal = m.normal[1].normalize();
-
-	for (unsigned int k = 0; k < contactPoints.size(); k++)
+	lge::vec2 normal = m.normal[0].normalize();
+	
+	//vec2 vc = contactPoints[1] - contactPoints[0];
+	//vec2 normal(-vc.y, vc.x);
+	//normal = normal.normalize();
+	
+	for (auto i = 0; i < contactPoints.size(); i++)
 	{
-		vec2 ra = (contactPoints[k] - poly1->m_position).normalize();
-		vec2 rb = (contactPoints[k] - poly2->m_position).normalize();
+		vec2 ra = contactPoints[i] - poly1->m_position;
+		vec2 rb = contactPoints[i] - poly2->m_position;
+		vec2 va = poly1->m_velocity + crossVec2Scalar(poly1->m_angularVelocity, ra);
+		vec2 vb = poly2->m_velocity + crossVec2Scalar(poly2->m_angularVelocity, rb);
 
-		vec2 crossAngRB = crossVec2Scalar(poly2->m_angularVelocity, rb);
-		vec2 crossAngRA = crossVec2Scalar(poly1->m_angularVelocity, ra);
+		vec2 rv = vb - va;
 
-		crossAngRB = crossAngRB.lenSqr() < 0.01 ? lge::vec2() : crossAngRB;
-		crossAngRA = crossAngRA.lenSqr() < 0.01 ? lge::vec2() : crossAngRA;
-
-		vec2 totalVelA = poly1->m_velocity + crossAngRA;
-		vec2 totalVelB = poly2->m_velocity + crossAngRB;
-
-		//vec2 rv = vec2(totalVelB.x - totalVelA.x, totalVelB.y - totalVelA.y);
-
-		double rx = totalVelB.x - totalVelA.x;
-		double ry = totalVelB.y - totalVelA.y;
-
-		//std::cout << -4.0000000000000000 - 5.0000000000000000 << "\n";
-
-		//vec2 rv(rx, ry);
-		vec2 rv(0, 0);
-		rv.x = rx;
-		rv.y = ry;
-
-		vec2 normal = m.normal[0] + m.normal[1];
-		//std::cout << "Normal avg: " << normal << "\n";
-		normal = normal.normalize();
-		double dotNormal = lge::dotVec2(m.normal[0].normalize(), m.normal[1].normalize());
-		//std::cout << dotNormal << "\n";
-		if ((dotNormal < 0.01 && dotNormal > -0.01) || dotNormal == 1)
-		{
-			dotNormal = 0;
-
-			//std::cout << dotNormal << "\n";
-
-			//std::cout << "using Normal 1 "<< m.normal[1] << " " << m.normal[0] <<"\n";
-			normal = m.normal[1].normalize();
-			if (normal.lenSqr() == 0)
-			{
-				//std::cout << "using normal 0\n";
-				normal = m.normal[0];
-			}
-		}
-
-		if (poly1->m_isStatic) normal = m.normal[0].normalize();
-		if (poly2->m_isStatic) normal = m.normal[1].normalize();
-
-
-		std::cout << "rv: " << rv << "\n";
-		double contactVel = dotVec2(rv, normal);
-		if (contactVel > 0) return;
-		double raCrossN = crossVec2(ra, normal);
-		double rbCrossN = crossVec2(rb, normal);
-		double invMassSum = (1 / poly1->m_mass) + (1 / poly2->m_mass) + (raCrossN * raCrossN * (1 / poly1->m_inertia)) + (rbCrossN * rbCrossN * (1 / poly2->m_inertia));
+		if (dotVec2(rv, normal) > 0) return;
 
 		double e = min(poly1->m_restitution, poly2->m_restitution);
+		double invMass = 1 / poly1->m_mass + 1 / poly2->m_mass;
 
-		double j = -(1.0f + e) * contactVel;
-		j /= invMassSum;
-		j /= contactPoints.size();
+		double den1 = dotVec2(normal, crossVec2Scalar(crossVec2(va, normal) / poly1->m_inertia, va)); //dotVec2(normal, crossVec2Scalar(crossVec2(va, normal),va) / poly1->m_inertia);
+		double den2 = dotVec2(normal, crossVec2Scalar(crossVec2(vb, normal) / poly2->m_inertia, vb));
 
-		vec2 impulse = normal * j;
-		//impulse = i == 0 ? impulse : -impulse;
-		std::cout << "\n";
-		poly1->m_velocity -= (impulse * (1 / poly1->m_mass) * !poly1->m_isStatic);// + (impulse * (1 / poly2->m_mass) * poly2->m_isStatic);
-		poly2->m_velocity += (impulse * (1 / poly2->m_mass) * !poly2->m_isStatic);// -(impulse * (1 / poly1->m_mass) * poly1->m_isStatic);
+		double j = -(dotVec2(rv, normal) * (e + 1)) / (invMass + den1 + den2);//dotVec2(normal, crossVec2(va, normal) / poly1->m_inertia) + dotVec2(normal, crossVec2(vb, normal) / poly1->m_inertia));
 
-		poly1->m_angularVelocity += 1.0 / poly1->m_inertia * crossVec2(ra, -impulse) * !poly1->m_isStatic;
-		poly2->m_angularVelocity += 1.0 / poly2->m_inertia * crossVec2(rb, impulse) * !poly2->m_isStatic;
 
+		poly1->m_velocity += (normal * j) / poly1->m_mass;
+		poly2->m_velocity -= (normal * j) / poly2->m_mass;
+
+		poly1->m_angularVelocity += (crossVec2(va, normal * j) / poly1->m_inertia);
+		poly2->m_angularVelocity -= (crossVec2(vb, normal * j) / poly2->m_inertia);
 	}
-	//}
-	/*for (auto i = 0; i < contactPoints.size(); i++)
-	{
-		vec2 ra = (contactPoints[i] - poly1->m_position).normalize();
-		vec2 rb = (contactPoints[i] - poly2->m_position).normalize();
-
-		vec2 rv = poly2->m_velocity + crossVec2Scalar(poly2->m_angularVelocity, rb) - poly1->m_velocity - crossVec2Scalar(poly1->m_angularVelocity, ra);
-
-		vec2 normal = m.normal[0] + m.normal[1];
-		normal = normal / 2;
-		double dotNormal = lge::dotVec2(m.normal[0].normalize(), m.normal[1].normalize());
-		if ((dotNormal < 0.01 && dotNormal > -0.01) || dotNormal == 1)
-		{
-			dotNormal = 0;
-			normal = m.normal[1];
-			if (normal.lenSqr() == 0)
-			{
-				normal = m.normal[0];
-			}
-		}
-
-		if (poly1->m_isStatic) normal = m.normal[0];
-		if (poly2->m_isStatic) normal = m.normal[1];
-
-		double contactVel = dotVec2(rv, normal);
-		if (contactVel > 0) return;
-
-		double raCrossN = crossVec2(ra, normal);
-		double rbCrossN = crossVec2(rb, normal);
-		double invMassSum = (1 / poly1->m_mass) + (1 / poly2->m_mass) + (raCrossN * raCrossN * (1 / poly1->m_inertia)) + (rbCrossN * rbCrossN * (1 / poly2->m_inertia));
-
-		double e = min(poly1->m_restitution, poly2->m_restitution);
-
-		double j = -(1.0f + e) * contactVel;
-		j /= invMassSum;
-		j /= contactPoints.size();
-
-		vec2 impulse = normal * j;
-		std::cout << "ra: " << ra << " rb: " << rb << " impulse: " << impulse << " crossVec2(ra,impulse): " << crossVec2(ra,impulse)  << "\n";
-
-		poly1->m_velocity -= impulse * 1 / poly1->m_mass * !poly1->m_isStatic;
-		poly2->m_velocity += impulse * 1 / poly2->m_mass * !poly2->m_isStatic;
-
-		poly1->m_angularVelocity -= crossVec2(ra, impulse) * (1.0 / poly1->m_inertia) * !poly1->m_isStatic;
-		poly2->m_angularVelocity += crossVec2(rb, impulse) * (1.0 / poly2->m_inertia) * !poly2->m_isStatic;
-		//ApplyImpulseImproved(poly1, -impulse, contactPoints[i].normalize());
-		//ApplyImpulseImproved(poly2, impulse, contactPoints[i].normalize());
-		//PositionalCorrection(m, poly1, poly2);
-	}
-	*/
 }
 
 

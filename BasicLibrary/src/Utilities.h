@@ -10,13 +10,12 @@ namespace lge
 {
 	typedef std::string uuid;
 
-
 	static std::random_device              rd;
 	static std::mt19937                    gen(rd());
 	static std::uniform_int_distribution<> dis(0, 15);
 	static std::uniform_int_distribution<> dis2(8, 11);
 
-
+	//useful helper functions
 	inline int hash(int state);
 	inline double randomDouble(double min, double man);
 	inline vec2 random2D();
@@ -25,10 +24,10 @@ namespace lge
 	inline vec4 random4D();
 	inline double min(double a, double b);
 	inline double max(double a, double b);
-	inline double clamp(double a, double low, double hi);
+	inline double clamp(double a, double low, double hi);  //redundant with constrain
 	inline vec2 minVec2(vec2 a, vec2 b);
 	inline vec2 maxVec2(vec2 a, vec2 b);
-	inline vec2 clampVec2(vec2 a, vec2 min, vec2 max);
+	inline vec2 clampVec2(vec2 a, vec2 min, vec2 max);  //redundant with constrainVec2
 	inline vec2 absVec2(vec2 a);
 	inline double map(double val, double oldMin, double oldMax, double newMin, double newMax);
 	inline double constrain(double val, double min, double max);
@@ -38,6 +37,7 @@ namespace lge
 
 	inline uuid generateUUIDv4();
 
+	//applies specific things to a list of 2d vectors
 	inline std::vector<vec2> applyMat2ToVec2List(std::vector<vec2>& vectors, mat2 matrix);
 	inline std::vector<vec2> addVec2ToVec2List(std::vector<vec2>& vectors, vec2 toAdd);
 	inline std::vector<vec2> multVec2ToVec2List(std::vector<vec2>& vectors, vec2 toMult);

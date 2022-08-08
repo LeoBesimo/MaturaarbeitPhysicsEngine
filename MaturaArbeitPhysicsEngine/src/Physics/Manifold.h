@@ -2,6 +2,8 @@
 
 #include "components.h"
 
+//define structure to hold collision information
+
 namespace lge
 {
 	struct Manifold

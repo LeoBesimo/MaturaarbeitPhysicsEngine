@@ -31,8 +31,8 @@ namespace lge
 		vec2 m_velocity = vec2();
 
 		double m_restitution = 1;
-		double m_mass = 1;
-		double m_inertia = 1;
+		double m_mass = 100;
+		double m_inertia = 100;
 
 		bool m_isStatic = false;
 
@@ -74,6 +74,8 @@ namespace lge
 
 		void update()
 		{
+			if (m_isStatic) return;
+
 			m_velocity += m_acceleration;
 			m_acceleration *= !m_isStatic;
 			m_position += m_velocity;

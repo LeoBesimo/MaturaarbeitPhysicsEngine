@@ -9,6 +9,8 @@
 
 namespace lge
 {
+	//usefull constants for working with radians
+
 	const float QUARTER_PI = (float)0.78539816339;
 	const float HALF_PI = (float)1.570796326795;
 	const float PI = (float)3.14159265359;
