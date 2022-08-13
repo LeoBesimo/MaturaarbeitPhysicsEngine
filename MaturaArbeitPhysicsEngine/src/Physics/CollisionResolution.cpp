@@ -23,8 +23,8 @@ void lge::ResolveCollisionWithoutRotation(Manifold m, Polygon* poly1, Polygon* p
 
 	vec2 impulse = normal * j;
 
-	poly1->m_velocity -= (impulse * (1 / poly1->m_mass) * !poly1->m_isStatic);
-	poly2->m_velocity += (impulse * (1 / poly2->m_mass) * !poly2->m_isStatic);
+	poly1->m_velocity += (impulse * (1 / poly1->m_mass) * !poly1->m_isStatic) * (poly1->m_isStatic ? 1 : -1);
+	poly2->m_velocity += (impulse * (1 / poly2->m_mass) * !poly2->m_isStatic) * (poly2->m_isStatic ? -1 : 1);
 }
 
 void lge::ResolveCollision(Manifold m, Polygon* poly1, Polygon* poly2)
@@ -101,6 +101,9 @@ void lge::ResolveCollision(Manifold m, Polygon* poly1, Polygon* poly2)
 
 void lge::ResolveCollisionImproved(Manifold m, Polygon* poly1, Polygon* poly2)
 {
+
+	if (poly1->m_isStatic + poly2->m_isStatic > 1) return;
+
 	std::vector<vec2> contactPoints = getContactPoints(poly1, poly2);
 	//for (unsigned int i = 0; i < 2; i++)
 	//{
@@ -145,7 +148,7 @@ void lge::ResolveCollisionImproved(Manifold m, Polygon* poly1, Polygon* poly2)
 			if (contactVel > 0) return;
 			double raCrossN = crossVec2(ra, normal);
 			double rbCrossN = crossVec2(rb, normal);
-			double invMassSum = (1 / poly1->m_mass) + (1 / poly2->m_mass) + (raCrossN * raCrossN * (1 / poly1->m_inertia)) + (rbCrossN * rbCrossN * (1 / poly2->m_inertia));
+			double invMassSum = (!poly1->m_isStatic / poly1->m_mass) + (!poly2->m_isStatic / poly2->m_mass) + (raCrossN * raCrossN * (!poly1->m_isStatic / poly1->m_inertia)) + (rbCrossN * rbCrossN * (!poly2->m_isStatic / poly2->m_inertia));
 
 			double e = min(poly1->m_restitution, poly2->m_restitution);
 
@@ -172,6 +175,8 @@ void lge::ResolveCollisionImprovedNormalized(Manifold m, Polygon* poly1, Polygon
 	std::vector<vec2> contactPoints = getContactPoints(poly1, poly2);
 	lge::vec2 normal = m.normal[0].normalize();
 	
+	if (poly1->m_isStatic + poly2->m_isStatic > 1) return;
+
 	//vec2 vc = contactPoints[1] - contactPoints[0];
 	//vec2 normal(-vc.y, vc.x);
 	//normal = normal.normalize();
@@ -188,10 +193,10 @@ void lge::ResolveCollisionImprovedNormalized(Manifold m, Polygon* poly1, Polygon
 		if (dotVec2(rv, normal) > 0) return;
 
 		double e = min(poly1->m_restitution, poly2->m_restitution);
-		double invMass = 1 / poly1->m_mass + 1 / poly2->m_mass;
+		double invMass = !poly1->m_isStatic / poly1->m_mass + !poly2->m_isStatic / poly2->m_mass;
 
-		double den1 = dotVec2(normal, crossVec2Scalar(crossVec2(va, normal) / poly1->m_inertia, va)); //dotVec2(normal, crossVec2Scalar(crossVec2(va, normal),va) / poly1->m_inertia);
-		double den2 = dotVec2(normal, crossVec2Scalar(crossVec2(vb, normal) / poly2->m_inertia, vb));
+		double den1 = dotVec2(normal, crossVec2Scalar(crossVec2(va, normal) * !poly1->m_isStatic / poly1->m_inertia, va)); //dotVec2(normal, crossVec2Scalar(crossVec2(va, normal),va) / poly1->m_inertia);
+		double den2 = dotVec2(normal, crossVec2Scalar(crossVec2(vb, normal) * !poly2->m_isStatic / poly2->m_inertia, vb));
 
 		double j = -(dotVec2(rv, normal) * (e + 1)) / (invMass + den1 + den2);//dotVec2(normal, crossVec2(va, normal) / poly1->m_inertia) + dotVec2(normal, crossVec2(vb, normal) / poly1->m_inertia));
 

@@ -152,6 +152,45 @@ void lge::PolygonCollisionDiagonalsApply(Polygon* poly1, Polygon* poly2)
 	}
 }
 
+bool lge::AABBCollision(Polygon* poly1, Polygon* poly2)
+{
+
+	double h1 = INFINITY;
+	double h2 = - INFINITY;
+	double w1 = INFINITY;
+	double w2 = - INFINITY;
+
+	double h3 = INFINITY;
+	double h4 = - INFINITY;
+	double w3 = INFINITY;
+	double w4 = -INFINITY;
+
+	for (auto i = 0; i < poly1->m_transformedPoints.size(); i++)
+	{
+		if (poly1->m_transformedPoints[i].y < h1) h1 = poly1->m_transformedPoints[i].y;
+		if (poly1->m_transformedPoints[i].y > h2) h2 = poly1->m_transformedPoints[i].y;
+		if (poly1->m_transformedPoints[i].x < w1) w1 = poly1->m_transformedPoints[i].x;
+		if (poly1->m_transformedPoints[i].x > w2) w2 = poly1->m_transformedPoints[i].x;
+	}
+
+	for (auto i = 0; i < poly2->m_transformedPoints.size(); i++)
+	{
+		if (poly2->m_transformedPoints[i].y < h3) h3 = poly2->m_transformedPoints[i].y;
+		if (poly2->m_transformedPoints[i].y > h4) h4 = poly2->m_transformedPoints[i].y;
+		if (poly2->m_transformedPoints[i].x < w3) w3 = poly2->m_transformedPoints[i].x;
+		if (poly2->m_transformedPoints[i].x > w4) w4 = poly2->m_transformedPoints[i].x;
+	}
+
+	bool a1 = h1 > h4;
+	bool a2 = h2 < h3;
+	bool a3 = w1 > w4;
+	bool a4 = w2 < w3;
+
+	bool separated = a1 | a2 | a3 | a4;
+
+	return !separated;
+}
+
 lge::vec2 lge::LineLineIntersection(vec2 p1, vec2 p2, vec2 p3, vec2 p4)
 {
 	float x1 = p1.x;
