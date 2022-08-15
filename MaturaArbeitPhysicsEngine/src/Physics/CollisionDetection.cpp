@@ -363,7 +363,7 @@ lge::Manifold lge::PolygonCollisionSatManifold(Polygon* poly1, Polygon* poly2)
 		if (penetration < minPenetration1)
 		{
 			minPenetration1 = penetration;
-			minNormal1 = normalsPoly1[i];
+			minNormal1 = normalsPoly1[i].normalize();
 			m.indexP1[0] = projectionPoly1.y;
 			m.indexP1[1] = projectionPoly1.z;
 			m.normalIndex[0] = i + floor(poly1->m_transformedPoints.size() / 2);
@@ -385,7 +385,8 @@ lge::Manifold lge::PolygonCollisionSatManifold(Polygon* poly1, Polygon* poly2)
 			if (penetration < minPenetration2)
 			{
 				minPenetration2 = penetration;
-				minNormal2 = normalsPoly2[i];
+				minNormal2 = normalsPoly2[i].normalize();
+				m.normal[1] = minNormal2;
 				m.indexP2[0] = projectionPoly2.y;
 				m.indexP2[1] = projectionPoly2.z;
 				m.normalIndex[1] = i + floor(poly2->m_transformedPoints.size()/2);

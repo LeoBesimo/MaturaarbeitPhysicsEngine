@@ -91,20 +91,20 @@ int main()
 
 	std::vector<lge::vec2> vectors;
 
-	for (double i = 0; i < lge::TWO_PI; i += lge::TWO_PI / 6)
+	for (double i = 0; i < lge::TWO_PI; i += lge::TWO_PI / 4)
 	{
 		vectors.push_back(lge::vec2(cos(i), sin(i)));
 	}
 
 	//lge::Polygon poly(lge::vec2(-0.5, 0), -lge::QUARTER_PI / 2, lge::mat2(0.2, 0, 0, 0.2), vectors);
-	lge::Polygon poly(lge::vec2(400, 200), -lge::QUARTER_PI, lge::mat2(50, 0, 0, 50), vectors);
-	poly.m_velocity = lge::vec2(0, 5);
+	lge::Polygon poly(lge::vec2(200, 400), -lge::QUARTER_PI/3, lge::mat2(51, 0, 0, 51), vectors);
+	poly.m_velocity = lge::vec2(3, 0);
 	//poly.m_velocity = lge::vec2(0.01, 0);
-	poly.m_mass = 100;
-	//poly.m_angularVelocity = 0.01;
+	//poly.m_mass = 100;
+	//poly.m_angularVelocity = 0.05;
 
 	vectors.clear();
-	for (double i = 0; i < lge::TWO_PI; i += lge::TWO_PI / 4)
+	for (double i = 0; i < lge::TWO_PI; i += lge::TWO_PI / 5)
 	{
 		vectors.push_back(lge::vec2(cos(i), sin(i)));
 	}
@@ -197,29 +197,44 @@ int main()
 		{
 
 			//polys[0].m_position = mouse;
+			//polys[0].m_velocity = lge::vec2();
+
+			for (auto i = 0; i < polys.size(); i++)
+				polys[i].update();
 
 			for (auto i = 0; i < polys.size(); i++)
 			{
 				//polys[i].m_velocity += lge::vec2(0, 0.8);
-				polys[i].update();
+				//polys[i].update();
 
 				lge::Manifold m;
 
 				for (auto j = 0; j < polys.size(); j++)
 				{
 					if (i == j) continue;
-					if (lge::AABBCollision(&polys[i],&polys[j]))//m.collided)
+
+					m = lge::PolygonCollisionSatManifold(&polys[i], &polys[j]);
+
+
+
+					if (m.collided)//lge::AABBCollision(&polys[i],&polys[j]))
 					{
 
-						m = lge::PolygonCollisionSatManifold(&polys[i], &polys[j]);
+						//m = lge::PolygonCollisionSatManifold(&polys[i], &polys[j]);
 
 
-						std::vector<lge::vec2> contacts;// = lge::getContactPoints(&polys[i], &polys[j]);
+						std::vector<lge::vec2> contacts = lge::getContactPoints(&polys[i], &polys[j]);
 						mainRenderer.fill(lge::vec4(255, 0, 255, 255));
+						for (lge::vec2 c : contacts)
+						{
+							mainRenderer.circle(c.x, c.y, 8);
+						}
+
 														
 						//lge::ResolveCollisionImprovedNormalized(m, &polys[i], &polys[j]);
 						//lge::ResolveCollisionImprovedNormalized(m, &polys[i], &polys[j]);
-						lge::ResolveCollisionWithoutRotation(m, &polys[i], &polys[j]);
+						lge::ResolveCollision(m, &polys[i], &polys[j]);
+						//lge::ResolveCollisionWithoutRotation(m, &polys[i], &polys[j]);
 
 						//for (auto k = 0; k < contacts.size(); k++) mainRenderer.circle(contacts[k].x, contacts[k].y, 4);
 
