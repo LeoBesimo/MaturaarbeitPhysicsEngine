@@ -40,7 +40,7 @@ namespace lge
 
 	double dotVec2(vec2 a, vec2 b)
 	{
-		return a.x * b.x + a.y * b.y; //dot product of 2 2d Vectors
+		return (a.x * b.x) + (a.y * b.y); //dot product of 2 2d Vectors
 	}
 
 	double detMat2(mat2 matrix)

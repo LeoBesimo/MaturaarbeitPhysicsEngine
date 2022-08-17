@@ -107,6 +107,13 @@ namespace lge
 			y /= a.y;
 		}
 
+		vec2 sub(vec2 a)
+		{
+			x = x - a.x;
+			y = y - a.y;
+			return vec2(x, y);
+		}
+
 		void set(double x_, double y_)
 		{
 			x = x_;

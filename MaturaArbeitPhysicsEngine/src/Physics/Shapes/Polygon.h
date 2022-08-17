@@ -31,8 +31,11 @@ namespace lge
 		vec2 m_velocity = vec2();
 
 		double m_restitution = 1;
-		double m_mass = 10;
-		double m_inertia = 100;
+		double m_mass;
+		double m_inertia;
+
+		double m_invMass;
+		double m_invInertia;
 
 		bool m_isStatic = false;
 
@@ -44,6 +47,8 @@ namespace lge
 			m_angle = angle;
 			m_scale = scale;
 			m_originalPoints = originalPoints;
+			setMass(100);
+			setInertia(100);
 			/*
 			for (unsigned int i = 0; i < originalPoints.size(); i++)
 			{                          
@@ -62,6 +67,34 @@ namespace lge
 			for (unsigned int i = 0; i < m_transformedEdge.size(); i++);
 		}*/
 
+		void setMass(double mass)
+		{
+			if (mass == 0)
+			{
+				m_mass = 0;
+				m_invMass = 0;
+			}
+			else
+			{
+				m_mass = mass;
+				m_invMass = 1 / mass;
+			}
+		}
+
+		void setInertia(double inertia)
+		{
+			if (inertia == 0)
+			{
+				m_inertia = 0;
+				m_invInertia = 0;
+			}
+			else
+			{
+				m_inertia = inertia;
+				m_invInertia = 1 / m_inertia;
+			}
+		}
+
 		void updateSides()
 		{
 			mat2 rotation(m_angle);
@@ -76,12 +109,12 @@ namespace lge
 		{
 			if (m_isStatic) return;
 
-			m_velocity += m_acceleration;
+			m_velocity += m_acceleration * (1 / m_mass);
 			m_acceleration *= !m_isStatic;
 			m_position += m_velocity;
 			m_acceleration *= 0;
 
-			m_angularVelocity += m_torque;
+			m_angularVelocity += m_torque * (1 / m_inertia);
 			m_angularVelocity *= !m_isStatic;
 			m_angle += m_angularVelocity;
 			m_torque *= 0;

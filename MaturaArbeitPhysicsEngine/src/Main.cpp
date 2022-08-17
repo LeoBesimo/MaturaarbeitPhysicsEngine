@@ -119,7 +119,9 @@ int main()
 	polys.push_back(poly2);
 
 	for (lge::Polygon wall : walls)
-	{
+	{	
+		wall.setInertia(0);
+		wall.setMass(0);
 		polys.push_back(wall);
 	}
 
