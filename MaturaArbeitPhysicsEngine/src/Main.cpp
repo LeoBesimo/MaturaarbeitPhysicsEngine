@@ -24,7 +24,7 @@ int main()
 {
 
 	srand(time(NULL));
-	Renderer mainRenderer(800, 800, "Test");
+	Renderer mainRenderer(1000, 1000, "Test");
 
 	mainRenderer.circleMode(CENTER);
 	mainRenderer.rectMode(CENTER);
@@ -44,41 +44,44 @@ int main()
 	//walls.push_back(lge::Polygon(lge::vec2(400, 0), lge::QUARTER_PI, lge::mat2(380, -400, -400, 380), squareEdges));
 	//walls.push_back(lge::Polygon(lge::vec2(400, 800), lge::QUARTER_PI, lge::mat2(380, -400, -400, 380), squareEdges));
 
+	double width = mainRenderer.getWindowSize().x;
+	double height = mainRenderer.getWindowSize().y;
+
 	std::vector<lge::vec2> vecs;
-	vecs.push_back(lge::vec2(0, 0));
-	vecs.push_back(lge::vec2(800, 0));
-	vecs.push_back(lge::vec2(800, 20));
-	vecs.push_back(lge::vec2(0, 20));
+	vecs.push_back(lge::vec2(-width/2, 0));
+	vecs.push_back(lge::vec2(width/2, 0));
+	vecs.push_back(lge::vec2(width/2, 20));
+	vecs.push_back(lge::vec2(-width/2, 20));
 
-	walls.push_back(lge::Polygon(lge::vec2(0, 0), 0, lge::mat2(1,0,0,1), vecs));
-
-	vecs.clear();
-
-	vecs.push_back(lge::vec2(780, 0));
-	vecs.push_back(lge::vec2(800, 0));
-	vecs.push_back(lge::vec2(800, 800));
-	vecs.push_back(lge::vec2(780, 800));
-
-	walls.push_back(lge::Polygon(lge::vec2(0, 0), 0, lge::mat2(1,0,0,1), vecs));
+	walls.push_back(lge::Polygon(lge::vec2(width/2, 0), 0, lge::mat2(1,0,0,1), vecs));
 
 	vecs.clear();
 
-	vecs.push_back(lge::vec2(0, 780));
-	vecs.push_back(lge::vec2(800, 780));
-	vecs.push_back(lge::vec2(800, 800));
-	vecs.push_back(lge::vec2(0, 800));
+	vecs.push_back(lge::vec2(20, -height/2));
+	vecs.push_back(lge::vec2(0, -height/2));
+	vecs.push_back(lge::vec2(0, height/2));
+	vecs.push_back(lge::vec2(20, height/2));
+
+	walls.push_back(lge::Polygon(lge::vec2(width-20, height/2), 0, lge::mat2(1,0,0,1), vecs));
+
+	vecs.clear();
+
+	vecs.push_back(lge::vec2(-width / 2, 0));
+	vecs.push_back(lge::vec2(width / 2, 0));
+	vecs.push_back(lge::vec2(width / 2, height-20));
+	vecs.push_back(lge::vec2(-width / 2, height-20));
 
 
-	walls.push_back(lge::Polygon(lge::vec2(0, 0), 0, lge::mat2(1,0,0,1), vecs));
+	walls.push_back(lge::Polygon(lge::vec2(width/2, height-20), 0, lge::mat2(1,0,0,1), vecs));
 	
 	vecs.clear();
 
-	vecs.push_back(lge::vec2(0, 0));
-	vecs.push_back(lge::vec2(20, 0));
-	vecs.push_back(lge::vec2(20, 800));
-	vecs.push_back(lge::vec2(0, 800));
+	vecs.push_back(lge::vec2(0, -height/2));
+	vecs.push_back(lge::vec2(20, -height/2));
+	vecs.push_back(lge::vec2(20, height/2));
+	vecs.push_back(lge::vec2(0, height/2));
 
-	walls.push_back(lge::Polygon(lge::vec2(0, 0), 0, lge::mat2(1,0,0,1), vecs));
+	walls.push_back(lge::Polygon(lge::vec2(0, height/2), 0, lge::mat2(1,0,0,1), vecs));
 
 
 	for (unsigned int i = 0; i < walls.size(); i++)
@@ -98,10 +101,10 @@ int main()
 
 	//lge::Polygon poly(lge::vec2(-0.5, 0), -lge::QUARTER_PI / 2, lge::mat2(0.2, 0, 0, 0.2), vectors);
 	lge::Polygon poly(lge::vec2(200, 400), -lge::QUARTER_PI/3, lge::mat2(51, 0, 0, 51), vectors);
-	poly.m_velocity = lge::vec2(3, 0);
+	poly.m_velocity = lge::vec2(30, 0);
 	//poly.m_velocity = lge::vec2(0.01, 0);
 	//poly.m_mass = 100;
-	//poly.m_angularVelocity = 0.05;
+	poly.m_angularVelocity = lge::HALF_PI;
 
 	vectors.clear();
 	for (double i = 0; i < lge::TWO_PI; i += lge::TWO_PI / 5)
@@ -202,7 +205,8 @@ int main()
 			//polys[0].m_velocity = lge::vec2();
 
 			for (auto i = 0; i < polys.size(); i++)
-				polys[i].update();
+				polys[i].update(mainRenderer.getDeltaTime());
+			//std::cout << polys[0].m_velocity * mainRenderer.getDeltaTime() << "\n";
 
 			for (auto i = 0; i < polys.size(); i++)
 			{

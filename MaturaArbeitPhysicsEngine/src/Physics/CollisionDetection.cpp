@@ -147,7 +147,7 @@ void lge::PolygonCollisionDiagonalsApply(Polygon* poly1, Polygon* poly2)
 			}
 
 			poly1->m_position += displacement * vec2(poly1->m_scale.x.x, poly1->m_scale.y.y) * (shape == 1 ? -1 : 1);
-			poly1->update();
+			poly1->update(1);
 		}
 	}
 }

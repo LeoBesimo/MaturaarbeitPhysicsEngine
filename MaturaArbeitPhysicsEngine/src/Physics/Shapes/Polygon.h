@@ -105,18 +105,23 @@ namespace lge
 			addVec2ToVec2List(m_transformedPoints, m_position);
 		}
 
-		void update()
+		void update(double dt)
 		{
-			if (m_isStatic) return;
+			if (m_isStatic)
+			{
+				setMass(0);
+				setInertia(0);
+				return;
+			}
 
 			m_velocity += m_acceleration * (1 / m_mass);
 			m_acceleration *= !m_isStatic;
-			m_position += m_velocity;
+			m_position += m_velocity * dt;
 			m_acceleration *= 0;
 
 			m_angularVelocity += m_torque * (1 / m_inertia);
 			m_angularVelocity *= !m_isStatic;
-			m_angle += m_angularVelocity;
+			m_angle += m_angularVelocity * dt;
 			m_torque *= 0;
 
 			updateSides();

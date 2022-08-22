@@ -62,6 +62,11 @@ lge::vec2 Renderer::getWindowSize()
 	return lge::vec2(m_windowWidth,m_windowHeight);
 }
 
+double Renderer::getDeltaTime()
+{
+	return m_deltaTime < 0 ? m_deltaTime * -1 : m_deltaTime;
+}
+
 void Renderer::clear(lge::vec4 color = lge::vec4())
 {
 	m_window->clear(sf::Color(color.w, color.x, color.y, color.z));
@@ -70,6 +75,7 @@ void Renderer::clear(lge::vec4 color = lge::vec4())
 void Renderer::update()
 {
 	m_window->display();
+	m_deltaTime = m_deltaClock.restart().asSeconds();
 }
 
 void Renderer::fill(lge::vec4 color)

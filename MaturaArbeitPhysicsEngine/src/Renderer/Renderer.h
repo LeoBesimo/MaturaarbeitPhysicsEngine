@@ -42,6 +42,9 @@ private:
 	sf::CircleShape m_circleShape;
 	sf::RectangleShape m_rectShape;
 
+	sf::Clock m_deltaClock;
+	double m_deltaTime = 0;
+
 	//float m_strokeWeight = 1;
 
 public:
@@ -57,6 +60,8 @@ public:
 
 	lge::vec2 getMousePosition();
 	lge::vec2 getWindowSize();
+
+	double getDeltaTime();
 
 	void clear(lge::vec4 color);
 	void update();
