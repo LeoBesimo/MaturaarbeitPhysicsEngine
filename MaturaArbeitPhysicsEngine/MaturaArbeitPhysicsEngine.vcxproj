@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Debug Tools\ObjectSerializer.cpp" />
     <ClCompile Include="src\Physics\CollisionDetection.cpp" />
     <ClCompile Include="src\Physics\CollisionResolution.cpp" />
     <ClCompile Include="src\Renderer\CustomShapes\EllipseShape.cpp" />
@@ -154,6 +155,7 @@
     <ClCompile Include="src\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Debug Tools\ObjectSerializer.h" />
     <ClInclude Include="src\Physics\CollisionDetection.h" />
     <ClInclude Include="src\Physics\CollisionResolution.h" />
     <ClInclude Include="src\Physics\Manifold.h" />

@@ -91,6 +91,102 @@ void lge::ResolveCollision(Manifold m, Polygon* poly1, Polygon* poly2)
 	}
 }
 
+lge::CollisionData lge::ResolveCollisionCollisionData(Manifold m, Polygon* poly1, Polygon* poly2)
+{
+
+	CollisionData info;
+
+	if (poly1->m_isStatic + poly2->m_isStatic > 1) return info;
+
+	std::vector<vec2> contactPoints = getContactPoints(poly1, poly2);
+
+	info.contactPoints = contactPoints;
+
+	//if (contactPoints.empty()) ResolveCollisionWithoutRotation(m, poly1, poly2);
+
+	vec2 normal = m.normal[0];
+
+	std::cout << "Normal: " << normal << "\n";
+
+	for (auto i = 0; i < contactPoints.size(); i++)
+	{
+
+		//std::cout << "Index: " << i << "\n";
+
+		info.invInert.push_back(0);
+		info.impulse.push_back(vec2());
+		info.jBefore.push_back(0);
+		info.jAfter.push_back(0);
+
+		vec2 ra = contactPoints[i] - poly1->m_position;
+		vec2 rb = contactPoints[i] - poly2->m_position;
+
+		info.ra.push_back(ra);
+		info.rb.push_back(rb);
+
+		vec2 velB = poly2->m_velocity + crossVec2Scalar(poly2->m_angularVelocity, rb); //rb * poly2->m_angularVelocity;
+		vec2 velA = poly1->m_velocity - crossVec2Scalar(poly1->m_angularVelocity, ra); //ra * poly1->m_angularVelocity;
+
+		info.velA.push_back(velA);
+		info.velB.push_back(velB);
+
+		//std::cout << "velB: " << velB << "		velA: " << velA << "\n";
+
+		vec2 rv = velB - velA;
+
+		info.rv.push_back(rv);
+
+		double contactVel = dotVec2(rv, normal);
+
+		info.contactVel.push_back(contactVel);
+
+		if (contactVel > 0)
+		{
+			info.separating = true;
+			return info;
+		}
+
+		double raCrossN = crossVec2(ra, normal);
+		double rbCrossN = crossVec2(rb, normal);
+
+		double invMass = poly1->m_invMass + poly2->m_invMass;
+		//double invInert = dotVec2(normal, ((ra * normal) / poly1->m_inertia) * ra) + dotVec2(normal, ((rb * normal) / poly2->m_inertia) * rb); // kinda
+		//double invInert = crossVec2(normal * (crossVec2(ra,normal) / poly1->m_inertia), ra) + crossVec2(normal * (crossVec2(rb, normal) / poly2->m_inertia), rb);  //nope
+		//double invInert = crossVec2(dotVec2(normal,(crossVec2(ra,normal) * (1 / poly1->m_inertia))), ra) + crossVec2(dotVec2(normal, crossVec2(rb,normal) * (1 / poly2->m_inertia)), rb);  //works kinda
+		//double invInert = (raCrossN * raCrossN * (!poly1->m_isStatic / poly1->m_inertia)) + (rbCrossN * rbCrossN * (!poly2->m_isStatic / poly2->m_inertia));  //funky
+		//double invInert = dotVec2(normal, crossVec2((crossVec2(ra, normal) / poly1->m_inertia), ra)) + dotVec2(normal, crossVec2((crossVec2(rb, normal) / poly1->m_inertia), rb));
+
+		double invInert = (!poly1->m_isStatic * raCrossN * raCrossN * poly2->m_invInertia) + (!poly2->m_isStatic * rbCrossN * rbCrossN * poly2->m_invInertia);
+
+		info.invMass = invMass;
+		info.invInert[i] = invInert;
+
+		double invMassSum = invMass + invInert;
+
+		double e = min(poly1->m_restitution, poly2->m_restitution);
+
+		//std::cout << "rv: " << rv << "		Contact Vel: " << contactVel << "		invMassSum: " << invMassSum << "\n";
+
+		double j = -(1 + e) * contactVel;
+		info.jBefore[i] = j;
+		j /= invMassSum;
+		j /= (double)contactPoints.size();
+
+		info.jAfter[i] = j;
+
+		vec2 impulse = normal * j;
+
+		info.impulse[i] = impulse;
+
+		//std::cout << "impulse: " << impulse << "	J: " << j << "\n\n";
+
+		ApplyImpulseImproved(poly1, -impulse, ra);
+		ApplyImpulseImproved(poly2, impulse, rb);
+
+	}
+	return info;
+}
+
 void lge::ResolveCollisionImproved(Manifold m, Polygon* poly1, Polygon* poly2)
 {
 

@@ -30,6 +30,8 @@ private:
 
 	unsigned int m_windowWidth = 0, m_windowHeight = 0;
 
+	long m_frameCount = 0;
+
 	sf::Color m_fillColor = sf::Color::Transparent;
 	sf::Color m_strokeColor = sf::Color::Black;
 
@@ -62,6 +64,8 @@ public:
 	lge::vec2 getWindowSize();
 
 	double getDeltaTime();
+
+	long getFrameCount();
 
 	void clear(lge::vec4 color);
 	void update();

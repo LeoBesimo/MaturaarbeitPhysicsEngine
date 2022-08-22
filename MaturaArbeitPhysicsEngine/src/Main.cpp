@@ -16,13 +16,15 @@
 
 #include "FunctionTimer.h"
 
+#include "Debug Tools/ObjectSerializer.h"
+
 /*
 	fix normal generation for uneven side count
 */
 
 int main()
 {
-
+	lge::ObjectSerializer serializer;
 	srand(time(NULL));
 	Renderer mainRenderer(1000, 1000, "Test");
 
@@ -48,40 +50,40 @@ int main()
 	double height = mainRenderer.getWindowSize().y;
 
 	std::vector<lge::vec2> vecs;
-	vecs.push_back(lge::vec2(-width/2, 0));
-	vecs.push_back(lge::vec2(width/2, 0));
-	vecs.push_back(lge::vec2(width/2, 20));
-	vecs.push_back(lge::vec2(-width/2, 20));
+	vecs.push_back(lge::vec2(-width/2, -10));
+	vecs.push_back(lge::vec2(width/2, -10));
+	vecs.push_back(lge::vec2(width/2, 10));
+	vecs.push_back(lge::vec2(-width/2, 10));
 
-	walls.push_back(lge::Polygon(lge::vec2(width/2, 0), 0, lge::mat2(1,0,0,1), vecs));
-
-	vecs.clear();
-
-	vecs.push_back(lge::vec2(20, -height/2));
-	vecs.push_back(lge::vec2(0, -height/2));
-	vecs.push_back(lge::vec2(0, height/2));
-	vecs.push_back(lge::vec2(20, height/2));
-
-	walls.push_back(lge::Polygon(lge::vec2(width-20, height/2), 0, lge::mat2(1,0,0,1), vecs));
+	walls.push_back(lge::Polygon(lge::vec2(width/2, 10), 0, lge::mat2(1,0,0,1), vecs));
 
 	vecs.clear();
 
-	vecs.push_back(lge::vec2(-width / 2, 0));
-	vecs.push_back(lge::vec2(width / 2, 0));
-	vecs.push_back(lge::vec2(width / 2, height-20));
-	vecs.push_back(lge::vec2(-width / 2, height-20));
+	vecs.push_back(lge::vec2(10, -height/2));
+	vecs.push_back(lge::vec2(-10, -height/2));
+	vecs.push_back(lge::vec2(-10, height/2));
+	vecs.push_back(lge::vec2(10, height/2));
+
+	walls.push_back(lge::Polygon(lge::vec2(width-10, height/2), 0, lge::mat2(1,0,0,1), vecs));
+
+	vecs.clear();
+
+	vecs.push_back(lge::vec2(-width / 2, -10));
+	vecs.push_back(lge::vec2(width / 2, -10));
+	vecs.push_back(lge::vec2(width / 2, height-10));
+	vecs.push_back(lge::vec2(-width / 2, height-10));
 
 
-	walls.push_back(lge::Polygon(lge::vec2(width/2, height-20), 0, lge::mat2(1,0,0,1), vecs));
+	walls.push_back(lge::Polygon(lge::vec2(width/2, height-10), 0, lge::mat2(1,0,0,1), vecs));
 	
 	vecs.clear();
 
-	vecs.push_back(lge::vec2(0, -height/2));
-	vecs.push_back(lge::vec2(20, -height/2));
-	vecs.push_back(lge::vec2(20, height/2));
-	vecs.push_back(lge::vec2(0, height/2));
+	vecs.push_back(lge::vec2(-10, -height/2));
+	vecs.push_back(lge::vec2(10, -height/2));
+	vecs.push_back(lge::vec2(10, height/2));
+	vecs.push_back(lge::vec2(-10, height/2));
 
-	walls.push_back(lge::Polygon(lge::vec2(0, height/2), 0, lge::mat2(1,0,0,1), vecs));
+	walls.push_back(lge::Polygon(lge::vec2(10, height/2), 0, lge::mat2(1,0,0,1), vecs));
 
 
 	for (unsigned int i = 0; i < walls.size(); i++)
@@ -168,6 +170,11 @@ int main()
 
 			if (event.type == sf::Event::KeyPressed)
 			{
+				if (event.key.code == sf::Keyboard::Escape)
+				{
+					serializer.serializeObjects("Test.txt");
+					mainRenderer.~Renderer();
+				}
 				keyPressed = !keyPressed;
 			}
 
@@ -222,12 +229,15 @@ int main()
 					m = lge::PolygonCollisionSatManifold(&polys[i], &polys[j]);
 
 
-
 					if (m.collided)//lge::AABBCollision(&polys[i],&polys[j]))
 					{
-
+						lge::ObjectSerializer::SerializableObject data;
+						data.frame = mainRenderer.getFrameCount();
 						//m = lge::PolygonCollisionSatManifold(&polys[i], &polys[j]);
 
+						data.a = polys[i];
+						data.b = polys[j];
+						data.manifold = m;
 
 						std::vector<lge::vec2> contacts = lge::getContactPoints(&polys[i], &polys[j]);
 						mainRenderer.fill(lge::vec4(255, 0, 255, 255));
@@ -239,8 +249,12 @@ int main()
 														
 						//lge::ResolveCollisionImprovedNormalized(m, &polys[i], &polys[j]);
 						//lge::ResolveCollisionImprovedNormalized(m, &polys[i], &polys[j]);
-						lge::ResolveCollision(m, &polys[i], &polys[j]);
+						lge::CollisionData cData = lge::ResolveCollisionCollisionData(m, &polys[i], &polys[j]);
 						//lge::ResolveCollisionWithoutRotation(m, &polys[i], &polys[j]);
+
+						data.collision = cData;
+
+						if(polys[i].m_isStatic + polys[j].m_isStatic < 2) serializer.addObject(data);
 
 						//for (auto k = 0; k < contacts.size(); k++) mainRenderer.circle(contacts[k].x, contacts[k].y, 4);
 
