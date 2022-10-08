@@ -34,6 +34,11 @@ namespace lge
 	inline vec2 constrainVec2(vec2 a, vec2 min, vec2 max);
 	inline vec2 mapVec2(vec2 a, vec2 oldMin, vec2 oldMax, vec2 newMin, vec2 newMax);
 	inline double dist(double x, double y, double x2, double y2);
+	inline double dist(vec2 a, vec2 b);
+	inline double distSqr(vec2 a, vec2 b);
+	inline bool nearlyEqual(double a, double b);
+	inline bool nearlyEqual(vec2 a, vec2 b);
+
 
 	inline uuid generateUUIDv4();
 
@@ -151,7 +156,31 @@ namespace lge
 
 	double dist(double x, double y, double x2, double y2)
 	{
-		return sqrt((x2 - x) * (x2-x) + (y2 -y) * (y2-y));
+		return sqrt((x2 - x) * (x2 - x) + (y2 - y) * (y2 - y));
+	}
+
+	double dist(vec2 a, vec2 b)
+	{
+		return dist(a.x,a.y,b.x,b.y);
+	}
+
+	double distSqr(vec2 a, vec2 b)
+	{
+		double dx = b.x - a.x;
+		double dy = b.y - a.y;
+
+
+		return (dx * dx) + (dy * dy);
+	}
+
+	bool nearlyEqual(double a, double b)
+	{
+		return abs(a - b) < THRESHOLD;
+	}
+
+	bool nearlyEqual(vec2 a, vec2 b)
+	{
+		return nearlyEqual(a.x,b.x) && nearlyEqual(a.y,b.y);
 	}
 
 	std::string generateUUIDv4()

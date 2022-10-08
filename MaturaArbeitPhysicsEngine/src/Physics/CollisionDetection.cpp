@@ -221,6 +221,63 @@ lge::vec2 lge::LineLineIntersection(vec2 p1, vec2 p2, vec2 p3, vec2 p4)
 	}
 }
 
+lge::PLData lge::distPointToLine(vec2 point, vec2 a, vec2 b)
+{
+	PLData data;
+
+	vec2 ab = b - a;
+	vec2 ap = point - a;
+
+	double proj = dotVec2(ap, ab);
+	double abLenSqr = ab.lenSqr();
+	double d = proj / abLenSqr;
+
+	if (d <= 0.0)
+	{
+		data.closest = a;
+	}
+	else if (d >= 1.0)
+	{
+		data.closest = b;
+	}
+	else
+	{
+		data.closest = a + (ab * d);
+	}
+
+	double dx = point.x - data.closest.x;
+	double dy = point.y - data.closest.y;
+
+	data.distSqr = dx * dx + dy * dy;
+
+	//data.distSqr = lge::distSqr(ap, data.closest);
+
+	return data;
+}
+
+lge::PLData lge::minDistToLine(vec2 point, vec2 a, vec2 b)
+{
+	PLData data;
+
+	vec2 ab = b - a;
+	double l2 = ab.lenSqr();
+	if (l2 == 0) return data;
+
+	double t = max(0, min(1, dotVec2(point - a, b - a)));
+	t = dotVec2(point - a, b - a);
+	if (t <= 0) data.closest = a;
+	else if (t >= 1) data.closest = b;
+	else data.closest = a + ((b - a) * t);
+	
+
+	//vec2 proj = a + ((b - a) * t);
+
+	//data.closest = proj;
+	data.distSqr = distSqr(point, data.closest);
+
+	return data;
+}
+
 
 
 std::vector<lge::vec2> lge::getNormals(Polygon* poly)
@@ -238,27 +295,82 @@ std::vector<lge::vec2> lge::getNormals(Polygon* poly)
 	return normals;
 }
 
-std::vector<lge::vec2> lge::getNormalsTrigonometry(Polygon* poly)
-{
-	std::vector<vec2> normals;
-
-	double increment = lge::TWO_PI / poly->m_transformedPoints.size();
-	for (double i = 0; i < lge::TWO_PI; i += increment)
-	{
-		vec2 normal(cos(i + (increment / 2) + poly->m_angle), sin(i + (increment / 2) + poly->m_angle));
-		normal += poly->m_position;
-		normals.push_back(normal);
-	}
-
-	//normals = multVec2ToVec2List(normals, vec2(poly->m_scale.x.x, poly->m_scale.y.y));
-
-	return normals;
-}
-
 std::vector<lge::vec2> lge::getContactPoints(Polygon* poly1, Polygon* poly2)
 {
 	std::vector<vec2> contactPoints;
+	
+	std::vector<vec2> pointsA = poly1->m_transformedPoints;
+	std::vector<vec2> pointsB = poly2->m_transformedPoints;
 
+	double minDistSqr = FLT_MAX;
+
+	unsigned int contactCount = 0;
+	vec2 contact1 = NULL;
+	vec2 contact2 = NULL;
+
+	for (unsigned int i = 0; i < pointsA.size(); i++)
+	{
+
+		vec2 p = pointsA[i];
+
+		for (unsigned int j = 0; j < pointsB.size(); j++)
+		{
+			vec2 a = pointsB[j];
+			vec2 b = pointsB[(j + 1) % pointsB.size()];
+
+			PLData data = distPointToLine(p, a, b);
+
+			if (nearlyEqual(data.distSqr,minDistSqr))
+			{
+				if(!nearlyEqual(data.closest,contact1))
+				{
+					contactCount = 2;
+					contact2 = data.closest;
+				}
+			}
+			else if (data.distSqr < minDistSqr)
+			{
+				minDistSqr = data.distSqr;
+				contactCount = 1;
+				contact1 = data.closest;
+			}
+		}
+
+	}
+
+	for (unsigned int i = 0; i < pointsB.size(); i++)
+	{
+
+		vec2 p = pointsB[i];
+
+		for (unsigned int j = 0; j < pointsA.size(); j++)
+		{
+			vec2 a = pointsA[j];
+			vec2 b = pointsA[(j + 1) % pointsA.size()];
+
+			PLData data = distPointToLine(p, a, b);
+
+			if (nearlyEqual(data.distSqr, minDistSqr))
+			{
+				if (!nearlyEqual(data.closest, contact1))
+				{
+					contactCount = 2;
+					contact2 = data.closest;
+				}
+			}
+			else if (data.distSqr < minDistSqr)
+			{
+				minDistSqr = data.distSqr;
+				contactCount = 1;
+				contact1 = data.closest;
+			}
+		}
+	}
+
+	contactPoints.push_back(contact1);
+	if (contactCount == 2) contactPoints.push_back(contact2);
+	
+	/*
 	int size1 = poly1->m_transformedPoints.size();
 	int size2 = poly2->m_transformedPoints.size();
 
@@ -269,12 +381,12 @@ std::vector<lge::vec2> lge::getContactPoints(Polygon* poly1, Polygon* poly2)
 			vec2 contact = LineLineIntersection(poly1->m_transformedPoints[i], poly1->m_transformedPoints[(i + 1) % size1], poly2->m_transformedPoints[j], poly2->m_transformedPoints[(j + 1) % size2]);
 			if (contact.lenSqr() != 0) contactPoints.push_back(contact);
 		}
-	}
+	}*/
 
 	return contactPoints;
 }
 
-lge::vec4 lge::getMinMax(std::vector<vec2> points, vec2 normal)
+lge::vec2 lge::getMinMax(std::vector<vec2> points, vec2 normal)
 {
 
 	unsigned int minIndex = 0;
@@ -298,7 +410,7 @@ lge::vec4 lge::getMinMax(std::vector<vec2> points, vec2 normal)
 		}
 	}
 
-	return vec4(minProj,maxProj,minIndex,maxIndex);
+	return vec2(minProj,maxProj);
 }
 
 bool lge::PolygonCollisonSat(Polygon* poly1, Polygon* poly2)
@@ -311,22 +423,22 @@ bool lge::PolygonCollisonSat(Polygon* poly1, Polygon* poly2)
 
 	for (unsigned int i = 0; i < normalsPoly1.size(); i++)
 	{
-		vec4 projectionPoly1 = getMinMax(poly1->m_transformedPoints, normalsPoly1[i]);
-		vec4 projectionPoly2 = getMinMax(poly2->m_transformedPoints, normalsPoly1[i]);
+		vec2 projectionPoly1 = getMinMax(poly1->m_transformedPoints, normalsPoly1[i]);
+		vec2 projectionPoly2 = getMinMax(poly2->m_transformedPoints, normalsPoly1[i]);
 
-		separated = projectionPoly1.x < projectionPoly2.w || projectionPoly2.x < projectionPoly1.w;
-		if (separated) break;
+		separated = projectionPoly1.x >= projectionPoly2.y || projectionPoly2.x >= projectionPoly1.y;
+		if (separated) return false;
 	}
 
 	if (!separated)
 	{
 		for (unsigned int i = 0; i < normalsPoly2.size(); i++)
 		{
-			vec4 projectionPoly1 = getMinMax(poly1->m_transformedPoints, normalsPoly2[i]);
-			vec4 projectionPoly2 = getMinMax(poly2->m_transformedPoints, normalsPoly2[i]);
+			vec2 projectionPoly1 = getMinMax(poly1->m_transformedPoints, normalsPoly2[i]);
+			vec2 projectionPoly2 = getMinMax(poly2->m_transformedPoints, normalsPoly2[i]);
 
-			separated = projectionPoly1.x < projectionPoly2.w || projectionPoly2.x < projectionPoly1.w;
-			if (separated) break;
+			separated = projectionPoly1.x >= projectionPoly2.y || projectionPoly2.x >= projectionPoly1.y;
+			if (separated) return false;
 		}
 	}
 	
@@ -338,35 +450,32 @@ bool lge::PolygonCollisonSat(Polygon* poly1, Polygon* poly2)
 
 lge::Manifold lge::PolygonCollisionSatManifold(Polygon* poly1, Polygon* poly2)
 {
-
 	Manifold m;
+
+	if (poly1->m_invMass + poly2->m_invMass == 0) return m;
 
 	std::vector<vec2> normalsPoly1 = getNormals(poly1);
 	std::vector<vec2> normalsPoly2 = getNormals(poly2);
 
 	bool separated = false;
-
-	vec2 minNormal1;
-	double minPenetration1 = FLT_MAX;
-	double minPenetration2 = FLT_MAX;
-	vec2 minNormal2;
-
+	
+	vec2 normal;
+	double minDepth = FLT_MAX;
+	
 	for (unsigned int i = 0; i < normalsPoly1.size(); i++)
 	{
-		vec4 projectionPoly1 = getMinMax(poly1->m_transformedPoints, normalsPoly1[i]);
-		vec4 projectionPoly2 = getMinMax(poly2->m_transformedPoints, normalsPoly1[i]);
+		vec2 projectionPoly1 = getMinMax(poly1->m_transformedPoints, normalsPoly1[i]);
+		vec2 projectionPoly2 = getMinMax(poly2->m_transformedPoints, normalsPoly1[i]);
 
-		separated = projectionPoly1.x < projectionPoly2.w || projectionPoly2.x < projectionPoly1.w;
+		separated = projectionPoly1.x >= projectionPoly2.y || projectionPoly2.x >= projectionPoly1.y;
 		if (separated) break;
 
-		double penetration = projectionPoly2.w - projectionPoly1.x;
-		if (penetration < minPenetration1)
+		float depth = lge::min(projectionPoly2.y - projectionPoly1.x, projectionPoly1.y - projectionPoly2.x);
+
+		if (depth < minDepth)
 		{
-			minPenetration1 = penetration;
-			minNormal1 = normalsPoly1[i].normalize();
-			m.indexP1[0] = projectionPoly1.y;
-			m.indexP1[1] = projectionPoly1.z;
-			m.normalIndex[0] = i + floor(poly1->m_transformedPoints.size() / 2);
+			minDepth = depth;
+			normal = normalsPoly1[i];
 		}
 	}
 
@@ -374,47 +483,35 @@ lge::Manifold lge::PolygonCollisionSatManifold(Polygon* poly1, Polygon* poly2)
 	{
 		for (unsigned int i = 0; i < normalsPoly2.size(); i++)
 		{
-			vec4 projectionPoly1 = getMinMax(poly1->m_transformedPoints, normalsPoly2[i]);
-			vec4 projectionPoly2 = getMinMax(poly2->m_transformedPoints, normalsPoly2[i]);
+			vec2 projectionPoly1 = getMinMax(poly1->m_transformedPoints, normalsPoly2[i]);
+			vec2 projectionPoly2 = getMinMax(poly2->m_transformedPoints, normalsPoly2[i]);
 
 
-			separated = projectionPoly1.x < projectionPoly2.w || projectionPoly2.x < projectionPoly1.w;
+			separated = projectionPoly1.x >= projectionPoly2.y || projectionPoly2.x >= projectionPoly1.y;
 			if (separated) break;
 
-			double penetration = projectionPoly2.w - projectionPoly1.x;
-			if (penetration < minPenetration2)
-			{
-				minPenetration2 = penetration;
-				minNormal2 = normalsPoly2[i].normalize();
-				m.normal[1] = minNormal2;
-				m.indexP2[0] = projectionPoly2.y;
-				m.indexP2[1] = projectionPoly2.z;
-				m.normalIndex[1] = i + floor(poly2->m_transformedPoints.size()/2);
-			}
+			float depth = lge::min(projectionPoly2.y - projectionPoly1.x, projectionPoly1.y - projectionPoly2.x);
 
+			if (depth < minDepth)
+			{
+				minDepth = depth;
+				normal = normalsPoly2[i];
+			}
 		}
 	}
 
 
 	if (!separated)
 	{
-		//std::cout << "colliding\n";
+		vec2 ab = poly2->m_position - poly1->m_position;
 
-		//std::cout << minNormal1.normalize() << " " << minNormal2.normalize() << "\n";
-		double minPenetration = minPenetration1 < minPenetration2 ? minPenetration1 : minPenetration2;
+		if (dotVec2(ab, normal) < 0) normal *= -1;
 
-		vec2 normalAvg = (minNormal1 + minNormal2) / 2;
-		minPenetration = minPenetration / minNormal1.len() / minNormal2.len();//(normalAvg.normalize() * minPenetration).len();
-		//std::cout << minPenetration << "\n";
-		m.penetration = minPenetration;
-		m.normal[0] = (minNormal1).normalize() * -1;// - poly1->m_position).normalize();
-		m.normal[1] = (minNormal2).normalize() * -1;// - poly2->m_position).normalize();
+		m.penetration = minDepth / normal.len();
+		m.normal[0] = normal.normalize();
+		m.normal[1] = normal.normalize();
 		m.collided = true;
 	}
-	//else std::cout << "not colliding\n";
-
-	//m.collided != separated;
 	
-
 	return m;
 }

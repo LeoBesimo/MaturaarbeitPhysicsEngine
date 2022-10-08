@@ -107,6 +107,16 @@ namespace lge
 			y /= a.y;
 		}
 
+		bool operator==(const vec2& a)
+		{
+			return (x == a.x && y == a.y);
+		}
+
+		bool operator!=(const vec2& a)
+		{
+			return (x != a.x && y != a.y);
+		}
+
 		vec2 sub(vec2 a)
 		{
 			x = x - a.x;
@@ -122,7 +132,7 @@ namespace lge
 
 		double lenSqr(void) const  //returns length squared of the vector
 		{
-			return x * x + y * y;
+			return (x * x) + (y * y);
 		}
 
 		double len(void) const  //returns lenght of vector
