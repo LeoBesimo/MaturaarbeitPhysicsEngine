@@ -11,13 +11,6 @@ namespace lge
 	{
 		std::vector<vec2> m_originalPoints;
 		std::vector<vec2> m_transformedPoints;
-		/*
-		std::vector<vec2> m_originalNormals;
-		std::vector<vec2> m_transformedNormals;
-
-		std::vector<vec2> m_edgeMiddle;
-		std::vector<vec2> m_edge;
-		std::vector<vec2> m_transformedEdge;*/
 
 		vec2 m_position;
 		lge::mat2 m_scale;
@@ -26,6 +19,8 @@ namespace lge
 
 		double m_angularVelocity = 0;
 		double m_torque = 0;
+
+		vec4 m_color = vec4(255,255,255,255);
 
 		vec2 m_force;
 		vec2 m_velocity = vec2();
@@ -128,10 +123,12 @@ namespace lge
 			m_mass = density * area;
 			m_inertia = inertia;
 
+			m_invMass = 1 / m_mass;
+
 			//m_mass = m_invMass == 0 ? 0 : 1 / m_mass;
 			//this->m_invInertia = inertia == 0 ? 0 : 1 / inertia;
 
-			std::cout << " " << m_mass << " " << m_inertia << "\n";
+			std::cout << " " << m_mass << " " << m_invMass << "\n";
 
 		}
 

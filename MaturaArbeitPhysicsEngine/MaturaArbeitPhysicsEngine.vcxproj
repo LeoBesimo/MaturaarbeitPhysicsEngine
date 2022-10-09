@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Physics\PhysicsWorld.cpp" />
     <ClCompile Include="src\Debug Tools\ObjectSerializer.cpp" />
     <ClCompile Include="src\Physics\CollisionDetection.cpp" />
     <ClCompile Include="src\Physics\CollisionResolution.cpp" />
@@ -155,6 +156,7 @@
     <ClCompile Include="src\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Physics\PhysicsWorld.h" />
     <ClInclude Include="src\Debug Tools\ObjectSerializer.h" />
     <ClInclude Include="src\Physics\CollisionDetection.h" />
     <ClInclude Include="src\Physics\CollisionResolution.h" />

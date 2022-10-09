@@ -229,7 +229,6 @@ lge::CollisionData lge::ResolveCollisionCollisionData(Manifold m, Polygon* poly1
 
 void lge::ResolveCollisionImproved(Manifold m, Polygon* poly1, Polygon* poly2)
 {
-
 	if (poly1->m_invMass + poly2->m_invMass == 0) return;
 
 	std::vector<vec2> contactPoints = getContactPoints(poly1, poly2);
