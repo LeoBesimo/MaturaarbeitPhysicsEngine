@@ -57,7 +57,7 @@ lge::Polygon* lge::PhysicsWorld::addPolygon(vec2 position, mat2 scale, double an
 lge::Polygon* lge::PhysicsWorld::addBox(vec2 position, vec2 dimension, double angle, bool setStatic, double density, double restitution, vec4 color)
 {
 	Polygon* body = new Polygon(position, angle, mat2(dimension.x / 2.0, 0, 0, dimension.y / 2.0), boxCorners);
-	body->m_restitution = restitution;
+	body->m_restitution = 1.0;
 	body->m_color = color;
 
 	if (setStatic)
@@ -89,8 +89,6 @@ void lge::PhysicsWorld::update(double deltaTime)
 	{
 		//if (!AABBCollision(bodies[i], world)) removeBody(i);
 	}
-
-	std::cout << GRAVITY << "\n";
 
 	for (Polygon* body : bodies)
 	{

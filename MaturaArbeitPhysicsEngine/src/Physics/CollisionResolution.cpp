@@ -255,7 +255,9 @@ void lge::ResolveCollisionImproved(Manifold m, Polygon* poly1, Polygon* poly2)
 		double contactVelocityMag = dotVec2(relativeVelocity, normal);
 
 		if (contactVelocityMag > 0)
+		{
 			continue;
+		}
 
 		double raPerpDotN = dotVec2(raPerp, normal);
 		double rbPerpDotN = dotVec2(rbPerp, normal);
@@ -279,8 +281,8 @@ void lge::ResolveCollisionImproved(Manifold m, Polygon* poly1, Polygon* poly2)
 		vec2 ra = contactPoints[i] - poly1->m_position;
 		vec2 rb = contactPoints[i] - poly2->m_position;
 
-		poly1->move(-normal * m.penetration / 2);
-		poly2->move(normal * m.penetration / 2);
+		//poly1->move(-normal * m.penetration / 2);
+		//poly2->move(normal * m.penetration / 2);
 
 		poly1->m_velocity += -impulse * poly1->m_invMass;
 		poly1->m_angularVelocity += -crossVec2(ra, impulse) * poly1->m_invInertia;

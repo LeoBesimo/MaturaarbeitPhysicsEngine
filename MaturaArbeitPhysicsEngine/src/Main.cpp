@@ -37,7 +37,7 @@ int main()
 
 	lge::PhysicsWorld world(mainRenderer.getWindowSize());
 
-	lge::Polygon* poly = world.addBox(lge::vec2(200, 200), lge::vec2(50, 50), 0, false, 1, 1.0, lge::vec4(255, 0, 255, 255));
+	lge::Polygon* poly = world.addBox(lge::vec2(200, 200), lge::vec2(50, 50), 0.25, false, 1, 1.0, lge::vec4(255, 0, 255, 255));
 
 	poly->m_velocity = lge::vec2(60, 0);
 
