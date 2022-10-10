@@ -1,6 +1,6 @@
 #include "PhysicsWorld.h"
 
-lge::PhysicsWorld::PhysicsWorld(vec2 size)
+lge::PhysicsWorld::PhysicsWorld(Renderer* renderer, vec2 size)
 {
 	boxCorners.push_back(vec2(-1, -1));
 	boxCorners.push_back(vec2(1, -1));
@@ -10,6 +10,7 @@ lge::PhysicsWorld::PhysicsWorld(vec2 size)
 	GRAVITY = vec2(0, 100);
 
 	this->size = size;
+	this->renderer = renderer;
 	this->world = new Polygon(size / 2, 0, mat2(size.x, 0, 0, size.y), boxCorners);
 }
 
@@ -58,7 +59,7 @@ lge::Polygon* lge::PhysicsWorld::addPolygon(vec2 position, mat2 scale, double an
 lge::Polygon* lge::PhysicsWorld::addBox(vec2 position, vec2 dimension, double angle, bool setStatic, double density, double restitution, vec4 color)
 {
 	Polygon* body = new Polygon(position, angle, mat2(dimension.x / 2.0, 0, 0, dimension.y / 2.0), boxCorners);
-	body->m_restitution = 1.0;
+	body->m_restitution =restitution;
 	body->m_color = color;
 
 	if (setStatic)
@@ -85,12 +86,45 @@ void lge::PhysicsWorld::removeBody(int index)
 	bodies.erase(bodies.begin() + index);
 }
 
+void lge::PhysicsWorld::setResolutionIndex(int index)
+{
+	resolutionIndex = index;
+}
+
+void lge::PhysicsWorld::testSetup()
+{
+	addBox(vec2(700, 200), vec2(50, 30), 0, false, 1, 0.4, lge::Color::RED);
+	addBox(vec2(300, 300), vec2(30, 60), 0, false, 1, 0.4, lge::Color::RED);
+	addBox(vec2(500, 100), vec2(40, 40), 0, false, 1, 0.4, lge::Color::RED);
+
+	addPolygon(vec2(200, 100), mat2(30, 30, 0, 30), 0, 5, false, 1, 0.4, lge::Color::PINK);
+	addPolygon(vec2(800, 700), mat2(40, 0, 0, 40), 0, 7, false, 1, 0.4, lge::Color::PINK);
+	Polygon* p = addPolygon(vec2(600, 250), mat2(30, 0, 0, 30), QUARTER_PI, 4, false, 1, 0.4, lge::Color::PINK);
+	std::cout << p->m_mass << " " << p->m_invMass << "\n";
+}
+
+void lge::PhysicsWorld::reset()
+{
+	for (int i = bodies.size() - 1; i >= 0; i--)
+	{
+		if (!bodies[i]->m_mass == 0) removeBody(i);
+	}
+
+	for (Polygon* body : bodies)
+	{
+		body->m_velocity = vec2();
+		body->m_angularVelocity = 0;
+	}
+}
+
 void lge::PhysicsWorld::update(double deltaTime)
 {
 	for (int i = bodies.size() - 1; i >= 0; i--)
 	{
 		if (!AABBCollision(bodies[i], world)) removeBody(i);
 	}
+
+	//std::cout << bodies.size() << "\n";
 
 	for (unsigned int i = 0; i < stepCount; i++)
 
@@ -110,22 +144,49 @@ void lge::PhysicsWorld::update(double deltaTime)
 			{
 				if (bodyA == bodyB) continue;
 
+				
+
 				if (AABBCollision(bodyA, bodyB))
 				{
 					Manifold manifold = PolygonCollisionSatManifold(bodyA, bodyB);
-
-					ResolveCollisionImproved(manifold, bodyA, bodyB);
+					switch (resolutionIndex)
+					{
+					case 1:
+						ResolveCollision(manifold, bodyA, bodyB);
+						break;
+					case 2: 
+						ResolveCollisionImproved(manifold, bodyA, bodyB);
+						break;
+					case 3:
+						ResolveCollisionWithoutRotation(manifold, bodyA, bodyB);
+						break;
+					default:
+						ResolveCollisionWithoutRotation(manifold, bodyA, bodyB);
+						break;
+					}
 				}
 			}
 		}
 	}
 }
 
-void lge::PhysicsWorld::renderWorld(Renderer* renderer)
+void lge::PhysicsWorld::renderWorld()
 {
+
+	std::stringstream stream;
+	stream << "Bodies: " << bodies.size();
+
+	renderer->stroke(lge::Color::CYAN);
+	renderer->text(stream.str(), 10, 30, 16);
+
 	for (Polygon* body : bodies)
 	{
 		renderer->stroke(body->m_color);
-		renderer->renderVec2List(body->m_transformedPoints);
+		renderer->renderVec2ListSolid(body->m_transformedPoints);
 	}
+}
+
+std::vector<lge::Polygon*> lge::PhysicsWorld::getBodies()
+{
+	return bodies;
 }

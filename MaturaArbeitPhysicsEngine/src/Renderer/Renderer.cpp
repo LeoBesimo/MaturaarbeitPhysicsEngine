@@ -6,6 +6,7 @@ Renderer::Renderer(unsigned int width, unsigned int height, std::string name)
 	m_window->setFramerateLimit(60);
 	m_windowWidth = width;
 	m_windowHeight = height;
+	m_font.loadFromFile("ARIAL.TTF");
 }
 
 Renderer::~Renderer()
@@ -82,6 +83,7 @@ void Renderer::update()
 	m_window->display();
 	m_deltaTime = m_deltaClock.restart().asSeconds();
 	m_frameCount++;
+	m_frameRate = 1.0 / m_framaRateClock.restart().asSeconds();
 }
 
 void Renderer::fill(lge::vec4 color)
@@ -147,6 +149,52 @@ void Renderer::renderVec2List(std::vector<lge::vec2> &vectors)
 
 		m_window->draw(lines);
 	}
+}
+
+void Renderer::renderVec2ListSolid(std::vector<lge::vec2>& vectors)
+{
+	std::vector<sf::Vertex> vertecies;
+	lge::vec2 center = lge::avgVec2List(vectors);
+	sf::Vertex vertex1;
+	sf::Vertex vertex2;
+	sf::Vertex vertex3;
+	vertex1.color = m_strokeColor;
+	vertex2.color = m_strokeColor;
+	vertex3.color = m_strokeColor;
+	for(unsigned int i = 0; i < vectors.size();i++)
+	{
+		unsigned j = (i + 1) % vectors.size();
+		vertex1.position = sf::Vector2f(center.x, center.y);
+		vertex2.position = sf::Vector2f(vectors[i].x, vectors[i].y);
+		vertex3.position = sf::Vector2f(vectors[j].x, vectors[j].y);
+
+		vertecies.push_back(vertex1);
+		vertecies.push_back(vertex2);
+		vertecies.push_back(vertex3);
+	}
+
+	m_window->draw(&vertecies[0], vertecies.size(), sf::Triangles);
+}
+
+void Renderer::text(std::string text, float x, float y, int size)
+{
+	m_text.setFont(m_font);
+	m_text.setString(text);
+	m_text.setCharacterSize(size);
+	m_text.setFillColor(m_strokeColor);
+	m_text.setPosition(x, y);
+	m_window->draw(m_text);
+}
+
+void Renderer::displayFramerate()
+{
+	std::stringstream stream;
+	stream << "Framerate: " << round(m_frameRate);
+	stroke(lge::Color::YELLOW);
+	m_text.setStyle(sf::Text::Bold);
+	text(stream.str(), 10, 10, 16);
+	m_text.setStyle(sf::Text::Regular);
+
 }
 
 void Renderer::line(float x1, float y1, float x2, float y2)

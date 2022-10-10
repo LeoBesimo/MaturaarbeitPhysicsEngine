@@ -1,8 +1,10 @@
 #pragma once
 #include <vector>
+#include <sstream>
 #include <SFML/Graphics.hpp>
 
 #include "components.h"
+#include "Utilities.h"
 #include "CustomShapes/EllipseShape.h"
 
 /*TODO:
@@ -43,11 +45,14 @@ private:
 	EllipseShape m_ellipseShape;
 	sf::CircleShape m_circleShape;
 	sf::RectangleShape m_rectShape;
+	sf::Text m_text;
+	sf::Font m_font;
 
 	sf::Clock m_deltaClock;
 	double m_deltaTime = 0;
+	sf::Clock m_framaRateClock;
 
-	//float m_strokeWeight = 1;
+	double m_frameRate;
 
 public:
 
@@ -78,6 +83,10 @@ public:
 	void coordinateSystem(CoordinateSystem cs);
 
 	void renderVec2List(std::vector<lge::vec2> &vectors);
+	void renderVec2ListSolid(std::vector<lge::vec2> &vectors);
+
+	void text(std::string text, float x, float y, int size);
+	void displayFramerate();
 
 	void line(float x1, float y1, float x2, float y2);
 	void ellipse(float x, float y, float r1, float r2);

@@ -36,5 +36,7 @@ namespace lge
 		static const vec4 PINK(255, 0, 255, 255);
 		static const vec4 YELLOW(255, 255, 0, 255);
 		static const vec4 CYAN(0, 255, 255, 255);
+		static const vec4 LIGHTGRAY(160, 160, 160, 255);
+		static const vec4 GRAY(64, 64, 64, 255);
 	}
 }
