@@ -155,25 +155,20 @@ void Renderer::renderVec2ListSolid(std::vector<lge::vec2>& vectors)
 {
 	std::vector<sf::Vertex> vertecies;
 	lge::vec2 center = lge::avgVec2List(vectors);
-	sf::Vertex vertex1;
-	sf::Vertex vertex2;
-	sf::Vertex vertex3;
-	vertex1.color = m_strokeColor;
-	vertex2.color = m_strokeColor;
-	vertex3.color = m_strokeColor;
-	for(unsigned int i = 0; i < vectors.size();i++)
-	{
-		unsigned j = (i + 1) % vectors.size();
-		vertex1.position = sf::Vector2f(center.x, center.y);
-		vertex2.position = sf::Vector2f(vectors[i].x, vectors[i].y);
-		vertex3.position = sf::Vector2f(vectors[j].x, vectors[j].y);
+	sf::Vertex vertex;
 
-		vertecies.push_back(vertex1);
-		vertecies.push_back(vertex2);
-		vertecies.push_back(vertex3);
+	vertex.position = sf::Vector2f(center.x, center.y);
+	vertex.color = m_strokeColor;
+	vertecies.push_back(vertex);
+
+	for(unsigned int i = 0; i <= vectors.size();i++)
+	{
+		int index = (i % vectors.size());
+		vertex.position = sf::Vector2f(vectors[index].x, vectors[index].y);
+		vertecies.push_back(vertex);
 	}
 
-	m_window->draw(&vertecies[0], vertecies.size(), sf::Triangles);
+	m_window->draw(&vertecies[0], vertecies.size(), sf::TriangleFan);
 }
 
 void Renderer::text(std::string text, float x, float y, int size)
