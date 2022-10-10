@@ -29,6 +29,7 @@ lge::PhysicsWorld::~PhysicsWorld()
 lge::Polygon* lge::PhysicsWorld::addPolygon(vec2 position, mat2 scale, double angle, double sides, bool setStatic, double density, double restitiution, vec4 color)
 {
 	std::vector<vec2> corners;
+	if (sides == 6) sides += 1;
 	double increment = TWO_PI / sides;
 	for (double i = 0; i < TWO_PI; i += increment)
 	{
@@ -99,8 +100,7 @@ void lge::PhysicsWorld::testSetup()
 
 	addPolygon(vec2(200, 100), mat2(30, 30, 0, 30), 0, 5, false, 1, 0.4, lge::Color::PINK);
 	addPolygon(vec2(800, 700), mat2(40, 0, 0, 40), 0, 7, false, 1, 0.4, lge::Color::PINK);
-	Polygon* p = addPolygon(vec2(600, 250), mat2(30, 0, 0, 30), QUARTER_PI, 4, false, 1, 0.4, lge::Color::PINK);
-	std::cout << p->m_mass << " " << p->m_invMass << "\n";
+	Polygon* p = addPolygon(vec2(600, 250), mat2(30, 0, 0, 20), 0, 4, false, 1, 0.4, lge::Color::PINK);
 }
 
 void lge::PhysicsWorld::reset()
