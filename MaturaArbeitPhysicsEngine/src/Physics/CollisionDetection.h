@@ -6,15 +6,6 @@
 namespace lge
 {
 
-	struct PLData
-	{
-		vec2 closest = NULL;
-		double distSqr = FLT_MAX;
-
-		PLData() {}
-
-	};
-
 	bool PolygonCollisionDiagonals(Polygon *poly1, Polygon *poly2);  //collision detection check with radii against sides
 	vec2 PolygonCollisionDiagonalsDisplacement(Polygon* poly1, Polygon* poly2);
 	void PolygonCollisionDiagonalsApply(Polygon* poly1, Polygon* poly2);
@@ -22,9 +13,6 @@ namespace lge
 	bool AABBCollision(Polygon* poly1, Polygon* poly2);
 
 	vec2 LineLineIntersection(vec2 p1, vec2 p2, vec2 p3, vec2 p4);  //checking for line intersections with intersection point calculation
-	PLData distPointToLine(vec2 point, vec2 a, vec2 b);
-	PLData minDistToLine(vec2 point, vec2 a, vec2 b);
-
 
 	std::vector<vec2> getNormals(Polygon* poly); //returns side normals for a given polygon
 	std::vector<vec2> getContactPoints(Polygon* poly1, Polygon* poly2); // calculates contact points between polygons using line intersection

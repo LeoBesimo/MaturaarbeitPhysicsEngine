@@ -29,7 +29,7 @@ namespace lge
 		double m_mass;
 		double m_inertia;
 
-		double m_area;
+		double m_density;
 
 		double m_invMass;
 		double m_invInertia;
@@ -42,48 +42,14 @@ namespace lge
 			m_angle = angle;
 			m_scale = scale;
 			m_originalPoints = originalPoints;
-			m_area = 0;
 			calculateSides();
-			//calculateInertia();
-			//calculateInertiaIrregular();
-		}
-
-		float pureDistPointToLine(vec2 point, vec2 a, vec2 b) 
-		{
-			vec2 ab = b - a;
-			vec2 ap = point - a;
-
-			vec2 closest;
-
-			double proj = dotVec2(ap, ab);
-			double abLenSqr = ab.lenSqr();
-			double d = proj / abLenSqr;
-
-			if (d <= 0.0)
-			{
-				closest = a;
-			}
-			else if (d >= 1.0)
-			{
-				closest = b;
-			}
-			else
-			{
-				closest = a + (ab * d);
-			}
-
-			double dx = point.x - closest.x;
-			double dy = point.y - closest.y;
-
-			return dx * dx + dy * dy;
-
-			//data.distSqr = lge::distSqr(ap, data.closest);
 		}
 
 		void setMass(double mass)
 		{
 			if (mass == 0)
 			{
+				m_density = 0;
 				m_mass = 0;
 				m_invMass = 0;
 			}
@@ -92,9 +58,6 @@ namespace lge
 				m_mass = mass;
 				m_invMass = 1 / mass;
 			}
-
-			//calculateMass(10);
-			//setInertia(m_mass / 6 * (m_scale.x.x * m_scale.y.y));
 		}
 
 		void calculateMass(double density)
@@ -103,6 +66,7 @@ namespace lge
 			const unsigned int n = m_transformedPoints.size();
 
 			m_mass = 0;
+			m_density = density;
 			double inertia = 0;
 			double area = 0;
 
@@ -114,7 +78,7 @@ namespace lge
 				vec2 center = (m_position + p1 + p2) / 3;
 
 				double d = dist(m_position,center);
-				double height = sqrt(pureDistPointToLine(m_position, p1, p2));
+				double height = sqrt(distPointToLine(m_position, p1, p2).distSqr);
 				double triangleArea = 0.5 * (p2 - p1).len() * height;
 
 				area += triangleArea;
@@ -124,69 +88,44 @@ namespace lge
 			m_inertia = inertia;
 
 			m_invMass = 1 / m_mass;
-
-			//m_mass = m_invMass == 0 ? 0 : 1 / m_mass;
-			//this->m_invInertia = inertia == 0 ? 0 : 1 / inertia;
-
-			std::cout << " " << m_mass << " " << m_invMass << "\n";
-
 		}
 
 		void calculateInertia()
 		{
-			double n = (double) m_originalPoints.size();
+			int n = m_transformedPoints.size();
 
-			double avgDist = 0;
+			double totalInertia = 0;
+
 			for (unsigned int i = 0; i < n; i++)
 			{
 				vec2 p1 = m_transformedPoints[i];
-				vec2 p2 = m_transformedPoints[(i + 1) % (int) n];
+				vec2 p2 = m_transformedPoints[(i + 1) % n];
+				vec2 center = m_position;
+				
+				PLData data = distPointToLine(center, p1, p2);
 
-				avgDist += dist(p1, p2);
+				vec2 triangleCenter1 = (center + p1 + data.closest) / 3;
+				vec2 triangleCenter2 = (center + p2 + data.closest) / 3;
+
+
+				double b1 = distSqr(p1, data.closest);
+				double b2 = distSqr(p2, data.closest);
+
+				double area1 = sqrt(data.distSqr + b1) / 2;
+				double area2 = sqrt(data.distSqr + b2) / 2;
+
+				double mass1 = area1 * m_density;
+				double mass2 = area2 * m_density;
+
+				double j1 = (mass1 / 18) * (b1 + data.distSqr);
+				double j2 = (mass2 / 18) * (b2 + data.distSqr);
+
+				totalInertia += j1 * distSqr(center, triangleCenter1);
+				totalInertia += j2 * distSqr(center, triangleCenter2);
 			}
 
-			avgDist /= n;
-
-			double alpha = TWO_PI / n;
-
-			double factor = n / 96.0;
-
-			double aPow4 = avgDist * avgDist * avgDist * avgDist;
-
-			double num = 2 + cos(alpha);
-			double den = (1 - cos(alpha)) * (1 - cos(alpha));
-
-			double factor2 = num / den;
-
-			std::cout << alpha << " " << factor << " " << aPow4 << " " << factor2 << "\n";
-
-			m_inertia = factor * aPow4 * factor2 * sin(alpha);
-			m_invInertia = 1 / m_inertia;
-			std::cout << m_inertia << " " << m_invInertia << "\n";
-		}
-
-		void calculateInertiaIrregular()
-		{
-
-			// https://de.wikipedia.org/wiki/Fl%C3%A4chentr%C3%A4gheitsmoment 
-			double minDist = FLT_MAX;
-			double maxDist = FLT_MIN;
-
-			for (unsigned int i = 0; i < m_transformedPoints.size(); i++) 
-			{
-				auto j = (i + 1) % m_transformedPoints.size();
-
-				vec2 p1 = m_transformedPoints[i];
-				vec2 p2 = m_transformedPoints[j];
-
-				double d = pureDistPointToLine(m_position, p1, p2);
-				if (d < minDist) minDist = d;
-				if (d > maxDist) maxDist = d;
-			}
-
-			m_inertia = (PI / 4) * (maxDist * maxDist * maxDist * minDist);
-			m_invInertia = 1 / m_inertia;
-			std::cout << m_inertia << " " << m_invInertia << "\n";
+			m_inertia = totalInertia;
+			m_invInertia = 1 / totalInertia;
 		}
 
 		void move(vec2 distance)
@@ -240,21 +179,13 @@ namespace lge
 		void update(double dt)
 		{	
 			move(m_velocity * dt);
-
-			//m_position += m_velocity * dt;
-			//m_force *= 0;
-			
 			rotate(m_angularVelocity * dt);
+		}
 
-			//m_angle += m_angularVelocity * dt;
-			//m_torque *= 0;
-
-			//updateSides();
-			/*
-			m_transformedEdge = m_edge;
-			m_transformedEdge = applyMat2ToVec2List(m_transformedEdge, transform);
-			addVec2ToVec2List(m_transformedEdge, m_position);
-			^*/
+		void update(double dt, int stepCount)
+		{
+			move(m_velocity * dt / stepCount);
+			rotate(m_angularVelocity * dt / stepCount);
 		}
 	};
 }

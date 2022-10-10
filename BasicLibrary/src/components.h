@@ -15,4 +15,26 @@ namespace lge
 	const double HALF_PI = (double)(PI / 2.0);
 	const double TWO_PI = (double) (PI * 2.0);
 	const double THRESHOLD = (double)1.0;// 0.0005;
+
+	struct PLData
+	{
+		vec2 closest = NULL;
+		double distSqr = FLT_MAX;
+
+		PLData() {}
+
+	};
+
+	namespace Color
+	{
+		static const vec4 WHITE(255, 255, 255, 255);
+		static const vec4 RED(255, 0, 0, 255);
+		static const vec4 GREEN(0, 255, 0, 255);
+		static const vec4 BLUE(0, 0, 255, 255);
+		static const vec4 BLACK(0, 0, 0, 255);
+		static const vec4 TRANSPARENT(0, 0, 0, 0);
+		static const vec4 PINK(255, 0, 255, 255);
+		static const vec4 YELLOW(255, 255, 0, 255);
+		static const vec4 CYAN(0, 255, 255, 255);
+	}
 }

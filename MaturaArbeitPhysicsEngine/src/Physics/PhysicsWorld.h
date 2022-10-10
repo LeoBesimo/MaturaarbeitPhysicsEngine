@@ -21,6 +21,8 @@ namespace lge
 
 		std::vector<vec2> boxCorners;
 
+		unsigned int stepCount = 5;
+
 	public:
 
 		PhysicsWorld(vec2 size);

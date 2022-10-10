@@ -166,7 +166,7 @@
     <ClInclude Include="src\Renderer\Renderer.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="src\Main backup.txt" />
+    <Text Include="main.txt" />
     <Text Include="src\Renderer\Renderer Optimized.txt" />
     <Text Include="src\Renderer\Renderer Unoptimized.txt" />
   </ItemGroup>

@@ -66,6 +66,6 @@
   <ItemGroup>
     <Text Include="src\Renderer\Renderer Optimized.txt" />
     <Text Include="src\Renderer\Renderer Unoptimized.txt" />
-    <Text Include="src\Main backup.txt" />
+    <Text Include="main.txt" />
   </ItemGroup>
 </Project>

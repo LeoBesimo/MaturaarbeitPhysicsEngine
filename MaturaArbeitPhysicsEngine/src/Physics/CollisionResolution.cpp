@@ -281,83 +281,28 @@ void lge::ResolveCollisionImproved(Manifold m, Polygon* poly1, Polygon* poly2)
 		vec2 ra = contactPoints[i] - poly1->m_position;
 		vec2 rb = contactPoints[i] - poly2->m_position;
 
-		//poly1->move(-normal * m.penetration / 2);
-		//poly2->move(normal * m.penetration / 2);
+		poly1->move(-normal * m.penetration / 2);
+		poly2->move(normal * m.penetration / 2);
 
 		poly1->m_velocity += -impulse * poly1->m_invMass;
 		poly1->m_angularVelocity += -crossVec2(ra, impulse) * poly1->m_invInertia;
 		poly2->m_velocity += impulse * poly2->m_invMass;
 		poly2->m_angularVelocity += crossVec2(rb, impulse) * poly2->m_invInertia;
 	}
+
 }
-
-void lge::ResolveCollisionImprovedNormalized(Manifold m, Polygon* poly1, Polygon* poly2)
-{
-	std::vector<vec2> contactPoints = getContactPoints(poly1, poly2);
-	lge::vec2 normal = m.normal[0].normalize();
-	
-	if (poly1->m_invMass + poly2->m_invMass == 0) return;
-
-	//vec2 vc = contactPoints[1] - contactPoints[0];
-	//vec2 normal(-vc.y, vc.x);
-	//normal = normal.normalize();
-	
-	for (auto i = 0; i < contactPoints.size(); i++)
-	{
-		vec2 ra = contactPoints[i] - poly1->m_position;
-		vec2 rb = contactPoints[i] - poly2->m_position;
-		vec2 va = poly1->m_velocity + crossVec2Scalar(poly1->m_angularVelocity, ra);
-		vec2 vb = poly2->m_velocity + crossVec2Scalar(poly2->m_angularVelocity, rb);
-
-		vec2 rv = vb - va;
-
-		if (dotVec2(rv, normal) > 0) return;
-
-		double e = min(poly1->m_restitution, poly2->m_restitution);
-		double invMass = poly1->m_invMass + poly2->m_invMass;
-
-		double den1 = dotVec2(normal, crossVec2Scalar(crossVec2(va, normal) * poly1->m_invInertia, va)); //dotVec2(normal, crossVec2Scalar(crossVec2(va, normal),va) / poly1->m_inertia);
-		double den2 = dotVec2(normal, crossVec2Scalar(crossVec2(vb, normal) * poly2->m_invInertia, vb));
-
-		double j = -(dotVec2(rv, normal) * (e + 1)) / (invMass + den1 + den2);//dotVec2(normal, crossVec2(va, normal) / poly1->m_inertia) + dotVec2(normal, crossVec2(vb, normal) / poly1->m_inertia));
-
-
-		poly1->m_velocity += (normal * j) / poly1->m_mass;
-		poly2->m_velocity -= (normal * j) / poly2->m_mass;
-
-		poly1->m_angularVelocity += (crossVec2(va, normal * j) / poly1->m_inertia);
-		poly2->m_angularVelocity -= (crossVec2(vb, normal * j) / poly2->m_inertia);
-	}
-}
-
 
 //TODO: Rework this
 void lge::PositionalCorrection(Manifold m, Polygon* poly1, Polygon* poly2)
 {
 	const double percent = 0.2;
-	vec2 normal = m.normal[0] + m.normal[1];
-	normal = normal.normalize();
-	double dotNormal = lge::dotVec2(m.normal[0].normalize(), m.normal[1].normalize());
-	if ((dotNormal < 0.01 && dotNormal > -0.01) || dotNormal == 1)
-	{
-		dotNormal = 0;
-		normal = m.normal[1].normalize();
-		if (normal.lenSqr() == 0)
-		{
-			normal = m.normal[0];
-		}
-	}
+	vec2 normal = m.normal[0];
 
-	if (poly1->m_invMass == 0) normal = m.normal[0];
-	if (poly1->m_invMass == 0) normal = m.normal[1];
-
-	normal = normal.normalize();
-
-	vec2 correction = normal * percent * (-m.penetration / (1 / poly1->m_mass + 1 / poly2->m_mass));
-	poly1->m_position -= correction * 1 / poly1->m_mass;
-	poly2->m_position += correction * 1 / poly2->m_mass;
-	poly1->calculateSides();
-	poly2->calculateSides();
+	vec2 correction = normal * percent * (max(-m.penetration, 0) / (poly1->m_invMass + poly2->m_invMass));
+	//poly1->m_position -= correction * 1 / poly1->m_mass;
+	//poly2->m_position += correction * 1 / poly2->m_mass;
+	poly1->move(-correction * poly1->m_invMass);
+	poly2->move(correction * poly2->m_invMass);
 
 }
 

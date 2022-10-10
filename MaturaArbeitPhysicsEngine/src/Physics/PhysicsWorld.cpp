@@ -15,7 +15,7 @@ lge::PhysicsWorld::PhysicsWorld(vec2 size)
 
 lge::PhysicsWorld::~PhysicsWorld()
 {
-	for (int i = bodies.size()-1; i >= 0; i--)
+	for (int i = bodies.size() - 1; i >= 0; i--)
 	{
 		int index = bodies.size() - 1 - i;
 		delete bodies[i];
@@ -28,7 +28,8 @@ lge::PhysicsWorld::~PhysicsWorld()
 lge::Polygon* lge::PhysicsWorld::addPolygon(vec2 position, mat2 scale, double angle, double sides, bool setStatic, double density, double restitiution, vec4 color)
 {
 	std::vector<vec2> corners;
-	for (double i = 0; i < TWO_PI; i += TWO_PI / sides)
+	double increment = TWO_PI / sides;
+	for (double i = 0; i < TWO_PI; i += increment)
 	{
 		corners.push_back(vec2(cos(i), sin(i)));
 	}
@@ -68,7 +69,8 @@ lge::Polygon* lge::PhysicsWorld::addBox(vec2 position, vec2 dimension, double an
 	else
 	{
 		body->calculateMass(density);
-		body->setInertia(body->m_mass / 12 * (pow(dimension.x, 2) + pow(dimension.y, 2)));
+		body->calculateInertia();
+		//body->setInertia(body->m_mass / 12 * (pow(dimension.x, 2) + pow(dimension.y, 2)));
 	}
 
 	bodies.push_back(body);
@@ -87,28 +89,33 @@ void lge::PhysicsWorld::update(double deltaTime)
 {
 	for (int i = bodies.size() - 1; i >= 0; i--)
 	{
-		//if (!AABBCollision(bodies[i], world)) removeBody(i);
+		if (!AABBCollision(bodies[i], world)) removeBody(i);
 	}
 
-	for (Polygon* body : bodies)
-	{
-		//body->m_force += GRAVITY * body->m_mass;
-		body->integrateForces(deltaTime);
-	}
+	for (unsigned int i = 0; i < stepCount; i++)
 
-	for (Polygon* bodyA : bodies)
 	{
-		bodyA->update(deltaTime);
-
-		for (Polygon* bodyB : bodies)
+		
+		for (Polygon* body : bodies)
 		{
-			if (bodyA == bodyB) continue;
+			body->m_force += GRAVITY * body->m_mass / stepCount;
+			body->integrateForces(deltaTime);
+		}
 
-			if (AABBCollision(bodyA, bodyB))
+		for (Polygon* bodyA : bodies)
+		{
+			bodyA->update(deltaTime, stepCount);
+
+			for (Polygon* bodyB : bodies)
 			{
-				Manifold manifold = PolygonCollisionSatManifold(bodyA, bodyB);
+				if (bodyA == bodyB) continue;
 
-				ResolveCollisionImproved(manifold, bodyA, bodyB);
+				if (AABBCollision(bodyA, bodyB))
+				{
+					Manifold manifold = PolygonCollisionSatManifold(bodyA, bodyB);
+
+					ResolveCollisionImproved(manifold, bodyA, bodyB);
+				}
 			}
 		}
 	}
@@ -117,7 +124,7 @@ void lge::PhysicsWorld::update(double deltaTime)
 void lge::PhysicsWorld::renderWorld(Renderer* renderer)
 {
 	for (Polygon* body : bodies)
-	{	
+	{
 		renderer->stroke(body->m_color);
 		renderer->renderVec2List(body->m_transformedPoints);
 	}

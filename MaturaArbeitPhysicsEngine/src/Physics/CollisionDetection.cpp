@@ -221,65 +221,6 @@ lge::vec2 lge::LineLineIntersection(vec2 p1, vec2 p2, vec2 p3, vec2 p4)
 	}
 }
 
-lge::PLData lge::distPointToLine(vec2 point, vec2 a, vec2 b)
-{
-	PLData data;
-
-	vec2 ab = b - a;
-	vec2 ap = point - a;
-
-	double proj = dotVec2(ap, ab);
-	double abLenSqr = ab.lenSqr();
-	double d = proj / abLenSqr;
-
-	if (d <= 0.0)
-	{
-		data.closest = a;
-	}
-	else if (d >= 1.0)
-	{
-		data.closest = b;
-	}
-	else
-	{
-		data.closest = a + (ab * d);
-	}
-
-	double dx = point.x - data.closest.x;
-	double dy = point.y - data.closest.y;
-
-	data.distSqr = dx * dx + dy * dy;
-
-	//data.distSqr = lge::distSqr(ap, data.closest);
-
-	return data;
-}
-
-lge::PLData lge::minDistToLine(vec2 point, vec2 a, vec2 b)
-{
-	PLData data;
-
-	vec2 ab = b - a;
-	double l2 = ab.lenSqr();
-	if (l2 == 0) return data;
-
-	double t = max(0, min(1, dotVec2(point - a, b - a)));
-	t = dotVec2(point - a, b - a);
-	if (t <= 0) data.closest = a;
-	else if (t >= 1) data.closest = b;
-	else data.closest = a + ((b - a) * t);
-	
-
-	//vec2 proj = a + ((b - a) * t);
-
-	//data.closest = proj;
-	data.distSqr = distSqr(point, data.closest);
-
-	return data;
-}
-
-
-
 std::vector<lge::vec2> lge::getNormals(Polygon* poly)
 {
 	std::vector<vec2> normals;

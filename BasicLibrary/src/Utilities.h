@@ -38,7 +38,7 @@ namespace lge
 	inline double distSqr(vec2 a, vec2 b);
 	inline bool nearlyEqual(double a, double b);
 	inline bool nearlyEqual(vec2 a, vec2 b);
-
+	inline PLData distPointToLine(vec2 point, vec2 a, vec2 b);
 
 	inline uuid generateUUIDv4();
 
@@ -264,6 +264,40 @@ namespace lge
 		for (unsigned int i = 0; i < vectors.size(); i++)
 			sum += vectors[i];
 		return sum / vectors.size();
+	}
+
+	lge::PLData lge::distPointToLine(vec2 point, vec2 a, vec2 b)
+	{
+		PLData data;
+
+		vec2 ab = b - a;
+		vec2 ap = point - a;
+
+		double proj = dotVec2(ap, ab);
+		double abLenSqr = ab.lenSqr();
+		double d = proj / abLenSqr;
+
+		if (d <= 0.0)
+		{
+			data.closest = a;
+		}
+		else if (d >= 1.0)
+		{
+			data.closest = b;
+		}
+		else
+		{
+			data.closest = a + (ab * d);
+		}
+
+		double dx = point.x - data.closest.x;
+		double dy = point.y - data.closest.y;
+
+		data.distSqr = dx * dx + dy * dy;
+
+		//data.distSqr = lge::distSqr(ap, data.closest);
+
+		return data;
 	}
 }
 
