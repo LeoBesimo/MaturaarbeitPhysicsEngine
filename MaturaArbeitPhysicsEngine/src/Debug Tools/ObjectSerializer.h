@@ -17,6 +17,7 @@ namespace lge
 
 		struct SerializableObject
 		{
+			int collisionAlgorithm = 1;
 			long frame;
 			Manifold manifold;
 			Polygon a;

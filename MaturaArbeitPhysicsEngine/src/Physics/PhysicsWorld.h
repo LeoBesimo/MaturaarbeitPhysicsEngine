@@ -5,6 +5,7 @@
 #include "CollisionDetection.h"
 #include "CollisionResolution.h"
 #include "../Renderer/Renderer.h"
+#include "../Debug Tools/ObjectSerializer.h"
 
 namespace lge
 {
@@ -12,6 +13,8 @@ namespace lge
 	class PhysicsWorld
 	{
 	private:
+
+		ObjectSerializer serializer;
 
 		Renderer* renderer;
 
@@ -40,6 +43,8 @@ namespace lge
 
 		void testSetup();
 		void reset();
+
+		bool getData(const char* file);
 
 		void setResolutionIndex(int index);
 

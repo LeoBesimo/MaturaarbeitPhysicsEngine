@@ -117,6 +117,12 @@ void lge::PhysicsWorld::reset()
 	}
 }
 
+bool lge::PhysicsWorld::getData(const char* file)
+{
+	serializer.serializeObjects(file);
+	return true;
+}
+
 void lge::PhysicsWorld::update(double deltaTime)
 {
 	for (int i = bodies.size() - 1; i >= 0; i--)
@@ -148,6 +154,7 @@ void lge::PhysicsWorld::update(double deltaTime)
 
 				if (AABBCollision(bodyA, bodyB))
 				{
+					ObjectSerializer::SerializableObject data;
 					Manifold manifold = PolygonCollisionSatManifold(bodyA, bodyB);
 					switch (resolutionIndex)
 					{
@@ -159,6 +166,24 @@ void lge::PhysicsWorld::update(double deltaTime)
 						break;
 					case 3:
 						ResolveCollisionWithoutRotation(manifold, bodyA, bodyB);
+						break;
+					case 4:			
+						data.collisionAlgorithm = 4;
+						data.manifold = manifold;
+						data.a = *bodyA;
+						data.b = *bodyB;
+						data.frame = renderer->getFrameCount();
+						data.collision = ResolveCollisionCollisionData(manifold, bodyA, bodyB);
+						serializer.addObject(data);
+						break;
+					case 5:
+						data.collisionAlgorithm = 5;
+						data.manifold = manifold;
+						data.a = *bodyA;
+						data.b = *bodyB;
+						data.frame = renderer->getFrameCount();
+						data.collision = ResolveCollisionImprovedCollisionData(manifold, bodyA, bodyB);
+						serializer.addObject(data);
 						break;
 					default:
 						ResolveCollisionWithoutRotation(manifold, bodyA, bodyB);

@@ -9,7 +9,7 @@ namespace lge
 	struct Manifold
 	{
 		bool collided = false;
-		vec2 normal[2];
+		vec2 normal;
 		double penetration;
 	};
 

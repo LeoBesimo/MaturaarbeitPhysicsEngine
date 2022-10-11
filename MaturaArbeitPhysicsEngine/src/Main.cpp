@@ -4,12 +4,9 @@
 #include <chrono>
 
 #include "Physics/PhysicsWorld.h"
-#include "Debug Tools/ObjectSerializer.h"
-#include "components.h"
 
 int main()
 {
-	lge::ObjectSerializer serializer;
 	//srand(time(NULL));
 	srand(0);
 	Renderer mainRenderer(1000, 1000, "Test");
@@ -59,7 +56,6 @@ int main()
 			if (event.type == sf::Event::Closed)
 			{
 				mainRenderer.~Renderer();
-
 				return 0;
 			}
 
@@ -67,14 +63,23 @@ int main()
 			{
 				if (event.key.code == sf::Keyboard::Escape)
 				{
+					if (world.getData("s-s-5-0.4-2.txt"))
+					{
+						world.~PhysicsWorld();
+						mainRenderer.~Renderer();
+						return 0;
+					}
 				}
 
 				if (event.key.code == sf::Keyboard::Num1) world.setResolutionIndex(1);
 				if (event.key.code == sf::Keyboard::Num2) world.setResolutionIndex(2);
 				if (event.key.code == sf::Keyboard::Num3) world.setResolutionIndex(3);
+				if (event.key.code == sf::Keyboard::Num4) world.setResolutionIndex(4);
+				if (event.key.code == sf::Keyboard::Num5) world.setResolutionIndex(5);
 
 				if (event.key.code == sf::Keyboard::T) world.testSetup();
 				if (event.key.code == sf::Keyboard::R) world.reset();
+				if (event.key.code == sf::Keyboard::E) world.addBox(lge::vec2(500, 200), lge::vec2(30, 50), 0, false, 1, 0.4, lge::Color::YELLOW);
 
 				keyPressed = !keyPressed;
 			}
@@ -82,7 +87,7 @@ int main()
 			if (event.type == sf::Event::MouseButtonPressed)
 			{
 				if(event.mouseButton.button == sf::Mouse::Button::Left)
-					world.addBox(mainRenderer.getMousePosition(), lge::vec2(lge::randomDouble(30, 50), lge::randomDouble(30, 50)), 0, false, 1, 0.4, lge::Color::GREEN);
+					world.addBox(mainRenderer.getMousePosition(), lge::vec2(lge::randomDouble(30, 50), lge::randomDouble(30, 50)), 0, false, 1, 1, lge::Color::GREEN);
 				if (event.mouseButton.button == sf::Mouse::Button::Right)
 					world.addPolygon(mainRenderer.getMousePosition(), lge::mat2(lge::randomDouble(30, 50), 0, 0, lge::randomDouble(30, 50)), 0, 3 + rand() % 5, false, 0.5, 0.4, lge::Color::CYAN);
 				if (!mousePressed)
@@ -97,8 +102,6 @@ int main()
 		}
 
 		mainRenderer.clear(lge::vec4(0, 0, 0, 255));
-
-		//std::cout << p->m_velocity << "\n";
 
 		world.update(mainRenderer.getDeltaTime());
 		world.renderWorld();

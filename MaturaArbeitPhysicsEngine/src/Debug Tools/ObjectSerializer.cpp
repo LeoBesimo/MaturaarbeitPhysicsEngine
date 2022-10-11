@@ -13,6 +13,7 @@ void lge::ObjectSerializer::serializeObjects(const char* fileName)
 	for (SerializableObject o : objects)
 	{
 		file << "Frame: " << o.frame << "\n";
+		file << "Collision Algorithm: " << o.collisionAlgorithm << "\n";
 
 		file << "Polygon A:\n";
 		file << "Position: " << o.a.m_position << "\n";
@@ -53,41 +54,38 @@ void lge::ObjectSerializer::serializeObjects(const char* fileName)
 		file << "\n" << "Manifold:\n\n";
 
 		file << "Collision: " << o.manifold.collided << "\n";
-		file << "Normal 1: << " << o.manifold.normal[0] << "\n";
-		file << "Normal 2: << " << o.manifold.normal[1] << "\n\n";
-
-		for (unsigned int i = 0; i < o.collision.contactPoints.size(); i++)
+		file << "Normal: << " << o.manifold.normal << "\n\n";
+		for (unsigned int i = 0; i < o.collision.contactCount; i++)
 		{
 			file << "Contact Index: " << i << "\n";
 			file << "Contact Point: " << o.collision.contactPoints[i] << "\n";
-			if (!o.collision.separating)
+			file << "Contact Velocity: " << o.collision.contactVel[i] << "\n";
+			file << "Relative Velocity: " << o.collision.rv[i] << "\n";
+			file << "Radius A: " << o.collision.ra[i] << " Mag: " << o.collision.ra[i].len() << "\n";
+			file << "Radius B: " << o.collision.rb[i] << " Mag: " << o.collision.rb[i].len() << "\n";
+			file << "Velocity A: " << o.collision.velA[i] << "\n";
+			file << "Velocity B: " << o.collision.velB[i] << "\n";
+
+
+			if (!o.collision.separating[i])
 			{
-				if (o.collision.impulse.size() == o.collision.contactPoints.size())
-				{
-					file << "Contact Velocity: " << o.collision.contactVel[i] << "\n";
-					file << "Relative Velocity: " << o.collision.rv[i] << "\n";
-					file << "Radius A: " << o.collision.ra[i] << " Mag: " << o.collision.ra[i].len() << "\n";
-					file << "Radius B: " << o.collision.rb[i] << " Mag: " << o.collision.rb[i].len() << "\n";
-					file << "Velocity A: " << o.collision.velA[i] << "\n";
-					file << "Velocity B: " << o.collision.velB[i] << "\n";
-					file << "Inverse Inertia: " << o.collision.invInert[i] << "\n";
-					file << "Inverse Mass: " << o.collision.invMass << "\n";
-					file << "Impulse Scalar Before Division: " << o.collision.jBefore[i] << "\n";
-					file << "Impulse Scalar After Division: " << o.collision.jAfter[i] << "\n";
-					file << "Impulse: " << o.collision.impulse[i] << "\n\n";
-				}
+				file << "Inverse Inertia: " << o.collision.invInert[i] << "\n";
+				file << "Inverse Mass: " << o.collision.invMass << "\n";
+				file << "Impulse Scalar Before Division: " << o.collision.jBefore[i] << "\n";
+				file << "Impulse Scalar After Division: " << o.collision.jAfter[i] << "\n";
+				file << "Impulse: " << o.collision.impulse[i] << "\n\n";
+
 			}
 			else
 			{
 				//file << "Contact Velocity: " << o.collision.contactVel[i] << "\n";
 				//file << "Relative Velocity: " << o.collision.rv[i] << "\n";
-				file << o.collision.separating << "\n";
-				file << "Objects are Separating\n\n";
+				file << o.collision.separating[i] << "\n";
+				file << "Separating at Contactpoint\n\n";
 			}
 		}
 
 		file << "\n\n\n\n";
-
 	}
 	file.close();
 }

@@ -1,0 +1,333 @@
+Frame: 367
+Collision Algorithm: 4
+Polygon A:
+Position: X: 500 Y: 950.25
+Rotation: 0
+Velocity: X: 0 Y: 387.195
+Angular Velocity: 0
+Mass: 1500
+Inertia: 1.30027e+06
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 0.4
+Edge Points:
+	Index: 0	X: 485 Y: 925.25
+	Index: 1	X: 515 Y: 925.25
+	Index: 2	X: 515 Y: 975.25
+	Index: 3	X: 485 Y: 975.25
+
+Polygon B:
+Position: X: 500 Y: 1000
+Rotation: 0
+Velocity: X: 0 Y: 0
+Angular Velocity: 0
+Mass: 0
+Inertia: 0
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 100 Y: 975
+	Index: 1	X: 900 Y: 975
+	Index: 2	X: 900 Y: 1025
+	Index: 3	X: 100 Y: 1025
+
+Manifold:
+
+Collision: 1
+Normal: << X: -0 Y: 1
+
+Contact Index: 0
+Contact Point: X: 500 Y: 975
+Contact Velocity: -387.195
+Relative Velocity: X: 0 Y: 0
+Radius A: X: 0 Y: 24.7502 Mag: 24.7502
+Radius B: X: 0 Y: -25 Mag: 25
+Velocity A: X: 0 Y: 0
+Velocity B: X: 0 Y: 0
+Inverse Inertia: 0
+Inverse Mass: 0.000666667
+Impulse Scalar Before Division: 542.073
+Impulse Scalar After Division: 813109
+Impulse: X: -0 Y: 813109
+
+
+
+
+
+Frame: 367
+Collision Algorithm: 4
+Polygon A:
+Position: X: 500 Y: 1000
+Rotation: 0
+Velocity: X: 0 Y: 0
+Angular Velocity: 0
+Mass: 0
+Inertia: 0
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 100 Y: 975
+	Index: 1	X: 900 Y: 975
+	Index: 2	X: 900 Y: 1025
+	Index: 3	X: 100 Y: 1025
+
+Polygon B:
+Position: X: 500 Y: 950.125
+Rotation: 0
+Velocity: X: 0 Y: -154.538
+Angular Velocity: 0
+Mass: 1500
+Inertia: 1.30027e+06
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 0.4
+Edge Points:
+	Index: 0	X: 485 Y: 925.125
+	Index: 1	X: 515 Y: 925.125
+	Index: 2	X: 515 Y: 975.125
+	Index: 3	X: 485 Y: 975.125
+
+Manifold:
+
+Collision: 1
+Normal: << X: 0 Y: -1
+
+Contact Index: 0
+Contact Point: X: 500 Y: 975
+Contact Velocity: 154.538
+Relative Velocity: X: 0 Y: 0
+Radius A: X: 0 Y: -25 Mag: 25
+Radius B: X: 0 Y: 24.8751 Mag: 24.8751
+Velocity A: X: 0 Y: 0
+Velocity B: X: 0 Y: 0
+1
+Separating at Contactpoint
+
+
+
+
+
+Frame: 550
+Collision Algorithm: 4
+Polygon A:
+Position: X: 500 Y: 950.172
+Rotation: 0
+Velocity: X: 0 Y: 154.571
+Angular Velocity: 0
+Mass: 1500
+Inertia: 1.30027e+06
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 0.4
+Edge Points:
+	Index: 0	X: 485 Y: 925.172
+	Index: 1	X: 515 Y: 925.172
+	Index: 2	X: 515 Y: 975.172
+	Index: 3	X: 485 Y: 975.172
+
+Polygon B:
+Position: X: 500 Y: 1000
+Rotation: 0
+Velocity: X: 0 Y: 0
+Angular Velocity: 0
+Mass: 0
+Inertia: 0
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 100 Y: 975
+	Index: 1	X: 900 Y: 975
+	Index: 2	X: 900 Y: 1025
+	Index: 3	X: 100 Y: 1025
+
+Manifold:
+
+Collision: 1
+Normal: << X: -0 Y: 1
+
+Contact Index: 0
+Contact Point: X: 500 Y: 975
+Contact Velocity: -154.571
+Relative Velocity: X: 0 Y: 0
+Radius A: X: 0 Y: 24.8285 Mag: 24.8285
+Radius B: X: 0 Y: -25 Mag: 25
+Velocity A: X: 0 Y: 0
+Velocity B: X: 0 Y: 0
+Inverse Inertia: 0
+Inverse Mass: 0.000666667
+Impulse Scalar Before Division: 216.399
+Impulse Scalar After Division: 324599
+Impulse: X: -0 Y: 324599
+
+
+
+
+
+Frame: 551
+Collision Algorithm: 4
+Polygon A:
+Position: X: 500 Y: 1000
+Rotation: 0
+Velocity: X: 0 Y: 0
+Angular Velocity: 0
+Mass: 0
+Inertia: 0
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 100 Y: 975
+	Index: 1	X: 900 Y: 975
+	Index: 2	X: 900 Y: 1025
+	Index: 3	X: 100 Y: 1025
+
+Polygon B:
+Position: X: 500 Y: 950.086
+Rotation: 0
+Velocity: X: 0 Y: -61.4972
+Angular Velocity: 0
+Mass: 1500
+Inertia: 1.30027e+06
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 0.4
+Edge Points:
+	Index: 0	X: 485 Y: 925.086
+	Index: 1	X: 515 Y: 925.086
+	Index: 2	X: 515 Y: 975.086
+	Index: 3	X: 485 Y: 975.086
+
+Manifold:
+
+Collision: 1
+Normal: << X: 0 Y: -1
+
+Contact Index: 0
+Contact Point: X: 500 Y: 975
+Contact Velocity: 61.4972
+Relative Velocity: X: 0 Y: 0
+Radius A: X: 0 Y: -25 Mag: 25
+Radius B: X: 0 Y: 24.9142 Mag: 24.9142
+Velocity A: X: 0 Y: 0
+Velocity B: X: 0 Y: 0
+1
+Separating at Contactpoint
+
+
+
+
+
+Frame: 623
+Collision Algorithm: 4
+Polygon A:
+Position: X: 500 Y: 950.006
+Rotation: 0
+Velocity: X: 0 Y: 61.3608
+Angular Velocity: 0
+Mass: 1500
+Inertia: 1.30027e+06
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 0.4
+Edge Points:
+	Index: 0	X: 485 Y: 925.006
+	Index: 1	X: 515 Y: 925.006
+	Index: 2	X: 515 Y: 975.006
+	Index: 3	X: 485 Y: 975.006
+
+Polygon B:
+Position: X: 500 Y: 1000
+Rotation: 0
+Velocity: X: 0 Y: 0
+Angular Velocity: 0
+Mass: 0
+Inertia: 0
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 100 Y: 975
+	Index: 1	X: 900 Y: 975
+	Index: 2	X: 900 Y: 1025
+	Index: 3	X: 100 Y: 1025
+
+Manifold:
+
+Collision: 1
+Normal: << X: -0 Y: 1
+
+Contact Index: 0
+Contact Point: X: 500 Y: 975
+Contact Velocity: -61.3608
+Relative Velocity: X: 0 Y: 0
+Radius A: X: 0 Y: 24.9942 Mag: 24.9942
+Radius B: X: 0 Y: -25 Mag: 25
+Velocity A: X: 0 Y: 0
+Velocity B: X: 0 Y: 0
+Inverse Inertia: 0
+Inverse Mass: 0.000666667
+Impulse Scalar Before Division: 85.9051
+Impulse Scalar After Division: 128858
+Impulse: X: -0 Y: 128858
+
+
+
+
+
+Frame: 624
+Collision Algorithm: 4
+Polygon A:
+Position: X: 500 Y: 1000
+Rotation: 0
+Velocity: X: 0 Y: 0
+Angular Velocity: 0
+Mass: 0
+Inertia: 0
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 100 Y: 975
+	Index: 1	X: 900 Y: 975
+	Index: 2	X: 900 Y: 1025
+	Index: 3	X: 100 Y: 1025
+
+Polygon B:
+Position: X: 500 Y: 950.003
+Rotation: 0
+Velocity: X: 0 Y: -24.2043
+Angular Velocity: 0
+Mass: 1500
+Inertia: 1.30027e+06
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 0.4
+Edge Points:
+	Index: 0	X: 485 Y: 925.003
+	Index: 1	X: 515 Y: 925.003
+	Index: 2	X: 515 Y: 975.003
+	Index: 3	X: 485 Y: 975.003
+
+Manifold:
+
+Collision: 1
+Normal: << X: 0 Y: -1
+
+Contact Index: 0
+Contact Point: X: 500 Y: 975
+Contact Velocity: 24.2043
+Relative Velocity: X: 0 Y: 0
+Radius A: X: 0 Y: -25 Mag: 25
+Radius B: X: 0 Y: 24.9971 Mag: 24.9971
+Velocity A: X: 0 Y: 0
+Velocity B: X: 0 Y: 0
+1
+Separating at Contactpoint
+
+
+
+
+

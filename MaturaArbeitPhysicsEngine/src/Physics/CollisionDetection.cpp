@@ -449,8 +449,7 @@ lge::Manifold lge::PolygonCollisionSatManifold(Polygon* poly1, Polygon* poly2)
 		if (dotVec2(ab, normal) < 0) normal *= -1;
 
 		m.penetration = minDepth / normal.len();
-		m.normal[0] = normal.normalize();
-		m.normal[1] = normal.normalize();
+		m.normal = normal.normalize();
 		m.collided = true;
 	}
 	

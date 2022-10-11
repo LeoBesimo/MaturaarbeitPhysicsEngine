@@ -11,26 +11,30 @@ namespace lge
 	{
 		CollisionData() {};
 
-		bool separating = false;
+		bool separating[2];
 
-		std::vector<vec2> contactPoints;
-		std::vector<double> contactVel;
-		std::vector<vec2> rv;
-		std::vector<vec2> ra;
-		std::vector<vec2> rb;
-		std::vector<vec2> velA;
-		std::vector<vec2> velB;
-		std::vector<double> invInert;
+		int contactCount;
+
+		vec2 contactPoints[2];
+		vec2 relativeVel[2];
+		double contactVel[2];
+		vec2 rv[2];
+		vec2 ra[2];
+		vec2 rb[2];
+		vec2 velA[2];
+		vec2 velB[2];
+		double invInert[2];
 		double invMass;
-		std::vector<double> jBefore;
-		std::vector<double> jAfter;
-		std::vector<vec2> impulse;
+		double jBefore[2];
+		double jAfter[2];
+		vec2 impulse[2];
 	};
 
 	void ResolveCollisionWithoutRotation(Manifold m, Polygon* poly1, Polygon* poly2);
 	void ResolveCollision(Manifold m, Polygon* poly1, Polygon* poly2);
 	CollisionData ResolveCollisionCollisionData(Manifold m, Polygon* poly1, Polygon* poly2);
 	void ResolveCollisionImproved(Manifold m, Polygon* poly1, Polygon* poly2);
+	CollisionData ResolveCollisionImprovedCollisionData(Manifold m, Polygon* poly1, Polygon* poly2);
 	void PositionalCorrection(Manifold m, Polygon* poly1, Polygon* poly2);
 	void ApplyImpulse(Polygon* poly, vec2 impulse, std::vector<vec2> contactPoints);
 	void ApplyImpulseImproved(Polygon* poly, vec2 impulse, vec2 contactPoint);
