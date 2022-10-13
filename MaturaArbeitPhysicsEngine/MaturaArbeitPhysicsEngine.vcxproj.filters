@@ -62,10 +62,26 @@
     <ClInclude Include="src\Physics\PhysicsWorld.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\Renderer\Renderer Optimized.txt" />
     <Text Include="src\Renderer\Renderer Unoptimized.txt" />
     <Text Include="main.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MaturaArbeitPhysicsEngine.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="C:\Users\besim\Downloads\physics_icon_150969.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="icon1.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

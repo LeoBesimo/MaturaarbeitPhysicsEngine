@@ -156,6 +156,7 @@
     <ClCompile Include="src\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="resource.h" />
     <ClInclude Include="src\Physics\PhysicsWorld.h" />
     <ClInclude Include="src\Debug Tools\ObjectSerializer.h" />
     <ClInclude Include="src\Physics\CollisionDetection.h" />
@@ -169,6 +170,13 @@
     <Text Include="main.txt" />
     <Text Include="src\Renderer\Renderer Optimized.txt" />
     <Text Include="src\Renderer\Renderer Unoptimized.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MaturaArbeitPhysicsEngine.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="C:\Users\besim\Downloads\physics_icon_150969.ico" />
+    <Image Include="icon1.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
