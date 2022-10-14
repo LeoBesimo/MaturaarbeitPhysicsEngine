@@ -34,12 +34,18 @@ int main()
 	//world.addBox(lge::vec2(0, windowSize.y / 2), lge::vec2(borderWidth, windowSize.y), 0, true, 0, 1.0, lge::vec4(100, 100, 0, 255));
 	//world.addBox(lge::vec2(windowSize.x, windowSize.y / 2), lge::vec2(borderWidth, windowSize.y), 0, true, 0, 1.0, lge::vec4(100, 200, 0, 255));
 	//world.addBox(lge::vec2(windowSize.x / 2, 0), lge::vec2(windowSize.x, borderWidth), 0, true, 0, 1.0, lge::vec4(100, 0, 100, 255));
-	lge::Polygon p = *world.addBox(lge::vec2(windowSize.x / 2, windowSize.y), lge::vec2(windowSize.x-200, borderWidth), 0, true, 0, 1.0, lge::Color::INDIGO);
+	lge::Polygon* p = world.addBox(lge::vec2(windowSize.x / 2, windowSize.y), lge::vec2(windowSize.x-200, borderWidth), 0, true, 0, 1.0, lge::Color::INDIGO);
+	//p->m_density = 1;
+	//p->calculateInertia();
 
-	std::cout << sizeof(p);
 
 	world.addBox(lge::vec2(300, 600), lge::vec2(300, borderWidth), lge::QUARTER_PI/3, true, 1, 1.0, lge::Color::WHITE);
 	world.addBox(lge::vec2(700, 400), lge::vec2(300, borderWidth), -lge::QUARTER_PI / 3, true, 1, 1.0, lge::Color::WHITE);
+
+	lge::Polygon* turntable = world.addBox(lge::vec2(500, 300), lge::vec2(200, 30), lge::HALF_PI*1.205, true, 1, 1.0, lge::Color::BROWN);
+	turntable->m_density = 0.5;
+	//turntable->calculateInertia();
+
 
 	bool keyPressed = true;
 	bool mousePressed = false;
@@ -82,7 +88,7 @@ int main()
 				if (event.key.code == sf::Keyboard::T) world.testSetup();
 				if (event.key.code == sf::Keyboard::R) world.reset();
 				if (event.key.code == sf::Keyboard::E) world.addBox(lge::vec2(500, 200), lge::vec2(30, 50), 0, false, 1, 0.4, lge::Color::YELLOW);
-				if (event.key.code == sf::Keyboard::Z) world.addPolygon(mainRenderer.getMousePosition(), lge::mat2(15,0,0, 15), 0, 25, false, 1, 0.4, lge::Color::LIGHTGRAY);
+				if (event.key.code == sf::Keyboard::Z) world.addPolygon(mouse, lge::mat2(15,0,0, 15), 0, 25, false, 1, 0.4, lge::Color::LIGHTGRAY);
 
 				keyPressed = !keyPressed;
 			}
@@ -90,9 +96,9 @@ int main()
 			if (event.type == sf::Event::MouseButtonPressed)
 			{
 				if(event.mouseButton.button == sf::Mouse::Button::Left)
-					world.addBox(mainRenderer.getMousePosition(), lge::vec2(lge::randomDouble(30, 50), lge::randomDouble(30, 50)), 0, false, 1, 1, lge::Color::GREEN);
+					world.addBox(mouse, lge::vec2(lge::randomDouble(30, 50), lge::randomDouble(30, 50)), 0, false, 1, 1, lge::Color::GREEN);
 				if (event.mouseButton.button == sf::Mouse::Button::Right)
-					world.addPolygon(mainRenderer.getMousePosition(), lge::mat2(lge::randomDouble(30, 50), 0, 0, lge::randomDouble(30, 50)), 0, 3 + rand() % 5, false, 0.5, 0.4, lge::Color::CYAN);
+					world.addPolygon(mouse, lge::mat2(lge::randomDouble(30, 50), 0, 0, lge::randomDouble(30, 50)), 0, 3 + rand() % 5, false, 0.5, 0.4, lge::Color::CYAN);
 				if (!mousePressed)
 				{
 
@@ -107,6 +113,7 @@ int main()
 		mainRenderer.clear(lge::vec4(0, 0, 0, 255));
 
 		world.update(mainRenderer.getDeltaTime());
+
 		world.renderWorld();
 
 		mainRenderer.displayFramerate();

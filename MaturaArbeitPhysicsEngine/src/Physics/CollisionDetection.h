@@ -14,6 +14,8 @@ namespace lge
 
 	vec2 LineLineIntersection(vec2 p1, vec2 p2, vec2 p3, vec2 p4);  //checking for line intersections with intersection point calculation
 
+	bool pointInPolygon(vec2 point, Polygon* poly);
+
 	std::vector<vec2> getNormals(Polygon* poly); //returns side normals for a given polygon
 	std::vector<vec2> getContactPoints(Polygon* poly1, Polygon* poly2); // calculates contact points between polygons using line intersection
 	vec2 getMinMax(std::vector<vec2> points, vec2 normal);  //returns the minimal and maximal projection for a list of points onto a 2d vector

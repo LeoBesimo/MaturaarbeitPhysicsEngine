@@ -137,7 +137,7 @@ namespace lge
 
 		void rotate(double angle)
 		{
-			if (m_mass == 0) return;
+			if (m_invInertia == 0) return;
 			m_angle += angle;
 			calculateSides();
 		}

@@ -221,6 +221,45 @@ lge::vec2 lge::LineLineIntersection(vec2 p1, vec2 p2, vec2 p3, vec2 p4)
 	}
 }
 
+bool lge::pointInPolygon(vec2 point, Polygon* poly)
+{
+	int dist = 10000;
+	std::vector<vec2> lines;
+	lines.push_back(vec2(point.x + dist, point.y));
+	lines.push_back(vec2(point.x - dist, point.y));
+	lines.push_back(vec2(point.x, point.y + dist));
+	lines.push_back(vec2(point.x, point.y - dist));
+
+	int intersectsx = 0;
+	int intersectsy = 0;
+
+	bool xContain = false;
+	bool yContain = false;
+
+	for (auto i = 0; i < lines.size(); i++)
+	{
+		
+
+		for (auto j = 0; j < poly->m_transformedPoints.size(); j++)
+		{
+			int index = (j + 1) % poly->m_transformedPoints.size();
+			if (!(LineLineIntersection(point, lines[i], poly->m_transformedPoints[j], poly->m_transformedPoints[index]) == vec2()))
+			{
+				if (i > 1)
+					intersectsy++;
+				else intersectsx++;
+			}
+		}
+
+		if (intersectsx % 2 == 1) xContain = true;
+		if (intersectsy % 2 == 1) yContain = true;
+	}
+
+	if (xContain && yContain) return true;
+
+	return false;
+}
+
 std::vector<lge::vec2> lge::getNormals(Polygon* poly)
 {
 	std::vector<vec2> normals;
@@ -329,9 +368,6 @@ std::vector<lge::vec2> lge::getContactPoints(Polygon* poly1, Polygon* poly2)
 
 lge::vec2 lge::getMinMax(std::vector<vec2> points, vec2 normal)
 {
-
-	unsigned int minIndex = 0;
-	unsigned int maxIndex = 0;
 	double minProj = dotVec2(points[0], normal);
 	double maxProj = dotVec2(points[0], normal);
 
@@ -340,17 +376,14 @@ lge::vec2 lge::getMinMax(std::vector<vec2> points, vec2 normal)
 		double currentProj = dotVec2(points[i], normal);
 		if (currentProj < minProj)
 		{
-			minIndex = i;
 			minProj = currentProj;
 		}
 
 		if (currentProj > maxProj)
 		{
-			maxIndex = i;
 			maxProj = currentProj;
 		}
 	}
-
 	return vec2(minProj,maxProj);
 }
 
