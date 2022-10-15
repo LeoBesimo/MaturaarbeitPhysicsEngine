@@ -9,9 +9,11 @@ lge::PhysicsWorld::PhysicsWorld(Renderer* renderer, vec2 size)
 
 	GRAVITY = vec2(0, 100);
 
+	this->bodies.reserve(30);
+
 	this->size = size;
 	this->renderer = renderer;
-	this->world = new Polygon(size / 2, 0, mat2(size.x, 0, 0, size.y), boxCorners);
+	this->world = new Polygon(size / 2, 0, mat2(size.x/2, 0, 0, size.y/2), boxCorners);
 }
 
 lge::PhysicsWorld::~PhysicsWorld()
@@ -21,7 +23,6 @@ lge::PhysicsWorld::~PhysicsWorld()
 		int index = bodies.size() - 1 - i;
 		delete bodies[i];
 		bodies[i] = nullptr;
-		//bodies.erase(bodies.begin() + index);
 	}
 	bodies.clear();
 }
@@ -184,6 +185,9 @@ void lge::PhysicsWorld::update(double deltaTime)
 						data.frame = renderer->getFrameCount();
 						data.collision = ResolveCollisionImprovedCollisionData(manifold, bodyA, bodyB);
 						serializer.addObject(data);
+						break;
+					case 6:
+						ResolveCollisionCombined(manifold, bodyA, bodyB);
 						break;
 					default:
 						ResolveCollisionWithoutRotation(manifold, bodyA, bodyB);

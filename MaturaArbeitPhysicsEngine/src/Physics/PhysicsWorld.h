@@ -27,7 +27,7 @@ namespace lge
 
 		std::vector<vec2> boxCorners;
 
-		int resolutionIndex = 2;
+		int resolutionIndex = 6;
 
 		unsigned int stepCount = 5;
 

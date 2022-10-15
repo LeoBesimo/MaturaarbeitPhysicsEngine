@@ -9,7 +9,7 @@ int main()
 {
 	//srand(time(NULL));
 	srand(0);
-	Renderer mainRenderer(1000, 1000, "Test");
+	Renderer mainRenderer(1000, 1000, "Maturaarbeit Physiksimulation Leo Besimo");
 
 	mainRenderer.getWindow()->setFramerateLimit(60);
 
@@ -42,9 +42,9 @@ int main()
 	world.addBox(lge::vec2(300, 600), lge::vec2(300, borderWidth), lge::QUARTER_PI/3, true, 1, 1.0, lge::Color::WHITE);
 	world.addBox(lge::vec2(700, 400), lge::vec2(300, borderWidth), -lge::QUARTER_PI / 3, true, 1, 1.0, lge::Color::WHITE);
 
-	lge::Polygon* turntable = world.addBox(lge::vec2(500, 300), lge::vec2(200, 30), lge::HALF_PI*1.205, true, 1, 1.0, lge::Color::BROWN);
+	/*lge::Polygon* turntable = world.addBox(lge::vec2(500, 300), lge::vec2(200, 30), lge::HALF_PI*1.205, true, 1, 1.0, lge::Color::BROWN);
 	turntable->m_density = 0.5;
-	//turntable->calculateInertia();
+	turntable->calculateInertia();*/
 
 
 	bool keyPressed = true;
@@ -71,7 +71,7 @@ int main()
 			{
 				if (event.key.code == sf::Keyboard::Escape)
 				{
-					if (world.getData("s-s-5-0.4-2.txt"))
+					if (world.getData("ugugubu.txt"))
 					{
 						world.~PhysicsWorld();
 						mainRenderer.~Renderer();
@@ -84,10 +84,11 @@ int main()
 				if (event.key.code == sf::Keyboard::Num3) world.setResolutionIndex(3);
 				if (event.key.code == sf::Keyboard::Num4) world.setResolutionIndex(4);
 				if (event.key.code == sf::Keyboard::Num5) world.setResolutionIndex(5);
+				if (event.key.code == sf::Keyboard::Num6) world.setResolutionIndex(6);
 
 				if (event.key.code == sf::Keyboard::T) world.testSetup();
 				if (event.key.code == sf::Keyboard::R) world.reset();
-				if (event.key.code == sf::Keyboard::E) world.addBox(lge::vec2(500, 200), lge::vec2(30, 50), 0, false, 1, 0.4, lge::Color::YELLOW);
+				if (event.key.code == sf::Keyboard::E) world.addBox(lge::vec2(500, 200), lge::vec2(30, 50), 0, false, 1, 1, lge::Color::YELLOW);
 				if (event.key.code == sf::Keyboard::Z) world.addPolygon(mouse, lge::mat2(15,0,0, 15), 0, 25, false, 1, 0.4, lge::Color::LIGHTGRAY);
 
 				keyPressed = !keyPressed;
@@ -96,7 +97,7 @@ int main()
 			if (event.type == sf::Event::MouseButtonPressed)
 			{
 				if(event.mouseButton.button == sf::Mouse::Button::Left)
-					world.addBox(mouse, lge::vec2(lge::randomDouble(30, 50), lge::randomDouble(30, 50)), 0, false, 1, 1, lge::Color::GREEN);
+					world.addBox(mouse, lge::vec2(lge::randomDouble(30, 50), lge::randomDouble(30, 50)), 0, false, 1, 0.4, lge::Color::GREEN);
 				if (event.mouseButton.button == sf::Mouse::Button::Right)
 					world.addPolygon(mouse, lge::mat2(lge::randomDouble(30, 50), 0, 0, lge::randomDouble(30, 50)), 0, 3 + rand() % 5, false, 0.5, 0.4, lge::Color::CYAN);
 				if (!mousePressed)

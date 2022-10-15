@@ -63,7 +63,6 @@ void lge::ResolveCollision(Manifold m, Polygon* poly1, Polygon* poly2)
 
 	double invMass = poly1->m_invMass + poly2->m_invMass;
 	
-	//double invInert = crossVec2((normal * (crossVec2(ra, normal) * poly1->m_invInertia)), ra) + crossVec2((normal * (crossVec2(rb, normal) * poly2->m_invInertia)), rb);
 	double invInert1 = dotVec2(normal, crossVec2(poly1->m_invInertia * crossVec2(ra, normal), ra));
 	double invInert2 = dotVec2(normal, crossVec2(poly2->m_invInertia * crossVec2(rb, normal), rb));
 
@@ -383,6 +382,62 @@ lge::CollisionData lge::ResolveCollisionImprovedCollisionData(Manifold m, Polygo
 	poly2->move(normal * m.penetration / 2);
 
 	return info;
+}
+
+void lge::ResolveCollisionCombined(Manifold m, Polygon* poly1, Polygon* poly2)
+{
+	if (poly1->m_invMass + poly2->m_invMass == 0) return;
+
+	std::vector<vec2> contactPoints = getContactPoints(poly1, poly2);
+
+	vec2 normal = m.normal;
+
+	vec2 contact = contactPoints[0];
+
+	if (contactPoints.size() > 1)
+	{
+		contact = (contactPoints[0] + contactPoints[1]) / 2;
+	}
+
+	vec2 ra = contact - poly1->m_position;
+	vec2 rb = contact - poly2->m_position;
+
+	vec2 raPerp = vec2(-ra.y, ra.x);
+	vec2 rbPerp = vec2(-rb.y, rb.x);
+
+	vec2 angLineraVelA = raPerp * poly1->m_angularVelocity;
+	vec2 angLinearVelB = rbPerp * poly2->m_angularVelocity;
+
+	vec2 relativeVelocity = (poly2->m_velocity + angLinearVelB) - (poly1->m_velocity + angLineraVelA);
+
+	double contactVelocityMag = dotVec2(relativeVelocity, normal);
+
+	if (contactVelocityMag > 0)
+	{
+		return;
+	}
+
+	double raPerpDotN = dotVec2(raPerp, normal);
+	double rbPerpDotN = dotVec2(rbPerp, normal);
+
+	double denom = poly1->m_invMass + poly2->m_invMass +
+		(raPerpDotN * raPerpDotN) * poly1->m_invInertia +
+		(rbPerpDotN * rbPerpDotN) * poly2->m_invInertia;
+
+	double e = min(poly1->m_restitution, poly2->m_restitution);
+
+	double j = -(1.0 + e) * contactVelocityMag;
+	j /= denom;
+
+	vec2 impulse = normal * j;
+
+	poly1->move(-normal * m.penetration / 2);
+	poly2->move(normal * m.penetration / 2);
+
+	poly1->m_velocity += -impulse * poly1->m_invMass;
+	poly1->m_angularVelocity += -crossVec2(ra, impulse) * poly1->m_invInertia;
+	poly2->m_velocity += impulse * poly2->m_invMass;
+	poly2->m_angularVelocity += crossVec2(rb, impulse) * poly2->m_invInertia;
 }
 
 //TODO: Rework this

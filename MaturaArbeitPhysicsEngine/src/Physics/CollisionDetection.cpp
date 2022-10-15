@@ -263,6 +263,7 @@ bool lge::pointInPolygon(vec2 point, Polygon* poly)
 std::vector<lge::vec2> lge::getNormals(Polygon* poly)
 {
 	std::vector<vec2> normals;
+	normals.reserve(poly->m_transformedPoints.size());
 	std::vector<vec2> points = poly->m_transformedPoints;
 
 	for (unsigned int i = 0; i < points.size(); i++)

@@ -31,7 +31,7 @@ namespace lge
 
 	public:
 
-		ObjectSerializer() {};
+		ObjectSerializer() { objects.reserve(300); };
 		~ObjectSerializer() {};
 
 		void addObject(SerializableObject object);
