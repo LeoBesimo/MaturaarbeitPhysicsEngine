@@ -2,13 +2,14 @@
 #include <iostream>
 
 #include <chrono>
+#include <string.h>
 
 #include "Physics/PhysicsWorld.h"
 
 int main()
 {
-	//srand(time(NULL));
-	srand(0);
+	srand(time(NULL));
+	//srand(0);
 	Renderer mainRenderer(1000, 1000, "Maturaarbeit Physiksimulation Leo Besimo");
 
 	mainRenderer.getWindow()->setFramerateLimit(60);
@@ -47,11 +48,25 @@ int main()
 	turntable->calculateInertia();*/
 
 
+	double globalRestitution = 0.4;
+
 	bool keyPressed = true;
 	bool mousePressed = false;
 
 	sf::Clock clock;
 	float lastTime = 0;
+
+#ifdef NDEBUG
+	std::stringstream instructions;
+	instructions << "Number keys: Set Bouncieness for new Bodies (1 = 0.1, 5 = 0.5, 0 = 1) Default = 0.4\n";
+	instructions << "Key R: Delete all nonstatic Bodies\n";
+	instructions << "Key E: Spawn Yellow Rectangle at (500,200) with Bounciness 1\n";
+	instructions << "Key T: Spawn 6 Preprogrammed Bodies\n";
+	instructions << "Left Mousebutton: Spawn Rectangle at Mouseposition with selected Bouncieness\n";
+	instructions << "Right Mousebutton: Spawn Polygon at Mouseposition with selected Bouncieness\n";
+
+	std::cout << instructions.str();
+#endif
 
 	while (mainRenderer.isRunning())
 	{
@@ -69,6 +84,7 @@ int main()
 
 			if (event.type == sf::Event::KeyPressed)
 			{
+#ifdef _DEBUG
 				if (event.key.code == sf::Keyboard::Escape)
 				{
 					if (world.getData("ugugubu.txt"))
@@ -79,17 +95,32 @@ int main()
 					}
 				}
 
+
 				if (event.key.code == sf::Keyboard::Num1) world.setResolutionIndex(1);
 				if (event.key.code == sf::Keyboard::Num2) world.setResolutionIndex(2);
 				if (event.key.code == sf::Keyboard::Num3) world.setResolutionIndex(3);
 				if (event.key.code == sf::Keyboard::Num4) world.setResolutionIndex(4);
 				if (event.key.code == sf::Keyboard::Num5) world.setResolutionIndex(5);
 				if (event.key.code == sf::Keyboard::Num6) world.setResolutionIndex(6);
+#endif //
+
+#ifdef NDEBUG
+				if (event.key.code == sf::Keyboard::Num1) globalRestitution = 0.1;
+				if (event.key.code == sf::Keyboard::Num2) globalRestitution = 0.2;
+				if (event.key.code == sf::Keyboard::Num3) globalRestitution = 0.3;
+				if (event.key.code == sf::Keyboard::Num4) globalRestitution = 0.4;
+				if (event.key.code == sf::Keyboard::Num5) globalRestitution = 0.5;
+				if (event.key.code == sf::Keyboard::Num6) globalRestitution = 0.6;
+				if (event.key.code == sf::Keyboard::Num7) globalRestitution = 0.7;
+				if (event.key.code == sf::Keyboard::Num8) globalRestitution = 0.8;
+				if (event.key.code == sf::Keyboard::Num9) globalRestitution = 0.9;
+				if (event.key.code == sf::Keyboard::Num0) globalRestitution = 1.0;
+#endif // NDEBUG
 
 				if (event.key.code == sf::Keyboard::T) world.testSetup();
 				if (event.key.code == sf::Keyboard::R) world.reset();
 				if (event.key.code == sf::Keyboard::E) world.addBox(lge::vec2(500, 200), lge::vec2(30, 50), 0, false, 1, 1, lge::Color::YELLOW);
-				if (event.key.code == sf::Keyboard::Z) world.addPolygon(mouse, lge::mat2(15,0,0, 15), 0, 25, false, 1, 0.4, lge::Color::LIGHTGRAY);
+				//if (event.key.code == sf::Keyboard::Z) world.addPolygon(mouse, lge::mat2(15,0,0, 15), 0, 25, false, 1, 0.4, lge::Color::LIGHTGRAY);
 
 				keyPressed = !keyPressed;
 			}
@@ -97,9 +128,9 @@ int main()
 			if (event.type == sf::Event::MouseButtonPressed)
 			{
 				if(event.mouseButton.button == sf::Mouse::Button::Left)
-					world.addBox(mouse, lge::vec2(lge::randomDouble(30, 50), lge::randomDouble(30, 50)), 0, false, 1, 0.4, lge::Color::GREEN);
+					world.addBox(mouse, lge::vec2(lge::randomDouble(30, 50), lge::randomDouble(30, 50)), 0, false, 1, globalRestitution, lge::Color::GREEN);
 				if (event.mouseButton.button == sf::Mouse::Button::Right)
-					world.addPolygon(mouse, lge::mat2(lge::randomDouble(30, 50), 0, 0, lge::randomDouble(30, 50)), 0, 3 + rand() % 5, false, 0.5, 0.4, lge::Color::CYAN);
+					world.addPolygon(mouse, lge::mat2(lge::randomDouble(30, 50), 0, 0, lge::randomDouble(30, 50)), 0, 3 + rand() % 5, false, 0.5, globalRestitution, lge::Color::CYAN);
 				if (!mousePressed)
 				{
 
@@ -118,6 +149,8 @@ int main()
 		world.renderWorld();
 
 		mainRenderer.displayFramerate();
+		mainRenderer.stroke(lge::Color::CYAN);
+		mainRenderer.text(std::to_string(globalRestitution),10,50,16);
 		mainRenderer.update();
 
 		float fps = 1.f / clock.restart().asSeconds();
