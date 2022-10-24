@@ -169,7 +169,7 @@ void lge::PhysicsWorld::update(double deltaTime)
 						ResolveCollisionWithoutRotation(manifold, bodyA, bodyB);
 						break;
 					case 4:			
-						data.collisionAlgorithm = 4;
+						data.collisionAlgorithm = resolutionIndex;
 						data.manifold = manifold;
 						data.a = *bodyA;
 						data.b = *bodyB;
@@ -178,7 +178,7 @@ void lge::PhysicsWorld::update(double deltaTime)
 						serializer.addObject(data);
 						break;
 					case 5:
-						data.collisionAlgorithm = 5;
+						data.collisionAlgorithm = resolutionIndex;
 						data.manifold = manifold;
 						data.a = *bodyA;
 						data.b = *bodyB;
@@ -188,6 +188,15 @@ void lge::PhysicsWorld::update(double deltaTime)
 						break;
 					case 6:
 						ResolveCollisionCombined(manifold, bodyA, bodyB);
+						break;
+					case 7:
+						data.collisionAlgorithm = resolutionIndex;
+						data.manifold = manifold;
+						data.a = *bodyA;
+						data.b = *bodyB;
+						data.frame = renderer->getFrameCount();
+						data.collision = ResolveCollisionCombinedCollisonData(manifold, bodyA, bodyB);
+						serializer.addObject(data);
 						break;
 					default:
 						ResolveCollisionWithoutRotation(manifold, bodyA, bodyB);

@@ -75,6 +75,28 @@ void lge::ObjectSerializer::serializeObjects(const char* fileName)
 				file << "Impulse Scalar After Division: " << o.collision.jAfter[i] << "\n";
 				file << "Impulse: " << o.collision.impulse[i] << "\n\n";
 
+				double totalBefore = 0;
+				double totalAfter = 0;
+
+				for (unsigned int i = 0; i < 2; i++)
+				{
+					
+					file << "Poly" << i << ":\n";
+					file << "E kin before: " << o.collision.eKin[i] << "\n";
+					file << "E rot before: " << o.collision.eRot[i] << "\n";
+					file << "E tot before: " << o.collision.eKin[i] + o.collision.eRot[i] << "\n";
+
+					totalBefore += o.collision.eKin[i] + o.collision.eRot[i];
+
+					file << "E kin After " << o.collision.eKinAfter[i] << "\n";
+					file << "E rot After " << o.collision.eRotAfter[i] << "\n";
+					file << "E tot After " << o.collision.eKinAfter[i] + o.collision.eRotAfter[i] << "\n";
+
+					totalAfter += o.collision.eKinAfter[i] + o.collision.eRotAfter[i];
+				}
+
+				file << "Total energy Before: " << totalBefore << "\n";
+				file << "Total energy After: " << totalAfter << "\n";
 			}
 			else
 			{

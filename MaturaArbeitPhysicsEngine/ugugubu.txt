@@ -1,0 +1,762 @@
+Frame: 336
+Collision Algorithm: 7
+Polygon A:
+Position: X: 500 Y: 947.664
+Rotation: 0.25
+Velocity: X: 0 Y: 386.526
+Angular Velocity: 0
+Mass: 1500
+Inertia: 1.30027e+06
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 491.651 Y: 919.73
+	Index: 1	X: 520.719 Y: 927.152
+	Index: 2	X: 508.349 Y: 975.597
+	Index: 3	X: 479.281 Y: 968.175
+
+Polygon B:
+Position: X: 500 Y: 1000
+Rotation: 0
+Velocity: X: 0 Y: 0
+Angular Velocity: 0
+Mass: 0
+Inertia: 0
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 100 Y: 975
+	Index: 1	X: 900 Y: 975
+	Index: 2	X: 900 Y: 1025
+	Index: 3	X: 100 Y: 1025
+
+Manifold:
+
+Collision: 1
+Normal: << X: -0 Y: 1
+
+Contact Index: 0
+Contact Point: X: 508.349 Y: 975
+Contact Velocity: -386.526
+Relative Velocity: X: 0 Y: 0
+Radius A: X: 8.34859 Y: 27.3364 Mag: 28.5828
+Radius B: X: 8.34859 Y: -25 Mag: 26.3571
+Velocity A: X: 0 Y: 386.526
+Velocity B: X: 0 Y: 0
+Inverse Inertia: 5.36036e-05
+Inverse Mass: 0.000666667
+Impulse Scalar Before Division: 773.053
+Impulse Scalar After Division: 1.07328e+06
+Impulse: X: -0 Y: 1.07328e+06
+
+Poly0:
+E kin before: 1.12052e+08
+E rot before: 0
+E tot before: 1.12052e+08
+E kin After 8.11781e+07
+E rot After 3.08739e+07
+E tot After 1.12052e+08
+Poly1:
+E kin before: 0
+E rot before: 0
+E tot before: 0
+E kin After 0
+E rot After 0
+E tot After 0
+Total energy Before: 1.12052e+08
+Total energy After: 1.12052e+08
+
+
+
+
+Frame: 336
+Collision Algorithm: 7
+Polygon A:
+Position: X: 500 Y: 1000
+Rotation: 0
+Velocity: X: 0 Y: 0
+Angular Velocity: 0
+Mass: 0
+Inertia: 0
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 100 Y: 975
+	Index: 1	X: 900 Y: 975
+	Index: 2	X: 900 Y: 1025
+	Index: 3	X: 100 Y: 1025
+
+Polygon B:
+Position: X: 500 Y: 947.365
+Rotation: 0.25
+Velocity: X: 0 Y: -328.654
+Angular Velocity: -6.89119
+Mass: 1500
+Inertia: 1.30027e+06
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 491.651 Y: 919.431
+	Index: 1	X: 520.719 Y: 926.853
+	Index: 2	X: 508.349 Y: 975.299
+	Index: 3	X: 479.281 Y: 967.877
+
+Manifold:
+
+Collision: 1
+Normal: << X: 0 Y: -1
+
+Contact Index: 0
+Contact Point: X: 508.349 Y: 975
+Contact Velocity: 386.186
+Relative Velocity: X: 0 Y: 0
+Radius A: X: 8.34859 Y: -25 Mag: 26.3571
+Radius B: X: 8.34859 Y: 27.6351 Mag: 28.8687
+Velocity A: X: 0 Y: 0
+Velocity B: X: 190.439 Y: -386.186
+1
+Separating at Contactpoint
+
+
+
+
+
+Frame: 728
+Collision Algorithm: 7
+Polygon A:
+Position: X: 500 Y: 952.321
+Rotation: -45.1737
+Velocity: X: 0 Y: 330.162
+Angular Velocity: -6.89119
+Mass: 1500
+Inertia: 1.30027e+06
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 471.223 Y: 956.996
+	Index: 1	X: 482.333 Y: 929.129
+	Index: 2	X: 528.777 Y: 947.646
+	Index: 3	X: 517.667 Y: 975.513
+
+Polygon B:
+Position: X: 500 Y: 1000
+Rotation: 0
+Velocity: X: 0 Y: 0
+Angular Velocity: 0
+Mass: 0
+Inertia: 0
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 100 Y: 975
+	Index: 1	X: 900 Y: 975
+	Index: 2	X: 900 Y: 1025
+	Index: 3	X: 100 Y: 1025
+
+Manifold:
+
+Collision: 1
+Normal: << X: -0 Y: 1
+
+Contact Index: 0
+Contact Point: X: 517.667 Y: 975
+Contact Velocity: -208.412
+Relative Velocity: X: 0 Y: 0
+Radius A: X: 17.6675 Y: 22.679 Mag: 28.7485
+Radius B: X: 17.6675 Y: -25 Mag: 30.6127
+Velocity A: X: 156.285 Y: 208.412
+Velocity B: X: 0 Y: 0
+Inverse Inertia: 0.000240058
+Inverse Mass: 0.000666667
+Impulse Scalar Before Division: 416.824
+Impulse Scalar After Division: 459702
+Impulse: X: -0 Y: 459702
+
+Poly0:
+E kin before: 8.17551e+07
+E rot before: 3.08739e+07
+E tot before: 1.12629e+08
+E kin After 421034
+E rot After 1.12208e+08
+E tot After 1.12629e+08
+Poly1:
+E kin before: 0
+E rot before: 0
+E tot before: 0
+E kin After 0
+E rot After 0
+E tot After 0
+Total energy Before: 1.12629e+08
+Total energy After: 1.12629e+08
+
+
+
+
+Frame: 728
+Collision Algorithm: 7
+Polygon A:
+Position: X: 500 Y: 1000
+Rotation: 0
+Velocity: X: 0 Y: 0
+Angular Velocity: 0
+Mass: 0
+Inertia: 0
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 100 Y: 975
+	Index: 1	X: 900 Y: 975
+	Index: 2	X: 900 Y: 1025
+	Index: 3	X: 100 Y: 1025
+
+Polygon B:
+Position: X: 500 Y: 952.065
+Rotation: -45.1737
+Velocity: X: 0 Y: 24.0307
+Angular Velocity: -13.1374
+Mass: 1500
+Inertia: 1.30027e+06
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 471.223 Y: 956.74
+	Index: 1	X: 482.333 Y: 928.873
+	Index: 2	X: 528.777 Y: 947.389
+	Index: 3	X: 517.667 Y: 975.256
+
+Manifold:
+
+Collision: 1
+Normal: << X: 0 Y: -1
+
+Contact Index: 0
+Contact Point: X: 517.667 Y: 975
+Contact Velocity: 208.075
+Relative Velocity: X: 0 Y: 0
+Radius A: X: 17.6675 Y: -25 Mag: 30.6127
+Radius B: X: 17.6675 Y: 22.9354 Mag: 28.9512
+Velocity A: X: 0 Y: 0
+Velocity B: X: 301.312 Y: -208.075
+1
+Separating at Contactpoint
+
+
+
+
+
+Frame: 731
+Collision Algorithm: 7
+Polygon A:
+Position: X: 500 Y: 953.507
+Rotation: -45.8869
+Velocity: X: 0 Y: 29.1219
+Angular Velocity: -13.1374
+Mass: 1500
+Inertia: 1.30027e+06
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 481.294 Y: 975.87
+	Index: 1	X: 471.465 Y: 947.526
+	Index: 2	X: 518.706 Y: 931.144
+	Index: 3	X: 528.535 Y: 959.489
+
+Polygon B:
+Position: X: 500 Y: 1000
+Rotation: 0
+Velocity: X: 0 Y: 0
+Angular Velocity: 0
+Mass: 0
+Inertia: 0
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 100 Y: 975
+	Index: 1	X: 900 Y: 975
+	Index: 2	X: 900 Y: 1025
+	Index: 3	X: 100 Y: 1025
+
+Manifold:
+
+Collision: 1
+Normal: << X: -0 Y: 1
+
+Contact Index: 0
+Contact Point: X: 481.294 Y: 975
+Contact Velocity: -274.865
+Relative Velocity: X: 0 Y: 0
+Radius A: X: -18.7056 Y: 21.4926 Mag: 28.4927
+Radius B: X: -18.7056 Y: -25 Mag: 31.2234
+Velocity A: X: 282.358 Y: 274.865
+Velocity B: X: 0 Y: 0
+Inverse Inertia: 0.000269097
+Inverse Mass: 0.000666667
+Impulse Scalar Before Division: 549.73
+Impulse Scalar After Division: 587467
+Impulse: X: -0 Y: 587467
+
+Poly0:
+E kin before: 636065
+E rot before: 1.12208e+08
+E tot before: 1.12844e+08
+E kin After 9.85669e+07
+E rot After 1.4277e+07
+E tot After 1.12844e+08
+Poly1:
+E kin before: 0
+E rot before: 0
+E tot before: 0
+E kin After 0
+E rot After 0
+E tot After 0
+Total energy Before: 1.12844e+08
+Total energy After: 1.12844e+08
+
+
+
+
+Frame: 731
+Collision Algorithm: 7
+Polygon A:
+Position: X: 500 Y: 1000
+Rotation: 0
+Velocity: X: 0 Y: 0
+Angular Velocity: 0
+Mass: 0
+Inertia: 0
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 100 Y: 975
+	Index: 1	X: 900 Y: 975
+	Index: 2	X: 900 Y: 1025
+	Index: 3	X: 100 Y: 1025
+
+Polygon B:
+Position: X: 500 Y: 953.072
+Rotation: -45.8869
+Velocity: X: 0 Y: -362.185
+Angular Velocity: -4.68617
+Mass: 1500
+Inertia: 1.30027e+06
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 481.294 Y: 975.435
+	Index: 1	X: 471.465 Y: 947.091
+	Index: 2	X: 518.706 Y: 930.709
+	Index: 3	X: 528.535 Y: 959.053
+
+Manifold:
+
+Collision: 1
+Normal: << X: 0 Y: -1
+
+Contact Index: 0
+Contact Point: X: 481.294 Y: 975
+Contact Velocity: 274.528
+Relative Velocity: X: 0 Y: 0
+Radius A: X: -18.7056 Y: -25 Mag: 31.2234
+Radius B: X: -18.7056 Y: 21.9278 Mag: 28.8223
+Velocity A: X: 0 Y: 0
+Velocity B: X: 102.757 Y: -274.528
+1
+Separating at Contactpoint
+
+
+
+
+
+Frame: 1163
+Collision Algorithm: 7
+Polygon A:
+Position: X: 500 Y: 955.409
+Rotation: -79.8782
+Velocity: X: 0 Y: 362.831
+Angular Velocity: -4.68617
+Mass: 1500
+Inertia: 1.30027e+06
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 527.783 Y: 946.571
+	Index: 1	X: 520.873 Y: 975.765
+	Index: 2	X: 472.217 Y: 964.248
+	Index: 3	X: 479.127 Y: 935.054
+
+Polygon B:
+Position: X: 500 Y: 1000
+Rotation: 0
+Velocity: X: 0 Y: 0
+Angular Velocity: 0
+Mass: 0
+Inertia: 0
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 100 Y: 975
+	Index: 1	X: 900 Y: 975
+	Index: 2	X: 900 Y: 1025
+	Index: 3	X: 100 Y: 1025
+
+Manifold:
+
+Collision: 1
+Normal: << X: -0 Y: 1
+
+Contact Index: 0
+Contact Point: X: 520.873 Y: 975
+Contact Velocity: -265.018
+Relative Velocity: X: 0 Y: 0
+Radius A: X: 20.8727 Y: 19.5906 Mag: 28.6262
+Radius B: X: 20.8727 Y: -25 Mag: 32.5679
+Velocity A: X: 91.805 Y: 265.018
+Velocity B: X: 0 Y: 0
+Inverse Inertia: 0.000335061
+Inverse Mass: 0.000666667
+Impulse Scalar Before Division: 530.036
+Impulse Scalar After Division: 529122
+Impulse: X: -0 Y: 529122
+
+Poly0:
+E kin before: 9.87348e+07
+E rot before: 1.4277e+07
+E tot before: 1.13012e+08
+E kin After 76246.9
+E rot After 1.12936e+08
+E tot After 1.13012e+08
+Poly1:
+E kin before: 0
+E rot before: 0
+E tot before: 0
+E kin After 0
+E rot After 0
+E tot After 0
+Total energy Before: 1.13012e+08
+Total energy After: 1.13012e+08
+
+
+
+
+Frame: 1164
+Collision Algorithm: 7
+Polygon A:
+Position: X: 500 Y: 1000
+Rotation: 0
+Velocity: X: 0 Y: 0
+Angular Velocity: 0
+Mass: 0
+Inertia: 0
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 100 Y: 975
+	Index: 1	X: 900 Y: 975
+	Index: 2	X: 900 Y: 1025
+	Index: 3	X: 100 Y: 1025
+
+Polygon B:
+Position: X: 500 Y: 955.027
+Rotation: -79.8782
+Velocity: X: 0 Y: 10.4298
+Angular Velocity: -13.18
+Mass: 1500
+Inertia: 1.30027e+06
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 527.783 Y: 946.189
+	Index: 1	X: 520.873 Y: 975.382
+	Index: 2	X: 472.217 Y: 963.865
+	Index: 3	X: 479.127 Y: 934.672
+
+Manifold:
+
+Collision: 1
+Normal: << X: 0 Y: -1
+
+Contact Index: 0
+Contact Point: X: 520.873 Y: 975
+Contact Velocity: 264.671
+Relative Velocity: X: 0 Y: 0
+Radius A: X: 20.8727 Y: -25 Mag: 32.5679
+Radius B: X: 20.8727 Y: 19.9729 Mag: 28.8892
+Velocity A: X: 0 Y: 0
+Velocity B: X: 263.242 Y: -264.671
+1
+Separating at Contactpoint
+
+
+
+
+
+Frame: 1165
+Collision Algorithm: 7
+Polygon A:
+Position: X: 500 Y: 955.445
+Rotation: -80.3374
+Velocity: X: 0 Y: 13.5667
+Angular Velocity: -13.18
+Mass: 1500
+Inertia: 1.30027e+06
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 520.988 Y: 935.209
+	Index: 1	X: 527.732 Y: 964.441
+	Index: 2	X: 479.012 Y: 975.681
+	Index: 3	X: 472.268 Y: 946.449
+
+Polygon B:
+Position: X: 500 Y: 1000
+Rotation: 0
+Velocity: X: 0 Y: 0
+Angular Velocity: 0
+Mass: 0
+Inertia: 0
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 100 Y: 975
+	Index: 1	X: 900 Y: 975
+	Index: 2	X: 900 Y: 1025
+	Index: 3	X: 100 Y: 1025
+
+Manifold:
+
+Collision: 1
+Normal: << X: -0 Y: 1
+
+Contact Index: 0
+Contact Point: X: 479.012 Y: 975
+Contact Velocity: -290.186
+Relative Velocity: X: 0 Y: 0
+Radius A: X: -20.9879 Y: 19.5549 Mag: 28.6859
+Radius B: X: -20.9879 Y: -25 Mag: 32.6419
+Velocity A: X: 257.732 Y: 290.186
+Velocity B: X: 0 Y: 0
+Inverse Inertia: 0.00033877
+Inverse Mass: 0.000666667
+Impulse Scalar Before Division: 580.372
+Impulse Scalar After Division: 577234
+Impulse: X: -0 Y: 577234
+
+Poly0:
+E kin before: 138041
+E rot before: 1.12936e+08
+E tot before: 1.13074e+08
+E kin After 1.03373e+08
+E rot After 9.70031e+06
+E tot After 1.13074e+08
+Poly1:
+E kin before: 0
+E rot before: 0
+E tot before: 0
+E kin After 0
+E rot After 0
+E tot After 0
+Total energy Before: 1.13074e+08
+Total energy After: 1.13074e+08
+
+
+
+
+Frame: 1166
+Collision Algorithm: 7
+Polygon A:
+Position: X: 500 Y: 1000
+Rotation: 0
+Velocity: X: 0 Y: 0
+Angular Velocity: 0
+Mass: 0
+Inertia: 0
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 100 Y: 975
+	Index: 1	X: 900 Y: 975
+	Index: 2	X: 900 Y: 1025
+	Index: 3	X: 100 Y: 1025
+
+Polygon B:
+Position: X: 500 Y: 955.104
+Rotation: -80.3374
+Velocity: X: 0 Y: -370.924
+Angular Velocity: -3.86271
+Mass: 1500
+Inertia: 1.30027e+06
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 520.988 Y: 934.868
+	Index: 1	X: 527.732 Y: 964.1
+	Index: 2	X: 479.012 Y: 975.341
+	Index: 3	X: 472.268 Y: 946.109
+
+Manifold:
+
+Collision: 1
+Normal: << X: 0 Y: -1
+
+Contact Index: 0
+Contact Point: X: 479.012 Y: 975
+Contact Velocity: 289.854
+Relative Velocity: X: 0 Y: 0
+Radius A: X: -20.9879 Y: -25 Mag: 32.6419
+Radius B: X: -20.9879 Y: 19.8956 Mag: 28.9193
+Velocity A: X: 0 Y: 0
+Velocity B: X: 76.8508 Y: -289.854
+1
+Separating at Contactpoint
+
+
+
+
+
+Frame: 1605
+Collision Algorithm: 7
+Polygon A:
+Position: X: 500 Y: 949.728
+Rotation: -108.949
+Velocity: X: 0 Y: 369.467
+Angular Velocity: -3.86271
+Mass: 1500
+Inertia: 1.30027e+06
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 486.9 Y: 975.774
+	Index: 1	X: 470.854 Y: 950.426
+	Index: 2	X: 513.1 Y: 923.682
+	Index: 3	X: 529.146 Y: 949.03
+
+Polygon B:
+Position: X: 500 Y: 1000
+Rotation: 0
+Velocity: X: 0 Y: 0
+Angular Velocity: 0
+Mass: 0
+Inertia: 0
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 100 Y: 975
+	Index: 1	X: 900 Y: 975
+	Index: 2	X: 900 Y: 1025
+	Index: 3	X: 100 Y: 1025
+
+Manifold:
+
+Collision: 1
+Normal: << X: -0 Y: 1
+
+Contact Index: 0
+Contact Point: X: 486.9 Y: 975
+Contact Velocity: -420.069
+Relative Velocity: X: 0 Y: 0
+Radius A: X: -13.1002 Y: 25.2722 Mag: 28.4658
+Radius B: X: -13.1002 Y: -25 Mag: 28.2244
+Velocity A: X: 97.619 Y: 420.069
+Velocity B: X: 0 Y: 0
+Inverse Inertia: 0.000131985
+Inverse Mass: 0.000666667
+Impulse Scalar Before Division: 840.138
+Impulse Scalar After Division: 1.05195e+06
+Impulse: X: -0 Y: 1.05195e+06
+
+Poly0:
+E kin before: 1.02379e+08
+E rot before: 9.70031e+06
+E tot before: 1.1208e+08
+E kin After 8.25835e+07
+E rot After 2.94961e+07
+E tot After 1.1208e+08
+Poly1:
+E kin before: 0
+E rot before: 0
+E tot before: 0
+E kin After 0
+E rot After 0
+E tot After 0
+Total energy Before: 1.1208e+08
+Total energy After: 1.1208e+08
+
+
+
+
+Frame: 1605
+Collision Algorithm: 7
+Polygon A:
+Position: X: 500 Y: 1000
+Rotation: 0
+Velocity: X: 0 Y: 0
+Angular Velocity: 0
+Mass: 0
+Inertia: 0
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 100 Y: 975
+	Index: 1	X: 900 Y: 975
+	Index: 2	X: 900 Y: 1025
+	Index: 3	X: 100 Y: 1025
+
+Polygon B:
+Position: X: 500 Y: 949.341
+Rotation: -108.949
+Velocity: X: 0 Y: -331.51
+Angular Velocity: 6.73568
+Mass: 1500
+Inertia: 1.30027e+06
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 486.9 Y: 975.387
+	Index: 1	X: 470.854 Y: 950.039
+	Index: 2	X: 513.1 Y: 923.295
+	Index: 3	X: 529.146 Y: 948.643
+
+Manifold:
+
+Collision: 1
+Normal: << X: 0 Y: -1
+
+Contact Index: 0
+Contact Point: X: 486.9 Y: 975
+Contact Velocity: 419.749
+Relative Velocity: X: 0 Y: 0
+Radius A: X: -13.1002 Y: -25 Mag: 28.2244
+Radius B: X: -13.1002 Y: 25.659 Mag: 28.8097
+Velocity A: X: 0 Y: 0
+Velocity B: X: -172.831 Y: -419.749
+1
+Separating at Contactpoint
+
+
+
+
+

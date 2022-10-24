@@ -440,6 +440,104 @@ void lge::ResolveCollisionCombined(Manifold m, Polygon* poly1, Polygon* poly2)
 	poly2->m_angularVelocity += crossVec2(rb, impulse) * poly2->m_invInertia;
 }
 
+lge::CollisionData lge::ResolveCollisionCombinedCollisonData(Manifold m, Polygon* poly1, Polygon* poly2)
+{
+
+	CollisionData data;
+
+	if (poly1->m_invMass + poly2->m_invMass == 0) return data;
+
+	data.separating[0] = false;
+
+	std::vector<vec2> contactPoints = getContactPoints(poly1, poly2);
+
+	vec2 normal = m.normal;
+
+	vec2 contact = contactPoints[0];
+	data.contactCount = 1;
+
+	if (contactPoints.size() > 1)
+	{
+		contact = (contactPoints[0] + contactPoints[1]) / 2;
+	}
+
+	data.contactPoints[0] = contact;
+
+	vec2 ra = contact - poly1->m_position;
+	vec2 rb = contact - poly2->m_position;
+
+	data.ra[0] = ra;
+	data.rb[0] = rb;
+
+	vec2 raPerp = vec2(-ra.y, ra.x);
+	vec2 rbPerp = vec2(-rb.y, rb.x);
+
+	vec2 angLineraVelA = raPerp * poly1->m_angularVelocity;
+	vec2 angLinearVelB = rbPerp * poly2->m_angularVelocity;
+
+	data.velA[0] = poly1->m_velocity + angLineraVelA;
+	data.velB[0] = poly2->m_velocity + angLinearVelB;
+
+	vec2 relativeVelocity = (poly2->m_velocity + angLinearVelB) - (poly1->m_velocity + angLineraVelA);
+
+	data.relativeVel[0] = relativeVelocity;
+
+	double contactVelocityMag = dotVec2(relativeVelocity, normal);
+
+	data.contactVel[0] = contactVelocityMag;
+
+	if (contactVelocityMag > 0)
+	{
+		data.separating[0] = true;
+		return data;
+	}
+
+	double raPerpDotN = dotVec2(raPerp, normal);
+	double rbPerpDotN = dotVec2(rbPerp, normal);
+
+	double invMass = poly1->m_invMass + poly2->m_invMass;
+	data.invMass = invMass;
+	double invInert = (raPerpDotN * raPerpDotN) * poly1->m_invInertia +
+		(rbPerpDotN * rbPerpDotN) * poly2->m_invInertia;
+	data.invInert[0] = invInert;
+	double denom = invMass + invInert;
+
+	double e = min(poly1->m_restitution, poly2->m_restitution);
+
+	double j = -(1.0 + e) * contactVelocityMag;
+	data.jBefore[0] = j;
+
+	j /= denom;
+
+	data.jAfter[0] = j;
+
+	vec2 impulse = normal * j;
+
+	data.impulse[0] = impulse;
+
+	data.eKin[0] = 0.5 * poly1->m_mass * poly1->m_velocity.lenSqr();
+	data.eKin[1] = 0.5 * poly2->m_mass * poly2->m_velocity.lenSqr();
+
+	data.eRot[0] = 0.5 * poly1->m_inertia * pow(poly1->m_angularVelocity,2);
+	data.eRot[1] = 0.5 * poly2->m_inertia * pow(poly2->m_angularVelocity,2);
+
+	poly1->move(-normal * m.penetration / 2);
+	poly2->move(normal * m.penetration / 2);
+
+	poly1->m_velocity += -impulse * poly1->m_invMass;
+	poly1->m_angularVelocity += -crossVec2(ra, impulse) * poly1->m_invInertia;
+	poly2->m_velocity += impulse * poly2->m_invMass;
+	poly2->m_angularVelocity += crossVec2(rb, impulse) * poly2->m_invInertia;
+
+	data.eKinAfter[0] = 0.5 * poly1->m_mass * poly1->m_velocity.lenSqr();
+	data.eKinAfter[1] = 0.5 * poly2->m_mass * poly2->m_velocity.lenSqr();
+
+	data.eRotAfter[0] = 0.5 * poly1->m_inertia * pow(poly1->m_angularVelocity,2);
+	data.eRotAfter[1] = 0.5 * poly2->m_inertia * pow(poly2->m_angularVelocity,2);
+
+	return data;
+}
+
 //TODO: Rework this
 void lge::PositionalCorrection(Manifold m, Polygon* poly1, Polygon* poly2)
 {

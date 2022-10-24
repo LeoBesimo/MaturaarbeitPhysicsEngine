@@ -28,6 +28,14 @@ namespace lge
 		double jBefore[2];
 		double jAfter[2];
 		vec2 impulse[2];
+		double eKin[2];
+		double eKinAfter[2];
+		double eRot[2];
+		double eRotAfter[2];
+		vec2 linImpulse[2];
+		vec2 linImpulseAfter[2];
+		vec2 rotImpulse[2];
+		vec2 rotImpulseAfter[2];
 	};
 
 	void ResolveCollisionWithoutRotation(Manifold m, Polygon* poly1, Polygon* poly2);
@@ -36,6 +44,7 @@ namespace lge
 	void ResolveCollisionImproved(Manifold m, Polygon* poly1, Polygon* poly2);
 	CollisionData ResolveCollisionImprovedCollisionData(Manifold m, Polygon* poly1, Polygon* poly2);
 	void ResolveCollisionCombined(Manifold m, Polygon* poly1, Polygon* poly2);
+	CollisionData ResolveCollisionCombinedCollisonData(Manifold m, Polygon* poly1, Polygon* poly2);
 	void PositionalCorrection(Manifold m, Polygon* poly1, Polygon* poly2);
 	void ApplyImpulse(Polygon* poly, vec2 impulse, std::vector<vec2> contactPoints);
 	void ApplyImpulseImproved(Polygon* poly, vec2 impulse, vec2 contactPoint);
