@@ -12,7 +12,8 @@ int main()
 	//srand(0);
 	Renderer mainRenderer(1000, 1000, "Maturaarbeit Physiksimulation Leo Besimo");
 
-	mainRenderer.getWindow()->setFramerateLimit(60);
+	mainRenderer.getWindow()->setFramerateLimit(75);
+	//mainRenderer.getWindow()->setVerticalSyncEnabled(true);
 
 	lge::vec2 windowSize = mainRenderer.getWindowSize();
 
@@ -87,7 +88,7 @@ int main()
 #ifdef _DEBUG
 				if (event.key.code == sf::Keyboard::Escape)
 				{
-					if (world.getData("ume.txt"))
+					if (world.getData("linear calc.txt"))
 					{
 						world.~PhysicsWorld();
 						mainRenderer.~Renderer();

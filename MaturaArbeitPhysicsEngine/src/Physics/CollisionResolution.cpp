@@ -587,8 +587,8 @@ void lge::ResolveCollision3D(Manifold m, Polygon* poly1, Polygon* poly2)
 
 	vec3 impulse = normal * j;
 
-	//poly1->move(-m.normal * m.penetration / 2);
-	//poly2->move(m.normal * m.penetration / 2);
+	poly1->move(-m.normal * m.penetration / 2);
+	poly2->move(m.normal * m.penetration / 2);
 
 	poly1->m_velocity += -vec2(impulse.x,impulse.y) * poly1->m_invMass;
 	poly1->m_angularVelocity += -crossVec3(ra, impulse).z * poly1->m_invInertia;
