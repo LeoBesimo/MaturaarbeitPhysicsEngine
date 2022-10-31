@@ -27,7 +27,7 @@ namespace lge
 
 		std::vector<vec2> boxCorners;
 
-		int resolutionIndex = 7;
+		int resolutionIndex = 6;
 
 		unsigned int stepCount = 5;
 
@@ -47,6 +47,7 @@ namespace lge
 		bool getData(const char* file);
 
 		void setResolutionIndex(int index);
+		int getResolutionIndex();
 
 		void removeBody(int index);
 		void update(double deltaTime);

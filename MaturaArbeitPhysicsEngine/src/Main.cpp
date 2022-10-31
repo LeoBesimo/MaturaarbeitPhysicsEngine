@@ -36,7 +36,7 @@ int main()
 	//world.addBox(lge::vec2(windowSize.x, windowSize.y / 2), lge::vec2(borderWidth, windowSize.y), 0, true, 0, 1.0, lge::vec4(100, 200, 0, 255));
 	//world.addBox(lge::vec2(windowSize.x / 2, 0), lge::vec2(windowSize.x, borderWidth), 0, true, 0, 1.0, lge::vec4(100, 0, 100, 255));
 	lge::Polygon* p = world.addBox(lge::vec2(windowSize.x / 2, windowSize.y), lge::vec2(windowSize.x-200, borderWidth), 0, true, 0, 1.0, lge::Color::INDIGO);
-	//p->m_density = 1;
+	//p->m_density = 0.1;
 	//p->calculateInertia();
 
 
@@ -87,7 +87,7 @@ int main()
 #ifdef _DEBUG
 				if (event.key.code == sf::Keyboard::Escape)
 				{
-					if (world.getData("ugugubu.txt"))
+					if (world.getData("ume.txt"))
 					{
 						world.~PhysicsWorld();
 						mainRenderer.~Renderer();
@@ -102,6 +102,11 @@ int main()
 				if (event.key.code == sf::Keyboard::Num4) world.setResolutionIndex(4);
 				if (event.key.code == sf::Keyboard::Num5) world.setResolutionIndex(5);
 				if (event.key.code == sf::Keyboard::Num6) world.setResolutionIndex(6);
+				if (event.key.code == sf::Keyboard::Num7) world.setResolutionIndex(7);
+				if (event.key.code == sf::Keyboard::Num8) world.setResolutionIndex(8);
+
+				if (event.key.code == sf::Keyboard::U) globalRestitution = 0.4;
+				if (event.key.code == sf::Keyboard::I) globalRestitution = 1.0;
 #endif //
 
 #ifdef NDEBUG
@@ -119,8 +124,21 @@ int main()
 
 				if (event.key.code == sf::Keyboard::T) world.testSetup();
 				if (event.key.code == sf::Keyboard::R) world.reset();
-				if (event.key.code == sf::Keyboard::E) world.addBox(lge::vec2(500, 200), lge::vec2(30, 50), 0.25, false, 1, 1, lge::Color::YELLOW);
-				//if (event.key.code == sf::Keyboard::Z) world.addPolygon(mouse, lge::mat2(15,0,0, 15), 0, 25, false, 1, 0.4, lge::Color::LIGHTGRAY);
+				if (event.key.code == sf::Keyboard::E) world.addBox(lge::vec2(500, 200), lge::vec2(30, 50), 0, false, 1, 1, lge::Color::YELLOW);
+				if (event.key.code == sf::Keyboard::Z) world.addPolygon(mouse, lge::mat2(15,0,0, 15), 0, 25, false, 1, 0.4, lge::Color::LIGHTGRAY);
+
+
+
+				if (event.key.code == sf::Keyboard::G)
+				{
+					lge::Polygon* p1 = world.addBox(lge::vec2(300, 800), lge::vec2(30, 50), 0, false, 1, 1.0, lge::Color::GRAY);
+					lge::Polygon* p2 = world.addBox(lge::vec2(600, 800), lge::vec2(50, 30), 0.25, false, 1, 1.0, lge::Color::GRAY);
+					
+					p1->m_velocity = lge::vec2(60, 0);
+					p2->m_velocity = lge::vec2(-60, 0);
+				
+				}
+
 
 				keyPressed = !keyPressed;
 			}
@@ -151,6 +169,10 @@ int main()
 		mainRenderer.displayFramerate();
 		mainRenderer.stroke(lge::Color::CYAN);
 		mainRenderer.text(std::to_string(globalRestitution),10,50,16);
+#ifdef _DEBUG
+		mainRenderer.text(std::to_string(world.getResolutionIndex()), 10, 70, 16);
+#endif // DEBUG
+
 		mainRenderer.update();
 
 		float fps = 1.f / clock.restart().asSeconds();

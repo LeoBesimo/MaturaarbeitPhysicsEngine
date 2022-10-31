@@ -538,6 +538,64 @@ lge::CollisionData lge::ResolveCollisionCombinedCollisonData(Manifold m, Polygon
 	return data;
 }
 
+void lge::ResolveCollision3D(Manifold m, Polygon* poly1, Polygon* poly2)
+{
+	if (poly1->m_invMass + poly2->m_invMass == 0) return;
+
+	std::vector<vec2> contactPoints = getContactPoints(poly1, poly2);
+	vec3 normal = vec3(m.normal.x,m.normal.y,0);
+
+	double e = min(poly1->m_restitution, poly2->m_restitution);
+
+	vec3 contact = vec3(contactPoints[0].x,contactPoints[0].y,0);
+
+	if (contactPoints.size() > 1)
+	{
+		vec2 avg = (contactPoints[0] + contactPoints[1]) / 2;
+		contact = vec3(avg.x, avg.y, 0);
+	}
+
+	vec3 ra = contact - vec3(poly1->m_position.x,poly1->m_position.y,0);
+	vec3 rb = contact - vec3(poly2->m_position.x,poly2->m_position.y,0);
+
+	vec2 raPerp = vec2(-ra.y, ra.x);
+	vec2 rbPerp = vec2(-rb.y, rb.x);
+
+	vec3 angLineraVelA = dotVec3(ra, vec3(0,0,poly1->m_angularVelocity));
+	vec3 angLinearVelB = dotVec3(rb, vec3(0,0,poly2->m_angularVelocity));
+
+	vec3 relativeVelocity = (vec3(poly2->m_velocity.x,poly2->m_velocity.y,0) + angLinearVelB) - (vec3(poly1->m_velocity.x,poly1->m_velocity.y,0) + angLineraVelA);
+
+	double contactVelocityMag = dotVec3(relativeVelocity, normal);
+
+	if (contactVelocityMag > 0)
+	{
+		return;
+	}
+
+	double invMass = poly1->m_invMass + poly2->m_invMass;
+
+	double invInert1 = dotVec3(normal, crossVec3(crossVec3(ra, normal) * poly1->m_invInertia, ra));
+	double invInert2 = dotVec3(normal, crossVec3(crossVec3(rb, normal) * poly2->m_invInertia, rb));
+
+	double invInert = invInert1 + invInert2;
+
+	double invMassSum = invMass + invInert;
+
+	double j = -(1 + e) * contactVelocityMag;
+	j /= invMassSum;
+
+	vec3 impulse = normal * j;
+
+	//poly1->move(-m.normal * m.penetration / 2);
+	//poly2->move(m.normal * m.penetration / 2);
+
+	poly1->m_velocity += -vec2(impulse.x,impulse.y) * poly1->m_invMass;
+	poly1->m_angularVelocity += -crossVec3(ra, impulse).z * poly1->m_invInertia;
+	poly2->m_velocity += vec2(impulse.x,impulse.y) * poly2->m_invMass;
+	poly2->m_angularVelocity += crossVec3(rb, impulse).z * poly2->m_invInertia;
+}
+
 //TODO: Rework this
 void lge::PositionalCorrection(Manifold m, Polygon* poly1, Polygon* poly2)
 {

@@ -45,6 +45,7 @@ namespace lge
 	CollisionData ResolveCollisionImprovedCollisionData(Manifold m, Polygon* poly1, Polygon* poly2);
 	void ResolveCollisionCombined(Manifold m, Polygon* poly1, Polygon* poly2);
 	CollisionData ResolveCollisionCombinedCollisonData(Manifold m, Polygon* poly1, Polygon* poly2);
+	void ResolveCollision3D(Manifold m, Polygon* poly1, Polygon* poly2);
 	void PositionalCorrection(Manifold m, Polygon* poly1, Polygon* poly2);
 	void ApplyImpulse(Polygon* poly, vec2 impulse, std::vector<vec2> contactPoints);
 	void ApplyImpulseImproved(Polygon* poly, vec2 impulse, vec2 contactPoint);

@@ -93,6 +93,11 @@ void lge::PhysicsWorld::setResolutionIndex(int index)
 	resolutionIndex = index;
 }
 
+int lge::PhysicsWorld::getResolutionIndex()
+{
+	return this->resolutionIndex;
+}
+
 void lge::PhysicsWorld::testSetup()
 {
 	addBox(vec2(700, 200), vec2(50, 30), 0, false, 1, 0.4, lge::Color::RED);
@@ -198,6 +203,8 @@ void lge::PhysicsWorld::update(double deltaTime)
 						data.collision = ResolveCollisionCombinedCollisonData(manifold, bodyA, bodyB);
 						serializer.addObject(data);
 						break;
+					case 8:
+						ResolveCollision3D(manifold, bodyA, bodyB);
 					default:
 						ResolveCollisionWithoutRotation(manifold, bodyA, bodyB);
 						break;

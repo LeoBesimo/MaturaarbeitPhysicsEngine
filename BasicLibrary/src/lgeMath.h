@@ -12,6 +12,8 @@ namespace lge
 	inline extern double crossVec2(vec2 a, vec2 b);
 	inline extern vec2 crossVec2Scalar(double s, vec2 a);
 	inline extern vec2 crossVec2Scalar(vec2 a, double s);
+	inline extern double dotVec3(vec3 a, vec3 b);
+	inline extern vec3 crossVec3(vec3 a, vec3 b);
 }
 
 namespace lge
@@ -68,6 +70,20 @@ namespace lge
 	vec2 crossVec2Scalar(vec2 a, double s)
 	{
 		return vec2(s * a.y, -s * a.x); //crossproduct of scalar an 2d vector (other possible order)
+	}
+
+	double dotVec3(vec3 a, vec3 b)
+	{
+		return a.x * b.x + a.y * b.y + a.z * b.z;
+	}
+
+	vec3 crossVec3(vec3 a, vec3 b)
+	{
+		return vec3(
+			a.y * b.z - a.z * b.y,
+			a.z * b.x - a.x * b.z,
+			a.x * b.y - a.y * b.x
+		);
 	}
 }
 
