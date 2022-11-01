@@ -88,7 +88,7 @@ int main()
 #ifdef _DEBUG
 				if (event.key.code == sf::Keyboard::Escape)
 				{
-					if (world.getData("linear calc.txt"))
+					if (world.getData("lin.txt"))
 					{
 						world.~PhysicsWorld();
 						mainRenderer.~Renderer();

@@ -7,6 +7,7 @@
 namespace lge
 {
 
+	template<class T>
 	struct CollisionData
 	{
 		CollisionData() {};
@@ -15,36 +16,36 @@ namespace lge
 
 		int contactCount;
 
-		vec2 contactPoints[2];
-		vec2 relativeVel[2];
+		T contactPoints[2];
+		T relativeVel[2];
 		double contactVel[2];
-		vec2 rv[2];
-		vec2 ra[2];
-		vec2 rb[2];
-		vec2 velA[2];
-		vec2 velB[2];
+		T rv[2];
+		T ra[2];
+		T rb[2];
+		T velA[2];
+		T velB[2];
 		double invInert[2];
 		double invMass;
 		double jBefore[2];
 		double jAfter[2];
-		vec2 impulse[2];
+		T impulse[2];
 		double eKin[2];
 		double eKinAfter[2];
 		double eRot[2];
 		double eRotAfter[2];
-		vec2 linImpulse[2];
-		vec2 linImpulseAfter[2];
-		vec2 rotImpulse[2];
-		vec2 rotImpulseAfter[2];
+		T linImpulse[2];
+		T linImpulseAfter[2];
+		T rotImpulse[2];
+		T rotImpulseAfter[2];
 	};
 
 	void ResolveCollisionWithoutRotation(Manifold m, Polygon* poly1, Polygon* poly2);
 	void ResolveCollision(Manifold m, Polygon* poly1, Polygon* poly2);
-	CollisionData ResolveCollisionCollisionData(Manifold m, Polygon* poly1, Polygon* poly2);
+	CollisionData<vec2> [[nodiscard]] ResolveCollisionCollisionData(Manifold m, Polygon* poly1, Polygon* poly2);
 	void ResolveCollisionImproved(Manifold m, Polygon* poly1, Polygon* poly2);
-	CollisionData ResolveCollisionImprovedCollisionData(Manifold m, Polygon* poly1, Polygon* poly2);
+	CollisionData<vec2> [[nodiscard]] ResolveCollisionImprovedCollisionData(Manifold m, Polygon* poly1, Polygon* poly2);
 	void ResolveCollisionCombined(Manifold m, Polygon* poly1, Polygon* poly2);
-	CollisionData ResolveCollisionCombinedCollisonData(Manifold m, Polygon* poly1, Polygon* poly2);
+	CollisionData<vec2> [[nodiscard]] ResolveCollisionCombinedCollisonData(Manifold m, Polygon* poly1, Polygon* poly2);
 	void ResolveCollision3D(Manifold m, Polygon* poly1, Polygon* poly2);
 	void PositionalCorrection(Manifold m, Polygon* poly1, Polygon* poly2);
 	void ApplyImpulse(Polygon* poly, vec2 impulse, std::vector<vec2> contactPoints);

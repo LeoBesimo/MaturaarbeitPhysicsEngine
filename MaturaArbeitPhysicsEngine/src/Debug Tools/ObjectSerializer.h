@@ -22,7 +22,9 @@ namespace lge
 			Manifold manifold;
 			Polygon a;
 			Polygon b;
-			CollisionData collision;
+			CollisionData<vec2> collision;
+			bool enableVec3 = false;
+			CollisionData<vec3> collision3D;
 		} serializable;
 
 	private:

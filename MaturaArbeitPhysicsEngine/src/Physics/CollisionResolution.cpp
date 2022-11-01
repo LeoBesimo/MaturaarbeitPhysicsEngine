@@ -152,10 +152,10 @@ void lge::ResolveCollision(Manifold m, Polygon* poly1, Polygon* poly2)
 //	}
 //}
 
-lge::CollisionData lge::ResolveCollisionCollisionData(Manifold m, Polygon* poly1, Polygon* poly2)
+lge::CollisionData<lge::vec2> lge::ResolveCollisionCollisionData(Manifold m, Polygon* poly1, Polygon* poly2)
 {
 
-	CollisionData info;
+	CollisionData<lge::vec2> info;
 
 	if (poly1->m_invMass + poly2->m_invMass == 0) return info;
 
@@ -300,9 +300,9 @@ void lge::ResolveCollisionImproved(Manifold m, Polygon* poly1, Polygon* poly2)
 
 }
 
-lge::CollisionData lge::ResolveCollisionImprovedCollisionData(Manifold m, Polygon* poly1, Polygon* poly2)
+lge::CollisionData<lge::vec2> lge::ResolveCollisionImprovedCollisionData(Manifold m, Polygon* poly1, Polygon* poly2)
 {
-	CollisionData info;
+	CollisionData<vec2> info;
 
 	if (poly1->m_invMass + poly2->m_invMass == 0) return info;
 
@@ -440,10 +440,10 @@ void lge::ResolveCollisionCombined(Manifold m, Polygon* poly1, Polygon* poly2)
 	poly2->m_angularVelocity += crossVec2(rb, impulse) * poly2->m_invInertia;
 }
 
-lge::CollisionData lge::ResolveCollisionCombinedCollisonData(Manifold m, Polygon* poly1, Polygon* poly2)
+lge::CollisionData<lge::vec2> lge::ResolveCollisionCombinedCollisonData(Manifold m, Polygon* poly1, Polygon* poly2)
 {
 
-	CollisionData data;
+	CollisionData<vec2> data;
 
 	if (poly1->m_invMass + poly2->m_invMass == 0) return data;
 

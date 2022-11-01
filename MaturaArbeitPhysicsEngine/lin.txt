@@ -1,0 +1,127 @@
+Frame: 755
+Collision Algorithm: 7
+Polygon A:
+Position: X: 500 Y: 950.292
+Rotation: 0
+Velocity: X: 0 Y: 387.244
+Angular Velocity: 0
+Mass: 1500
+Inertia: 1.30027e+06
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 485 Y: 925.292
+	Index: 1	X: 515 Y: 925.292
+	Index: 2	X: 515 Y: 975.292
+	Index: 3	X: 485 Y: 975.292
+
+Polygon B:
+Position: X: 500 Y: 1000
+Rotation: 0
+Velocity: X: 0 Y: 0
+Angular Velocity: 0
+Mass: 0
+Inertia: 0
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 100 Y: 975
+	Index: 1	X: 900 Y: 975
+	Index: 2	X: 900 Y: 1025
+	Index: 3	X: 100 Y: 1025
+
+Manifold:
+
+Collision: 1
+Normal: << X: -0 Y: 1
+
+Contact Index: 0
+Contact Point: X: 500 Y: 975
+Contact Velocity: -387.244
+Relative Velocity: X: 0 Y: 0
+Radius A: X: 0 Y: 24.7077 Mag: 24.7077
+Radius B: X: 0 Y: -25 Mag: 25
+Velocity A: X: 0 Y: 387.244
+Velocity B: X: 0 Y: 0
+Inverse Inertia: 0
+Inverse Mass: 0.000666667
+Impulse Scalar Before Division: 774.488
+Impulse Scalar After Division: 1.16173e+06
+Impulse: X: -0 Y: 1.16173e+06
+
+Poly0:
+E kin before: 1.12469e+08
+E rot before: 0
+E tot before: 1.12469e+08
+E kin After 1.12469e+08
+E rot After 0
+E tot After 1.12469e+08
+Poly1:
+E kin before: 0
+E rot before: 0
+E tot before: 0
+E kin After 0
+E rot After 0
+E tot After 0
+Total energy Before: 1.12469e+08
+Total energy After: 1.12469e+08
+
+
+
+
+Frame: 755
+Collision Algorithm: 7
+Polygon A:
+Position: X: 500 Y: 1000
+Rotation: 0
+Velocity: X: 0 Y: 0
+Angular Velocity: 0
+Mass: 0
+Inertia: 0
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 100 Y: 975
+	Index: 1	X: 900 Y: 975
+	Index: 2	X: 900 Y: 1025
+	Index: 3	X: 100 Y: 1025
+
+Polygon B:
+Position: X: 500 Y: 950.146
+Rotation: 0
+Velocity: X: 0 Y: -386.99
+Angular Velocity: 0
+Mass: 1500
+Inertia: 1.30027e+06
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 485 Y: 925.146
+	Index: 1	X: 515 Y: 925.146
+	Index: 2	X: 515 Y: 975.146
+	Index: 3	X: 485 Y: 975.146
+
+Manifold:
+
+Collision: 1
+Normal: << X: 0 Y: -1
+
+Contact Index: 0
+Contact Point: X: 500 Y: 975
+Contact Velocity: 386.99
+Relative Velocity: X: 0 Y: 0
+Radius A: X: 0 Y: -25 Mag: 25
+Radius B: X: 0 Y: 24.8538 Mag: 24.8538
+Velocity A: X: 0 Y: 0
+Velocity B: X: 0 Y: -386.99
+1
+Separating at Contactpoint
+
+
+
+
+
