@@ -177,6 +177,8 @@ int main()
 		mainRenderer.update();
 
 		float fps = 1.f / clock.restart().asSeconds();
+		
+		if (fps <= 59) std::cout << world.getBodies().size() << "\n";
 	}
 
 	return 0;
