@@ -128,6 +128,7 @@ int main()
 				if (event.key.code == sf::Keyboard::E) world.addBox(lge::vec2(500, 200), lge::vec2(30, 50), 0, false, 1, 1, lge::Color::YELLOW);
 				if (event.key.code == sf::Keyboard::Z) world.addPolygon(mouse, lge::mat2(15,0,0, 15), 0, 25, false, 1, 0.4, lge::Color::LIGHTGRAY);
 
+				if (event.key.code == sf::Keyboard::Space) world.toggleGravity();
 
 
 				if (event.key.code == sf::Keyboard::G)
@@ -178,7 +179,7 @@ int main()
 
 		float fps = 1.f / clock.restart().asSeconds();
 		
-		if (fps <= 59) std::cout << world.getBodies().size() << "\n";
+		//if (fps <= 59) std::cout << world.getBodies().size() << "\n";
 	}
 
 	return 0;

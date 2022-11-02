@@ -7,7 +7,7 @@ lge::PhysicsWorld::PhysicsWorld(Renderer* renderer, vec2 size)
 	boxCorners.push_back(vec2(1, 1));
 	boxCorners.push_back(vec2(-1, 1));
 
-	GRAVITY = vec2(0, 100);
+	GRAVITY = vec2(0, 200);
 
 	this->bodies.reserve(30);
 
@@ -123,6 +123,11 @@ void lge::PhysicsWorld::reset()
 	}
 }
 
+bool lge::PhysicsWorld::toggleGravity()
+{
+	return (this->applyGravity = !this->applyGravity);
+}
+
 bool lge::PhysicsWorld::getData(const char* file)
 {
 	serializer.serializeObjects(file);
@@ -144,7 +149,7 @@ void lge::PhysicsWorld::update(double deltaTime)
 		
 		for (Polygon* body : bodies)
 		{
-			body->m_force += GRAVITY * body->m_mass / stepCount;
+			if(this->applyGravity) body->m_force += GRAVITY * body->m_mass / stepCount;
 			body->integrateForces(deltaTime);
 		}
 

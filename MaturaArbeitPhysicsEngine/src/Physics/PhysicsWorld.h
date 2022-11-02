@@ -31,6 +31,8 @@ namespace lge
 
 		unsigned int stepCount = 5;
 
+		bool applyGravity = true;
+
 	public:
 
 		PhysicsWorld(Renderer* renderer, vec2 size);
@@ -43,6 +45,8 @@ namespace lge
 
 		void testSetup();
 		void reset();
+
+		bool toggleGravity();
 
 		bool getData(const char* file);
 
