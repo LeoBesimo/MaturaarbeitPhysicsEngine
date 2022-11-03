@@ -79,8 +79,7 @@ void lge::ObjectSerializer::serializeObjects(const char* fileName)
 				double totalAfter = 0;
 
 				for (unsigned int i = 0; i < 2; i++)
-				{
-					
+				{	
 					file << "Poly" << i << ":\n";
 					file << "E kin before: " << o.collision.eKin[i] << "\n";
 					file << "E rot before: " << o.collision.eRot[i] << "\n";
@@ -96,7 +95,45 @@ void lge::ObjectSerializer::serializeObjects(const char* fileName)
 				}
 
 				file << "Total energy Before: " << totalBefore << "\n";
-				file << "Total energy After: " << totalAfter << "\n";
+				file << "Total energy After: " << totalAfter << "\n\n";
+
+				vec3 linImpulseABefore = vec3(o.a.m_velocity.x, o.a.m_velocity.y, 0) * o.a.m_mass;
+				vec3 linImpulseBBefore = vec3(o.b.m_velocity.x, o.b.m_velocity.y, 0) * o.b.m_mass;
+				vec3 angImpulseABefore = vec3(0, 0, o.a.m_angularVelocity) * o.a.m_inertia;
+				vec3 angImpulseBBefore = vec3(0, 0, o.b.m_angularVelocity) * o.b.m_inertia;
+
+				vec3 totalImpulseABefore = linImpulseABefore + angImpulseABefore;
+				vec3 totalImpulseBBefore = linImpulseBBefore + angImpulseBBefore;
+
+				vec3 totalImpulseBefore = totalImpulseABefore + totalImpulseBBefore;
+
+				vec3 linImpulseAAfter = vec3(o.collision.velAfterA.x, o.collision.velAfterA.y, 0) * o.a.m_mass;
+				vec3 linImpulseBAfter = vec3(o.collision.velAfterB.x, o.collision.velAfterB.y, 0) * o.b.m_mass;
+				vec3 angImpulseAAfter = vec3(0, 0, o.collision.angVelAfterA) * o.a.m_inertia;
+				vec3 angImpulseBAfter = vec3(0, 0, o.collision.angVelAfterB) * o.b.m_inertia;
+
+				vec3 totalImpulseAAfter = linImpulseAAfter + angImpulseAAfter;
+				vec3 totalImpulseBAfter = linImpulseBAfter + angImpulseBAfter;
+
+				vec3 totalImpulseAfter = totalImpulseAAfter + totalImpulseBAfter;
+
+				file << "Linear Imulse A Before: " << linImpulseABefore << "\n";
+				file << "Angular Imulse A Before: " << angImpulseABefore << "\n";
+				file << "Linear Imulse B Before: " << linImpulseBBefore << "\n";
+				file << "Angular Imulse B Before: " << angImpulseBBefore << "\n";
+
+				file << "Total Impulse A Before: " << totalImpulseABefore << "\n";
+				file << "Total Impulse B Before: " << totalImpulseBBefore << "\n";
+				file << "Total Impulse Before: " << totalImpulseBefore << " Impulse Mag: " << totalImpulseBefore.len() << "\n\n";
+
+				file << "Linear Imulse A After: " << linImpulseAAfter << "\n";
+				file << "Angular Imulse A After: " << angImpulseAAfter << "\n";
+				file << "Linear Imulse B After: " << linImpulseBAfter << "\n";
+				file << "Angular Imulse B After: " << angImpulseBAfter << "\n";
+
+				file << "Total Impulse A After: " << totalImpulseAAfter << "\n";
+				file << "Total Impulse B After: " << totalImpulseBAfter << "\n";
+				file << "Total Impulse After: " << totalImpulseAfter << " Impulse Mag: " << totalImpulseBefore.len() << "\n";
 			}
 			else
 			{
@@ -107,7 +144,7 @@ void lge::ObjectSerializer::serializeObjects(const char* fileName)
 			}
 		}
 
-		file << "\n\n\n\n";
+		file << "\n\n\n";
 	}
 	file.close();
 }

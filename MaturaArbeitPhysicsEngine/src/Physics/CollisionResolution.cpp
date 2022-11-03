@@ -529,6 +529,11 @@ lge::CollisionData<lge::vec2> lge::ResolveCollisionCombinedCollisonData(Manifold
 	poly2->m_velocity += impulse * poly2->m_invMass;
 	poly2->m_angularVelocity += crossVec2(rb, impulse) * poly2->m_invInertia;
 
+	data.velAfterA = poly1->m_velocity;
+	data.velAfterB = poly2->m_velocity;
+	data.angVelAfterA = poly1->m_angularVelocity;
+	data.angVelAfterB = poly2->m_angularVelocity;
+
 	data.eKinAfter[0] = 0.5 * poly1->m_mass * poly1->m_velocity.lenSqr();
 	data.eKinAfter[1] = 0.5 * poly2->m_mass * poly2->m_velocity.lenSqr();
 

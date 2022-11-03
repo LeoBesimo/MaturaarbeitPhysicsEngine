@@ -7,7 +7,7 @@ lge::PhysicsWorld::PhysicsWorld(Renderer* renderer, vec2 size)
 	boxCorners.push_back(vec2(1, 1));
 	boxCorners.push_back(vec2(-1, 1));
 
-	GRAVITY = vec2(0, 200);
+	GRAVITY = vec2(0, 100);
 
 	this->bodies.reserve(30);
 

@@ -1,9 +1,9 @@
-Frame: 755
+Frame: 587
 Collision Algorithm: 7
 Polygon A:
-Position: X: 500 Y: 950.292
+Position: X: 428.637 Y: 800
 Rotation: 0
-Velocity: X: 0 Y: 387.244
+Velocity: X: 60 Y: 0
 Angular Velocity: 0
 Mass: 1500
 Inertia: 1.30027e+06
@@ -11,117 +11,78 @@ Force: X: 0 Y: 0
 Torque: 0
 Restitution: 1
 Edge Points:
-	Index: 0	X: 485 Y: 925.292
-	Index: 1	X: 515 Y: 925.292
-	Index: 2	X: 515 Y: 975.292
-	Index: 3	X: 485 Y: 975.292
+	Index: 0	X: 413.637 Y: 775
+	Index: 1	X: 443.637 Y: 775
+	Index: 2	X: 443.637 Y: 825
+	Index: 3	X: 413.637 Y: 825
 
 Polygon B:
-Position: X: 500 Y: 1000
-Rotation: 0
-Velocity: X: 0 Y: 0
+Position: X: 471.519 Y: 800
+Rotation: 0.25
+Velocity: X: -60 Y: 0
 Angular Velocity: 0
-Mass: 0
-Inertia: 0
+Mass: 1500
+Inertia: 1.30027e+06
 Force: X: 0 Y: 0
 Torque: 0
 Restitution: 1
 Edge Points:
-	Index: 0	X: 100 Y: 975
-	Index: 1	X: 900 Y: 975
-	Index: 2	X: 900 Y: 1025
-	Index: 3	X: 100 Y: 1025
+	Index: 0	X: 451.007 Y: 779.281
+	Index: 1	X: 499.453 Y: 791.651
+	Index: 2	X: 492.031 Y: 820.719
+	Index: 3	X: 443.585 Y: 808.349
 
 Manifold:
 
 Collision: 1
-Normal: << X: -0 Y: 1
+Normal: << X: 1 Y: -0
 
 Contact Index: 0
-Contact Point: X: 500 Y: 975
-Contact Velocity: -387.244
+Contact Point: X: 443.637 Y: 808.349
+Contact Velocity: -120
 Relative Velocity: X: 0 Y: 0
-Radius A: X: 0 Y: 24.7077 Mag: 24.7077
-Radius B: X: 0 Y: -25 Mag: 25
-Velocity A: X: 0 Y: 387.244
-Velocity B: X: 0 Y: 0
-Inverse Inertia: 0
-Inverse Mass: 0.000666667
-Impulse Scalar Before Division: 774.488
-Impulse Scalar After Division: 1.16173e+06
-Impulse: X: -0 Y: 1.16173e+06
+Radius A: X: 15 Y: 8.34859 Mag: 17.1668
+Radius B: X: -27.8823 Y: 8.34859 Mag: 29.1053
+Velocity A: X: 60 Y: 0
+Velocity B: X: -60 Y: 0
+Inverse Inertia: 0.000107207
+Inverse Mass: 0.00133333
+Impulse Scalar Before Division: 240
+Impulse Scalar After Division: 166604
+Impulse: X: 166604 Y: -0
 
 Poly0:
-E kin before: 1.12469e+08
+E kin before: 2.7e+06
 E rot before: 0
-E tot before: 1.12469e+08
-E kin After 1.12469e+08
-E rot After 0
-E tot After 1.12469e+08
+E tot before: 2.7e+06
+E kin After 1.95606e+06
+E rot After 743935
+E tot After 2.7e+06
 Poly1:
-E kin before: 0
+E kin before: 2.7e+06
 E rot before: 0
-E tot before: 0
-E kin After 0
-E rot After 0
-E tot After 0
-Total energy Before: 1.12469e+08
-Total energy After: 1.12469e+08
+E tot before: 2.7e+06
+E kin After 1.95606e+06
+E rot After 743935
+E tot After 2.7e+06
+Total energy Before: 5.4e+06
+Total energy After: 5.4e+06
 
+Linear Imulse A Before: X: 90000 Y: 0 Z: 0
+Angular Imulse A Before: X: 0 Y: 0 Z: 0
+Linear Imulse B Before: X: -90000 Y: 0 Z: 0
+Angular Imulse B Before: X: 0 Y: 0 Z: 0
+Total Impulse A Before: X: 90000 Y: 0 Z: 0
+Total Impulse B Before: X: -90000 Y: 0 Z: 0
+Total Impulse Before: X: 1.16415e-10 Y: 0 Z: 0 Impulse Mag: 1.16415e-10
 
-
-
-Frame: 755
-Collision Algorithm: 7
-Polygon A:
-Position: X: 500 Y: 1000
-Rotation: 0
-Velocity: X: 0 Y: 0
-Angular Velocity: 0
-Mass: 0
-Inertia: 0
-Force: X: 0 Y: 0
-Torque: 0
-Restitution: 1
-Edge Points:
-	Index: 0	X: 100 Y: 975
-	Index: 1	X: 900 Y: 975
-	Index: 2	X: 900 Y: 1025
-	Index: 3	X: 100 Y: 1025
-
-Polygon B:
-Position: X: 500 Y: 950.146
-Rotation: 0
-Velocity: X: 0 Y: -386.99
-Angular Velocity: 0
-Mass: 1500
-Inertia: 1.30027e+06
-Force: X: 0 Y: 0
-Torque: 0
-Restitution: 1
-Edge Points:
-	Index: 0	X: 485 Y: 925.146
-	Index: 1	X: 515 Y: 925.146
-	Index: 2	X: 515 Y: 975.146
-	Index: 3	X: 485 Y: 975.146
-
-Manifold:
-
-Collision: 1
-Normal: << X: 0 Y: -1
-
-Contact Index: 0
-Contact Point: X: 500 Y: 975
-Contact Velocity: 386.99
-Relative Velocity: X: 0 Y: 0
-Radius A: X: 0 Y: -25 Mag: 25
-Radius B: X: 0 Y: 24.8538 Mag: 24.8538
-Velocity A: X: 0 Y: 0
-Velocity B: X: 0 Y: -386.99
-1
-Separating at Contactpoint
-
-
+Linear Imulse A After: X: -76604.1 Y: 0 Z: 0
+Angular Imulse A After: X: 0 Y: 0 Z: 1.39091e+06
+Linear Imulse B After: X: 76604.1 Y: 0 Z: 0
+Angular Imulse B After: X: 0 Y: 0 Z: -1.39091e+06
+Total Impulse A After: X: -76604.1 Y: 0 Z: 1.39091e+06
+Total Impulse B After: X: 76604.1 Y: 0 Z: -1.39091e+06
+Total Impulse After: X: 1.30967e-10 Y: 0 Z: 2.32831e-10 Impulse Mag: 1.16415e-10
 
 
 

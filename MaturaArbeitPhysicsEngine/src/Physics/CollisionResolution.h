@@ -37,6 +37,10 @@ namespace lge
 		T linImpulseAfter[2];
 		T rotImpulse[2];
 		T rotImpulseAfter[2];
+		T velAfterA;
+		T velAfterB;
+		double angVelAfterA;
+		double angVelAfterB;
 	};
 
 	void ResolveCollisionWithoutRotation(Manifold m, Polygon* poly1, Polygon* poly2);

@@ -88,12 +88,20 @@ int main()
 #ifdef _DEBUG
 				if (event.key.code == sf::Keyboard::Escape)
 				{
-					if (world.getData("lin.txt"))
+					if (world.getData("impulse test2.txt"))
 					{
 						world.~PhysicsWorld();
 						mainRenderer.~Renderer();
 						return 0;
 					}
+				}
+
+				if (event.key.code == sf::Keyboard::Enter)
+				{
+					sf::Texture image;
+					image.create(mainRenderer.getWindowSize().x, mainRenderer.getWindowSize().y);
+					image.update(*mainRenderer.getWindow());
+					if (image.copyToImage().saveToFile("screenshot.png")) std::cout << "Made Screenshot\n";
 				}
 
 
@@ -138,7 +146,6 @@ int main()
 					
 					p1->m_velocity = lge::vec2(60, 0);
 					p2->m_velocity = lge::vec2(-60, 0);
-				
 				}
 
 
