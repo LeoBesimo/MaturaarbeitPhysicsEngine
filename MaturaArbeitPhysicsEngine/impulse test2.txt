@@ -1,20 +1,20 @@
-Frame: 684
+Frame: 824
 Collision Algorithm: 7
 Polygon A:
-Position: X: 516 Y: 957.508
+Position: X: 500 Y: 950.289
 Rotation: 0
-Velocity: X: 0 Y: 326.828
+Velocity: X: 0 Y: 387.241
 Angular Velocity: 0
-Mass: 1114.61
-Inertia: 468723
+Mass: 1500
+Inertia: 1.30027e+06
 Force: X: 0 Y: 0
 Torque: 0
-Restitution: 0.4
+Restitution: 1
 Edge Points:
-	Index: 0	X: 500.65 Y: 939.354
-	Index: 1	X: 531.35 Y: 939.354
-	Index: 2	X: 531.35 Y: 975.661
-	Index: 3	X: 500.65 Y: 975.661
+	Index: 0	X: 485 Y: 925.289
+	Index: 1	X: 515 Y: 925.289
+	Index: 2	X: 515 Y: 975.289
+	Index: 3	X: 485 Y: 975.289
 
 Polygon B:
 Position: X: 500 Y: 1000
@@ -38,26 +38,26 @@ Collision: 1
 Normal: << X: -0 Y: 1
 
 Contact Index: 0
-Contact Point: X: 516 Y: 975
-Contact Velocity: -326.828
+Contact Point: X: 500 Y: 975
+Contact Velocity: -387.241
 Relative Velocity: X: 0 Y: 0
-Radius A: X: 0 Y: 17.4924 Mag: 17.4924
-Radius B: X: 16 Y: -25 Mag: 29.6816
-Velocity A: X: 0 Y: 326.828
+Radius A: X: 0 Y: 24.711 Mag: 24.711
+Radius B: X: 0 Y: -25 Mag: 25
+Velocity A: X: 0 Y: 387.241
 Velocity B: X: 0 Y: 0
 Inverse Inertia: 0
-Inverse Mass: 0.000897176
-Impulse Scalar Before Division: 457.559
-Impulse Scalar After Division: 509999
-Impulse: X: -0 Y: 509999
+Inverse Mass: 0.000666667
+Impulse Scalar Before Division: 774.482
+Impulse Scalar After Division: 1.16172e+06
+Impulse: X: -0 Y: 1.16172e+06
 
 Poly0:
-E kin before: 5.95292e+07
+E kin before: 1.12467e+08
 E rot before: 0
-E tot before: 5.95292e+07
-E kin After 9.52468e+06
+E tot before: 1.12467e+08
+E kin After 1.12467e+08
 E rot After 0
-E tot After 9.52468e+06
+E tot After 1.12467e+08
 Poly1:
 E kin before: 0
 E rot before: 0
@@ -65,28 +65,28 @@ E tot before: 0
 E kin After 0
 E rot After 0
 E tot After 0
-Total energy Before: 5.95292e+07
-Total energy After: 9.52468e+06
+Total energy Before: 1.12467e+08
+Total energy After: 1.12467e+08
 
-Linear Imulse A Before: X: 0 Y: 364285 Z: 0
+Linear Imulse A Before: X: 0 Y: 580861 Z: 0
 Angular Imulse A Before: X: 0 Y: 0 Z: 0
 Linear Imulse B Before: X: 0 Y: 0 Z: 0
 Angular Imulse B Before: X: 0 Y: 0 Z: 0
-Total Impulse A Before: X: 0 Y: 364285 Z: 0
+Total Impulse A Before: X: 0 Y: 580861 Z: 0
 Total Impulse B Before: X: 0 Y: 0 Z: 0
-Total Impulse Before: X: 0 Y: 364285 Z: 0 Impulse Mag: 364285
+Total Impulse Before: X: 0 Y: 580861 Z: 0 Impulse Mag: 580861
 
-Linear Imulse A After: X: 0 Y: -145714 Z: 0
+Linear Imulse A After: X: 0 Y: -580861 Z: 0
 Angular Imulse A After: X: 0 Y: 0 Z: 0
 Linear Imulse B After: X: 0 Y: 0 Z: 0
 Angular Imulse B After: X: 0 Y: 0 Z: 0
-Total Impulse A After: X: 0 Y: -145714 Z: 0
+Total Impulse A After: X: 0 Y: -580861 Z: 0
 Total Impulse B After: X: 0 Y: 0 Z: 0
-Total Impulse After: X: 0 Y: -145714 Z: 0 Impulse Mag: 364285
+Total Impulse After: X: 0 Y: -580861 Z: 0 Impulse Mag: 580861
 
 
 
-Frame: 684
+Frame: 824
 Collision Algorithm: 7
 Polygon A:
 Position: X: 500 Y: 1000
@@ -105,20 +105,20 @@ Edge Points:
 	Index: 3	X: 100 Y: 1025
 
 Polygon B:
-Position: X: 516 Y: 957.177
+Position: X: 500 Y: 950.144
 Rotation: 0
-Velocity: X: 0 Y: -130.466
+Velocity: X: 0 Y: -386.961
 Angular Velocity: 0
-Mass: 1114.61
-Inertia: 468723
+Mass: 1500
+Inertia: 1.30027e+06
 Force: X: 0 Y: 0
 Torque: 0
-Restitution: 0.4
+Restitution: 1
 Edge Points:
-	Index: 0	X: 500.65 Y: 939.024
-	Index: 1	X: 531.35 Y: 939.024
-	Index: 2	X: 531.35 Y: 975.33
-	Index: 3	X: 500.65 Y: 975.33
+	Index: 0	X: 485 Y: 925.144
+	Index: 1	X: 515 Y: 925.144
+	Index: 2	X: 515 Y: 975.144
+	Index: 3	X: 485 Y: 975.144
 
 Manifold:
 
@@ -126,13 +126,13 @@ Collision: 1
 Normal: << X: 0 Y: -1
 
 Contact Index: 0
-Contact Point: X: 516 Y: 975
-Contact Velocity: 130.466
+Contact Point: X: 500 Y: 975
+Contact Velocity: 386.961
 Relative Velocity: X: 0 Y: 0
-Radius A: X: 16 Y: -25 Mag: 29.6816
-Radius B: X: 0 Y: 17.8228 Mag: 17.8228
+Radius A: X: 0 Y: -25 Mag: 25
+Radius B: X: 0 Y: 24.8555 Mag: 24.8555
 Velocity A: X: 0 Y: 0
-Velocity B: X: 0 Y: -130.466
+Velocity B: X: 0 Y: -386.961
 1
 Separating at Contactpoint
 

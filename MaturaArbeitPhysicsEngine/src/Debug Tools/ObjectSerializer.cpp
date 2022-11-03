@@ -133,7 +133,7 @@ void lge::ObjectSerializer::serializeObjects(const char* fileName)
 
 				file << "Total Impulse A After: " << totalImpulseAAfter << "\n";
 				file << "Total Impulse B After: " << totalImpulseBAfter << "\n";
-				file << "Total Impulse After: " << totalImpulseAfter << " Impulse Mag: " << totalImpulseBefore.len() << "\n";
+				file << "Total Impulse After: " << totalImpulseAfter << " Impulse Mag: " << totalImpulseAfter.len() << "\n";
 			}
 			else
 			{

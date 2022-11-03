@@ -63,8 +63,12 @@ int main()
 	instructions << "Key R: Delete all nonstatic Bodies\n";
 	instructions << "Key E: Spawn Yellow Rectangle at (500,200) with Bounciness 1\n";
 	instructions << "Key T: Spawn 6 Preprogrammed Bodies\n";
+	instructions << "Space: Toggle Gravity\n";
+	instructions << "Key G: Spawn 2 Rectangular Bodies with velocities towards each other";
+	instructions << "Key Q: Spawn 3 - 5 Random Bodies into the world"
 	instructions << "Left Mousebutton: Spawn Rectangle at Mouseposition with selected Bouncieness\n";
 	instructions << "Right Mousebutton: Spawn Polygon at Mouseposition with selected Bouncieness\n";
+	
 
 	std::cout << instructions.str();
 #endif
@@ -88,7 +92,7 @@ int main()
 #ifdef _DEBUG
 				if (event.key.code == sf::Keyboard::Escape)
 				{
-					if (world.getData("impulse test2.txt"))
+					if (world.getData("impulse test3.txt"))
 					{
 						world.~PhysicsWorld();
 						mainRenderer.~Renderer();
@@ -134,15 +138,44 @@ int main()
 				if (event.key.code == sf::Keyboard::T) world.testSetup();
 				if (event.key.code == sf::Keyboard::R) world.reset();
 				if (event.key.code == sf::Keyboard::E) world.addBox(lge::vec2(500, 200), lge::vec2(30, 50), 0, false, 1, 1, lge::Color::YELLOW);
-				if (event.key.code == sf::Keyboard::Z) world.addPolygon(mouse, lge::mat2(15,0,0, 15), 0, 25, false, 1, 0.4, lge::Color::LIGHTGRAY);
+				//if (event.key.code == sf::Keyboard::Z) world.addPolygon(mouse, lge::mat2(15,0,0, 15), 0, 25, false, 1, 0.4, lge::Color::LIGHTGRAY);
 
 				if (event.key.code == sf::Keyboard::Space) world.toggleGravity();
+
+				if (event.key.code == sf::Keyboard::Q)
+				{
+					auto count = lge::randomDouble(3, 6);
+					for (unsigned int i = 0; i < count; i++)
+					{
+						if (rand() % 2 == 0)
+							world.addBox(lge::vec2(lge::randomDouble(0, windowSize.x), lge::randomDouble(0, windowSize.x)),
+								lge::vec2(lge::randomDouble(20, 60), lge::randomDouble(20, 60)),
+								lge::randomDouble(0, lge::TWO_PI),
+								false, 1, globalRestitution, lge::Color::ORANGE
+							);
+
+						else
+							world.addPolygon(lge::vec2(lge::randomDouble(0, windowSize.x), lge::randomDouble(0, windowSize.x)),
+								lge::mat2(
+									lge::randomDouble(20, 30),
+									0,
+									0,
+									lge::randomDouble(20, 30)
+								), lge::randomDouble(0, lge::TWO_PI),
+								3 + (rand() % 6),
+								false,
+								1,
+								globalRestitution,
+								lge::Color::BLUE
+								);
+					}
+				}
 
 
 				if (event.key.code == sf::Keyboard::G)
 				{
 					lge::Polygon* p1 = world.addBox(lge::vec2(300, 800), lge::vec2(30, 50), 0, false, 1, 1.0, lge::Color::GRAY);
-					lge::Polygon* p2 = world.addBox(lge::vec2(600, 800), lge::vec2(50, 30), 0.25, false, 1, 1.0, lge::Color::GRAY);
+					lge::Polygon* p2 = world.addBox(lge::vec2(600, 800), lge::vec2(50, 30), 0, false, 1, 1.0, lge::Color::GRAY);
 					
 					p1->m_velocity = lge::vec2(60, 0);
 					p2->m_velocity = lge::vec2(-60, 0);

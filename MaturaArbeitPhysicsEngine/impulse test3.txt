@@ -1,0 +1,88 @@
+Frame: 294
+Collision Algorithm: 7
+Polygon A:
+Position: X: 430.085 Y: 800
+Rotation: 0
+Velocity: X: 60 Y: 0
+Angular Velocity: 0
+Mass: 1500
+Inertia: 1.30027e+06
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 415.085 Y: 775
+	Index: 1	X: 445.085 Y: 775
+	Index: 2	X: 445.085 Y: 825
+	Index: 3	X: 415.085 Y: 825
+
+Polygon B:
+Position: X: 470.07 Y: 800
+Rotation: 0
+Velocity: X: -60 Y: 0
+Angular Velocity: 0
+Mass: 1500
+Inertia: 1.30027e+06
+Force: X: 0 Y: 0
+Torque: 0
+Restitution: 1
+Edge Points:
+	Index: 0	X: 445.07 Y: 785
+	Index: 1	X: 495.07 Y: 785
+	Index: 2	X: 495.07 Y: 815
+	Index: 3	X: 445.07 Y: 815
+
+Manifold:
+
+Collision: 1
+Normal: << X: 1 Y: -0
+
+Contact Index: 0
+Contact Point: X: 445.085 Y: 800
+Contact Velocity: -120
+Relative Velocity: X: 0 Y: 0
+Radius A: X: 15 Y: 0 Mag: 15
+Radius B: X: -24.9848 Y: 0 Mag: 24.9848
+Velocity A: X: 60 Y: 0
+Velocity B: X: -60 Y: 0
+Inverse Inertia: 0
+Inverse Mass: 0.00133333
+Impulse Scalar Before Division: 240
+Impulse Scalar After Division: 180000
+Impulse: X: 180000 Y: -0
+
+Poly0:
+E kin before: 2.7e+06
+E rot before: 0
+E tot before: 2.7e+06
+E kin After 2.7e+06
+E rot After 0
+E tot After 2.7e+06
+Poly1:
+E kin before: 2.7e+06
+E rot before: 0
+E tot before: 2.7e+06
+E kin After 2.7e+06
+E rot After 0
+E tot After 2.7e+06
+Total energy Before: 5.4e+06
+Total energy After: 5.4e+06
+
+Linear Imulse A Before: X: 90000 Y: 0 Z: 0
+Angular Imulse A Before: X: 0 Y: 0 Z: 0
+Linear Imulse B Before: X: -90000 Y: 0 Z: 0
+Angular Imulse B Before: X: 0 Y: 0 Z: 0
+Total Impulse A Before: X: 90000 Y: 0 Z: 0
+Total Impulse B Before: X: -90000 Y: 0 Z: 0
+Total Impulse Before: X: 0 Y: 0 Z: 0 Impulse Mag: 0
+
+Linear Imulse A After: X: -90000 Y: 0 Z: 0
+Angular Imulse A After: X: 0 Y: 0 Z: 0
+Linear Imulse B After: X: 90000 Y: 0 Z: 0
+Angular Imulse B After: X: 0 Y: 0 Z: 0
+Total Impulse A After: X: -90000 Y: 0 Z: 0
+Total Impulse B After: X: 90000 Y: 0 Z: 0
+Total Impulse After: X: 0 Y: 0 Z: 0 Impulse Mag: 0
+
+
+
