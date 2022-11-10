@@ -123,6 +123,11 @@ void lge::PhysicsWorld::reset()
 	}
 }
 
+lge::vec2 lge::PhysicsWorld::getGravity()
+{
+	return this->GRAVITY;
+}
+
 bool lge::PhysicsWorld::toggleGravity()
 {
 	return (this->applyGravity = !this->applyGravity);

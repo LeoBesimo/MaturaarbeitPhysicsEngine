@@ -46,6 +46,8 @@ namespace lge
 		void testSetup();
 		void reset();
 
+		lge::vec2 getGravity();
+
 		bool toggleGravity();
 
 		bool getData(const char* file);

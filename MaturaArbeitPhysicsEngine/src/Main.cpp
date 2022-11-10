@@ -30,20 +30,24 @@ int main()
 	//world.addBox(lge::vec2(0, windowSize.y / 2), lge::vec2(borderWidth, windowSize.y), 0, true, 0, 1.0, lge::Color::INDIGO);
 	//world.addBox(lge::vec2(windowSize.x, windowSize.y / 2), lge::vec2(borderWidth, windowSize.y), 0, true, 0, 1.0, lge::Color::INDIGO);
 	//world.addBox(lge::vec2(windowSize.x / 2, 0), lge::vec2(windowSize.x, borderWidth), 0, true, 0, 1.0, lge::Color::INDIGO);
-	//lge::Polygon* p = world.addBox(lge::vec2(windowSize.x / 2, windowSize.y), lge::vec2(windowSize.x-200, borderWidth), 0, true, 0, 1.0, lge::Color::INDIGO);
+	lge::Polygon* p = world.addBox(lge::vec2(windowSize.x / 2, windowSize.y), lge::vec2(windowSize.x-200, borderWidth), 0, true, 0, 1.0, lge::Color::INDIGO);
 
-	//world.addBox(lge::vec2(300, 600), lge::vec2(300, borderWidth), lge::QUARTER_PI/3, true, 1, 1.0, lge::Color::WHITE);
-	//world.addBox(lge::vec2(700, 400), lge::vec2(300, borderWidth), -lge::QUARTER_PI / 3, true, 1, 1.0, lge::Color::WHITE);
+	world.addBox(lge::vec2(300, 600), lge::vec2(300, borderWidth), lge::QUARTER_PI/3, true, 1, 1.0, lge::Color::WHITE);
+	world.addBox(lge::vec2(700, 400), lge::vec2(300, borderWidth), -lge::QUARTER_PI / 3, true, 1, 1.0, lge::Color::WHITE);
 
 	/*lge::Polygon* turntable = world.addBox(lge::vec2(500, 300), lge::vec2(200, 30), lge::HALF_PI*1.205, true, 1, 1.0, lge::Color::BROWN);
 	turntable->m_density = 0.5;
 	turntable->calculateInertia();*/
 
-	world.toggleGravity();
+	//world.toggleGravity();
 
-	world.addBox(lge::vec2(300, 500), lge::vec2(40, 40), 0, false, 1, 1, lge::Color::ORANGE)->m_velocity = lge::vec2(80,0);
-	world.addBox(lge::vec2(600, 500), lge::vec2(40, 40), 0, false, 1, 1, lge::Color::ORANGE);
+	//world.addBox(lge::vec2(300, 500), lge::vec2(40, 40), 0, false, 1, 1, lge::Color::ORANGE)->m_velocity = lge::vec2(80,0);
+	//world.addBox(lge::vec2(600, 500), lge::vec2(40, 40), 0, false, 1, 1, lge::Color::ORANGE);
 
+	//world.addBox(lge::vec2(300, 700), lge::vec2(40, 40), 0, false, 1, 0.5, lge::Color::GREEN)->m_velocity = lge::vec2(80, 0);
+	//world.addBox(lge::vec2(600, 700), lge::vec2(40, 40), 0, false, 1, 0.5, lge::Color::GREEN);
+
+	//world.addBox(lge::vec2(500, 200), lge::vec2(30, 50), 0, false, 1, 1, lge::Color::YELLOW);
 
 	double globalRestitution = 0.4;
 
@@ -52,6 +56,9 @@ int main()
 
 	sf::Clock clock;
 	float lastTime = 0;
+
+	std::ofstream energyFile;
+	energyFile.open("energy.txt");
 
 #ifdef NDEBUG
 	std::stringstream instructions;
@@ -85,6 +92,15 @@ int main()
 
 			if (event.type == sf::Event::KeyPressed)
 			{
+
+				if (event.key.code == sf::Keyboard::Escape)
+				{
+					energyFile.close();
+					world.~PhysicsWorld();
+					mainRenderer.~Renderer();
+					return 0;
+				}
+
 #ifdef _DEBUG
 				if (event.key.code == sf::Keyboard::Escape)
 				{
@@ -133,7 +149,7 @@ int main()
 
 				if (event.key.code == sf::Keyboard::T) world.testSetup();
 				if (event.key.code == sf::Keyboard::R) world.reset();
-				if (event.key.code == sf::Keyboard::E) world.addBox(lge::vec2(500, 200), lge::vec2(30, 50), 0, false, 1, 1, lge::Color::YELLOW);
+				if (event.key.code == sf::Keyboard::E) world.addBox(lge::vec2(500, 200), lge::vec2(30, 50), lge::QUARTER_PI, false, 1, 1, lge::Color::YELLOW);
 				//if (event.key.code == sf::Keyboard::Z) world.addPolygon(mouse, lge::mat2(15,0,0, 15), 0, 25, false, 1, 0.4, lge::Color::LIGHTGRAY);
 
 				if (event.key.code == sf::Keyboard::Space) world.toggleGravity();
@@ -202,9 +218,27 @@ int main()
 
 		world.update(mainRenderer.getDeltaTime());
 
+		std::vector<lge::Polygon*> bodies = world.getBodies();
+
+		for (lge::Polygon* body : bodies)
+		{
+			if (body->m_invMass == 0) continue;
+
+			double h = windowSize.y - body->m_position.y;
+			double erot = 0.5 * body->m_inertia * body->m_angularVelocity * body->m_angularVelocity;
+			double ekin = 0.5 * body->m_mass * body->m_velocity.lenSqr();
+			double epot = body->m_mass * h * world.getGravity().len();
+			double etot = erot + ekin + epot;
+			//energyFile << etot << " " << ekin << " " << erot << " " << epot << "\n";
+		}
+
 		world.renderWorld();
 
 		mainRenderer.displayFramerate();
+
+		mainRenderer.stroke(lge::Color::RED);
+		//mainRenderer.line(0, 175, windowSize.x, 175);
+
 		mainRenderer.stroke(lge::Color::CYAN);
 		mainRenderer.text(std::to_string(globalRestitution),10,50,16);
 #ifdef _DEBUG
