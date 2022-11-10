@@ -3,6 +3,7 @@
 Renderer::Renderer(unsigned int width, unsigned int height, std::string name)
 {
 	m_window = new sf::RenderWindow(sf::VideoMode(width, height), name);
+	m_image.create(width, height);
 	m_window->setFramerateLimit(60);
 	m_windowWidth = width;
 	m_windowHeight = height;
@@ -109,6 +110,12 @@ void Renderer::circleMode(Options circleMode)
 void Renderer::coordinateSystem(CoordinateSystem cs)
 {
 	m_coordinateSystem = cs;
+}
+
+bool Renderer::saveFrame(std::string fileName)
+{
+	m_image.update(*this->m_window);
+	return m_image.copyToImage().saveToFile(fileName);
 }
 
 void Renderer::renderVec2List(std::vector<lge::vec2> &vectors)

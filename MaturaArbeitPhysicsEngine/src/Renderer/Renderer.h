@@ -52,6 +52,8 @@ private:
 	double m_deltaTime = 0;
 	sf::Clock m_framaRateClock;
 
+	sf::Texture m_image;
+
 	double m_frameRate;
 
 public:
@@ -81,6 +83,8 @@ public:
 	void rectMode(Options rectMode);
 	void circleMode(Options circleMode);
 	void coordinateSystem(CoordinateSystem cs);
+
+	bool saveFrame(std::string fileName);
 
 	void renderVec2List(std::vector<lge::vec2> &vectors);
 	void renderVec2ListSolid(std::vector<lge::vec2> &vectors);

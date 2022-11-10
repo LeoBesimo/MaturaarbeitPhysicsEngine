@@ -175,6 +175,7 @@
     <ResourceCompile Include="MaturaArbeitPhysicsEngine.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\ma icon.ico" />
     <Image Include="C:\Users\besim\Downloads\physics_icon_150969.ico" />
     <Image Include="icon1.ico" />
   </ItemGroup>

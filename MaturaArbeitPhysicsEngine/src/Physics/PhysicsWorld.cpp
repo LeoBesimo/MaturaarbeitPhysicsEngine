@@ -141,16 +141,23 @@ void lge::PhysicsWorld::update(double deltaTime)
 		if (!AABBCollision(bodies[i], world)) removeBody(i);
 	}
 
-	//std::cout << bodies.size() << "\n";
-
 	for (unsigned int i = 0; i < stepCount; i++)
-
 	{
 		
 		for (Polygon* body : bodies)
 		{
-			if(this->applyGravity) body->m_force += GRAVITY * body->m_mass / stepCount;
-			body->integrateForces(deltaTime);
+			if (this->applyGravity && body->m_invMass != 0)
+			{
+				body->m_force += GRAVITY * body->m_mass / stepCount;
+				for (vec2 point : body->m_transformedPoints) 
+				{	
+					vec2 radius = point - body->m_position;
+					double force = crossVec2(radius, GRAVITY);
+					force /= body->m_transformedPoints.size();
+					body->m_torque += force * body->m_inertia;
+				}
+			}
+				body->integrateForces(deltaTime);
 		}
 
 		for (Polygon* bodyA : bodies)
@@ -222,18 +229,17 @@ void lge::PhysicsWorld::update(double deltaTime)
 
 void lge::PhysicsWorld::renderWorld()
 {
+	for (Polygon* body : bodies)
+	{
+		renderer->stroke(body->m_color);
+		renderer->renderVec2ListSolid(body->m_transformedPoints);
+	}
 
 	std::stringstream stream;
 	stream << "Bodies: " << bodies.size();
 
 	renderer->stroke(lge::Color::CYAN);
 	renderer->text(stream.str(), 10, 30, 16);
-
-	for (Polygon* body : bodies)
-	{
-		renderer->stroke(body->m_color);
-		renderer->renderVec2ListSolid(body->m_transformedPoints);
-	}
 }
 
 std::vector<lge::Polygon*> lge::PhysicsWorld::getBodies()

@@ -8,11 +8,14 @@
 
 int main()
 {
+
+	//Apply force to polygon with radius
+
 	srand(time(NULL));
 	//srand(0);
 	Renderer mainRenderer(1000, 1000, "Maturaarbeit Physiksimulation Leo Besimo");
 
-	mainRenderer.getWindow()->setFramerateLimit(75);
+	mainRenderer.getWindow()->setFramerateLimit(60);
 	//mainRenderer.getWindow()->setVerticalSyncEnabled(true);
 
 	lge::vec2 windowSize = mainRenderer.getWindowSize();
@@ -22,31 +25,24 @@ int main()
 
 	lge::PhysicsWorld world(&mainRenderer ,mainRenderer.getWindowSize());
 
-	//lge::Polygon* poly = world.addBox(lge::vec2(200, 200), lge::vec2(50, 50), 0.25, false, 1, 1.0, lge::vec4(255, 0, 255, 255));
-
-	//poly->m_velocity = lge::vec2(60, 0);
-
-	//world.addBox(lge::vec2(400, 200), lge::vec2(50, 80), 0, false, 1, 1.0, lge::vec4(255, 0, 0, 255));
-
-	//lge::Polygon* n5 = world.addPolygon(lge::vec2(600, 400), lge::mat2(30, 0, 0, 60), 0, 5, false, 1, 1.0, lge::vec4(255, 0, 255, 255));
-	//n5->m_velocity += lge::vec2(80, 0);
-
 
 	int borderWidth = 50;
-	//world.addBox(lge::vec2(0, windowSize.y / 2), lge::vec2(borderWidth, windowSize.y), 0, true, 0, 1.0, lge::vec4(100, 100, 0, 255));
-	//world.addBox(lge::vec2(windowSize.x, windowSize.y / 2), lge::vec2(borderWidth, windowSize.y), 0, true, 0, 1.0, lge::vec4(100, 200, 0, 255));
-	//world.addBox(lge::vec2(windowSize.x / 2, 0), lge::vec2(windowSize.x, borderWidth), 0, true, 0, 1.0, lge::vec4(100, 0, 100, 255));
-	lge::Polygon* p = world.addBox(lge::vec2(windowSize.x / 2, windowSize.y), lge::vec2(windowSize.x-200, borderWidth), 0, true, 0, 1.0, lge::Color::INDIGO);
-	//p->m_density = 0.1;
-	//p->calculateInertia();
+	//world.addBox(lge::vec2(0, windowSize.y / 2), lge::vec2(borderWidth, windowSize.y), 0, true, 0, 1.0, lge::Color::INDIGO);
+	//world.addBox(lge::vec2(windowSize.x, windowSize.y / 2), lge::vec2(borderWidth, windowSize.y), 0, true, 0, 1.0, lge::Color::INDIGO);
+	//world.addBox(lge::vec2(windowSize.x / 2, 0), lge::vec2(windowSize.x, borderWidth), 0, true, 0, 1.0, lge::Color::INDIGO);
+	//lge::Polygon* p = world.addBox(lge::vec2(windowSize.x / 2, windowSize.y), lge::vec2(windowSize.x-200, borderWidth), 0, true, 0, 1.0, lge::Color::INDIGO);
 
-
-	world.addBox(lge::vec2(300, 600), lge::vec2(300, borderWidth), lge::QUARTER_PI/3, true, 1, 1.0, lge::Color::WHITE);
-	world.addBox(lge::vec2(700, 400), lge::vec2(300, borderWidth), -lge::QUARTER_PI / 3, true, 1, 1.0, lge::Color::WHITE);
+	//world.addBox(lge::vec2(300, 600), lge::vec2(300, borderWidth), lge::QUARTER_PI/3, true, 1, 1.0, lge::Color::WHITE);
+	//world.addBox(lge::vec2(700, 400), lge::vec2(300, borderWidth), -lge::QUARTER_PI / 3, true, 1, 1.0, lge::Color::WHITE);
 
 	/*lge::Polygon* turntable = world.addBox(lge::vec2(500, 300), lge::vec2(200, 30), lge::HALF_PI*1.205, true, 1, 1.0, lge::Color::BROWN);
 	turntable->m_density = 0.5;
 	turntable->calculateInertia();*/
+
+	world.toggleGravity();
+
+	world.addBox(lge::vec2(300, 500), lge::vec2(40, 40), 0, false, 1, 1, lge::Color::ORANGE)->m_velocity = lge::vec2(80,0);
+	world.addBox(lge::vec2(600, 500), lge::vec2(40, 40), 0, false, 1, 1, lge::Color::ORANGE);
 
 
 	double globalRestitution = 0.4;
@@ -65,7 +61,7 @@ int main()
 	instructions << "Key T: Spawn 6 Preprogrammed Bodies\n";
 	instructions << "Space: Toggle Gravity\n";
 	instructions << "Key G: Spawn 2 Rectangular Bodies with velocities towards each other";
-	instructions << "Key Q: Spawn 3 - 5 Random Bodies into the world"
+	instructions << "Key Q: Spawn 3 - 5 Random Bodies into the world";
 	instructions << "Left Mousebutton: Spawn Rectangle at Mouseposition with selected Bouncieness\n";
 	instructions << "Right Mousebutton: Spawn Polygon at Mouseposition with selected Bouncieness\n";
 	
@@ -216,6 +212,12 @@ int main()
 #endif // DEBUG
 
 		mainRenderer.update();
+
+		std::stringstream fileName;
+
+		fileName << mainRenderer.getFrameCount() << ".png";
+
+		//mainRenderer.saveFrame(fileName.str());
 
 		float fps = 1.f / clock.restart().asSeconds();
 		

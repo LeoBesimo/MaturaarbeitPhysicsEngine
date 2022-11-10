@@ -52,7 +52,7 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-//IDI_ICON2               ICON                    "C:\\Users\\besim\\Downloads\\physics_icon_150969.ico"
+//IDI_ICON1               ICON                    "F:\\Files\\Schule\\Kanti\\Maturaarbeit\\Programming\\MaturaarbeitPhysicsEngine\\ma icon.ico"
 
 #endif    // German (Germany) resources
 /////////////////////////////////////////////////////////////////////////////
