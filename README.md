@@ -1,5 +1,6 @@
 # Maturaarbeit Physics Engine
 This is the finished source code for my Maturaarbeit.  
+The Rendering is done using the SFML Library.  
 It is a simple 2d Ridgid body physics engine.  
 It Supports n sided convex polygon shapes.  
 It still contains some bugs which sadly couldn't be fixed during my Maturaarbeit.  
